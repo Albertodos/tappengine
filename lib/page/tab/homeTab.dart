@@ -44,23 +44,23 @@ class _HomeTabState extends State<HomeTab> {
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/home.svg", width: 19, color: _selectedIndex == 0 ? AppColors.blue : AppColors.gray2),
+              icon: SvgPicture.asset("assets/icons/home.svg", width: 19, color: _selectedIndex == 0 ? AppColors.purpura : AppColors.gray2),
               label: "Home"),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/crypto.svg", width: 19, color: _selectedIndex == 1 ? AppColors.blue : AppColors.gray2),
+              icon: SvgPicture.asset("assets/icons/crypto.svg", width: 19, color: _selectedIndex == 1 ? AppColors.purpura : AppColors.gray2),
               label: "Crypto"),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/stocks.svg", width: 19, color: _selectedIndex == 2 ? AppColors.blue : AppColors.gray2),
+              icon: SvgPicture.asset("assets/icons/stocks.svg", width: 19, color: _selectedIndex == 2 ? AppColors.purpura : AppColors.gray2),
               label: "Stocks"),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/models.svg", width: 19, color: _selectedIndex == 3 ? AppColors.blue : AppColors.gray2),
-              label: "Models"),
+              icon: SvgPicture.asset("assets/icons/models.svg", width: 19, color: _selectedIndex == 3 ? AppColors.purpura : AppColors.gray2),
+              label: "Advice"),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/report.svg", width: 19, color: _selectedIndex == 4 ? AppColors.blue : AppColors.gray2),
-              label: "Reports"),
+              icon: SvgPicture.asset("assets/icons/report.svg", width: 19, color: _selectedIndex == 4 ? AppColors.purpura : AppColors.gray2),
+              label: "Rewards"),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: AppColors.blue,
+        selectedItemColor: AppColors.purpura,
         onTap: _onItemTapped,
         // unselectedLabelStyle: Styles.style9,
         // selectedLabelStyle: Styles.style9,

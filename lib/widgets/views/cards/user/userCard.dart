@@ -53,6 +53,13 @@ class UserCards extends StatelessWidget {
 
   Widget userInfo(mycontext) {
     return ListTile(
+      onTap: () {
+        print("/personalInfo");
+        Navigator.pushNamed(
+          mycontext,
+          "/editProfile",
+        );
+      },
       leading: SizedBox(
         height: Get.height,
         child: GestureDetector(
@@ -93,10 +100,17 @@ class UserCards extends StatelessWidget {
     );
   }
 
-  Widget userSettingsItem() {
+  Widget userSettingsItem(mycontext) {
     return Column(
       children: [
         ListTile(
+          onTap: () {
+            print("/personalInfo");
+            Navigator.pushNamed(
+              mycontext,
+              user['root'],
+            );
+          },
           leading: user['leading'],
           title: UILabels(
             text: user['title'],

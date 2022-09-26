@@ -15,57 +15,65 @@ class UserPersonal extends User {
       "title": "Phone",
       "subtitle": phone ?? 'kinkas',
       "trailing": trailingArrowRight(),
-      "color": AppColors.black
+      "color": AppColors.black,
+      "root" : '/editPhoneNumber'
     };
     data['emial'] = {
       "leading": leading("assets/icons/sms.svg"),
       "title": "Email",
       "subtitle": email ?? '',
       "trailing": trailingArrowRight(),
-      "color": AppColors.black
+      "color": AppColors.black,
+      "root" : '/editEmail'
     };
     data['address'] = {
       "leading": leading("assets/icons/location.svg"),
       "title": "Address",
       "subtitle": andress ?? '',
       "trailing": trailingArrowRight(),
-      "color": AppColors.black
+      "color": AppColors.black,
+      "root" : '/editAddress'
     };
     data['notification'] = {
       "leading": leading("assets/icons/notification.svg"),
       "title": "Notification Settings",
       "subtitle": 'Last Update 09/16/2022',
       "trailing": trailingArrowRight(),
-      "color": AppColors.black
+      "color": AppColors.black,
+      "root" : '/notifications'
     };
     data['moon'] = {
       "leading": leading("assets/icons/security-user.svg"),
       "title": "Identity Verification Status",
       "subtitle": (identityStatus ?? false) == true ? "Verified" : "Nao Verificada",
       "trailing": trailingArrowRight(),
-      "color": (identityStatus ?? false) == true ? AppColors.green : AppColors.red
+      "color": (identityStatus ?? false) == true ? AppColors.green : AppColors.red,
+      "root" : '/editProfile'
     };
     data['bank'] = {
       "leading": leading("assets/icons/bank.svg"),
       "title": "Bank Account Status",
       "subtitle": (bankStatus ?? false) == true ? "Verified" : "Nao Verificada",
       "trailing": trailingArrowRight(),
-      "color": (bankStatus ?? false) == true ? AppColors.green : AppColors.red
+      "color": (bankStatus ?? false) == true ? AppColors.green : AppColors.red,
+      "root" : '/editProfile'
     };
 
     data['themeMode'] = {
       "leading": leading("assets/icons/moon.svg"),
-      "title": themaMode.toString(),
+      "title": "Theme Mode",//themaMode.toString(),
       "subtitle": (themaMode ?? false) == true ? "Light" : "Dark",
       "trailing": globals.userPersonal.switchBotton(),
-      "color": AppColors.black
+      "color": AppColors.black,
+      "root" : '/editProfile'
     };
     data['help'] = {
       "leading": leading("assets/icons/lifebuoy.svg"),
       "title": "Help",
       "subtitle": 'FAQs',
       "trailing": trailingArrowRight(),
-      "color": AppColors.black
+      "color": AppColors.black,
+      "root" : '/editProfile'
     };
 
     return data;
