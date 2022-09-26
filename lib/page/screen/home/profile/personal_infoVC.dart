@@ -40,7 +40,7 @@ class _PersonalInfoVCState extends State<PersonalInfoVC> {
             flexibleSpace: FlexibleSpaceBar(
               title: Padding(
                 padding: const EdgeInsets.only(bottom: 20),
-                child: globals.userPersonal.switchBotton(), //UserCards().userBack(),
+                // child: , //UserCards().userBack(),
               ),
               background: ClipPath(
                 clipper: InBorderBotton(),

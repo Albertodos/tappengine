@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:simple_shadow/simple_shadow.dart';
 import 'package:tappengine/constants/app_colors.dart';
 import 'package:tappengine/helpers/cliper.dart';
 import 'package:tappengine/widgets/views/cards/user/userCard.dart';
 import '../../../../helpers/globals.dart' as globals;
 import '../../../widgets/ui_kits/labels_ui/label_ui.dart';
 import '../../../widgets/views/cards/menu/menuCard.dart';
-import 'profile/controller/user_C.dart';
 
 class HomeVC extends StatefulWidget {
   const HomeVC({super.key});
@@ -18,6 +15,15 @@ class HomeVC extends StatefulWidget {
 }
 
 class _HomeVCState extends State<HomeVC> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(const Duration(seconds: 1), () {
+      globals.userPersonal.chamgeUser();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

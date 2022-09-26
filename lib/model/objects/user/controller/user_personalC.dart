@@ -16,7 +16,7 @@ class UserPersonalC extends GetxController {
     userPersonal.value.andress = 'Praia, Cabo Verde';
     userPersonal.value.username = 'Alberto Dos Santos';
     userPersonal.value.identityStatus = true;
-    userPersonal.value.bankStatus = false;
+    userPersonal.value.bankStatus = true;
     userPersonal.value.notification = true;
     userPersonal.value.themaMode = false;
     userPersonal.value = userPersonal.value;
@@ -32,7 +32,6 @@ class UserPersonalC extends GetxController {
       value: switchStatus.value,
       activeColor: AppColors.purpura,
       onChanged: (value) {
-        chamgeUser();
         switchStatus.value = value;
         userPersonal.value.themaMode = value;
         userPersonal.value = userPersonal.value;
