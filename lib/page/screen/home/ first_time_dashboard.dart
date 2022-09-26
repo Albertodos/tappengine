@@ -1,40 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:tappengine/constants/app_colors.dart';
-import 'package:tappengine/helpers/cliper.dart';
-import 'package:tappengine/model/objects/pull_data.dart';
-import 'package:tappengine/widgets/structural/list_Structural.dart';
-import 'package:tappengine/widgets/views/cards/user/userCard.dart';
 import '../../../../helpers/globals.dart' as globals;
-import '../../../widgets/ui_kits/labels_ui/label_ui.dart';
-import '../../../widgets/views/cards/balances/balances.dart';
-import '../../../widgets/views/cards/menu/menuCard.dart';
-import '../../../widgets/views/cards/watchlists.dart/watchlists.dart';
+import 'package:get/get.dart';
 
-class HomeVC extends StatefulWidget {
-  const HomeVC({super.key});
+import '../../../constants/app_colors.dart';
+import '../../../helpers/cliper.dart';
+import '../../../widgets/ui_kits/labels_ui/label_ui.dart';
+import '../../../widgets/views/cards/menu/menuCard.dart';
+import '../../../widgets/views/cards/user/userCard.dart';
+
+class FirstTimeDashboard extends StatefulWidget {
+  const FirstTimeDashboard({super.key});
 
   @override
-  State<HomeVC> createState() => _HomeVCState();
+  State<FirstTimeDashboard> createState() => _FirstTimeDashboardState();
 }
 
-class _HomeVCState extends State<HomeVC> {
-  var pulldata = PullData(data: const [BalancesCards(), BalancesCards(), BalancesCards()], more: "", title: "MY BAlances", position: Axis.vertical);
-  var pulldata2 = PullData(
-      data: [const WatchlistsCards().tabMenu(), const BalancesCards(), const BalancesCards()],
-      more: "",
-      title: "MY Watchlists",
-      position: Axis.vertical);
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    Future.delayed(const Duration(seconds: 1), () {
-      globals.userPersonal.chamgeUser();
-    });
-  }
-
+class _FirstTimeDashboardState extends State<FirstTimeDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,9 +55,41 @@ class _HomeVCState extends State<HomeVC> {
             child: Padding(
               padding: const EdgeInsets.only(left: 32, right: 32, bottom: 32),
               child: Column(
-                children: [
-                  ListStrutural(data: pulldata, colorTitle: AppColors.black),
-                  ListStrutural(data: pulldata2, colorTitle: AppColors.black),
+                children: const [
+                  UILabels(
+                    text: "How would you like to proceed?",
+                    textLines: 1,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.purpura,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  UILabels(
+                    text: "Please let us know if you would like assistance form our robo advisor, or you prefer to craft your own investments.",
+                    textLines: 0,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.black,
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  HomeMenu(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  HomeMenu(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  HomeMenu(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  HomeMenu()
                 ],
               ),
             ),
