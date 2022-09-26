@@ -56,6 +56,93 @@ class User {
     return data;
   }
 
+  Map<String, dynamic> toJsonEditProfile() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['firstName'] = {
+      "value": "",
+      "name": "First Name",
+      "hintText": "First Name",
+      "keyboardType": TextInputType.text,
+      "sufix": null
+    };
+    data['lastName'] = {
+      "value": "",
+      "name": "Last Name",
+      "hintText": "Last Name",
+      "keyboardType": TextInputType.text,
+      "sufix": null
+    };
+    return data;
+  }
+
+  Map<String, dynamic> toJsonEditPhoneNumber() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['number'] = {
+      "value": "",
+      "name": "Phone Number",
+      "hintText": "Phone Number",
+      "keyboardType": TextInputType.number,
+      "sufix": null,
+      "prefix": preFixNumber()
+    };
+    return data;
+  }
+
+  Map<String, dynamic> toJsonEditEmail() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['emailAddress'] = {
+      "value": "",
+      "name": "Email Address",
+      "hintText": "Email Addresss",
+      "keyboardType": TextInputType.emailAddress,
+      "sufix": null
+    };
+    return data;
+  }
+
+  Map<String, dynamic> toJsonEditAddresss() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['streetAddress'] = {
+      "value": "",
+      "name": "Street Address",
+      "hintText": "Street Address",
+      "keyboardType": TextInputType.text,
+      "sufix": null
+    };
+    data['aptSuit'] = {
+      "value": "",
+      "name": "Apt, Suit, etc",
+      "hintText": "Enter Apt, Suit, etc",
+      "keyboardType": TextInputType.text,
+      "sufix": null
+    };
+    data['city'] = {
+      "value": "",
+      "name": "City",
+      "hintText": "Texas",
+      "keyboardType": TextInputType.text,
+      "sufix": null
+    };
+    data['country'] = {
+      "value": "",
+      "name": "Country",
+      "hintText": "USA",
+      "keyboardType": TextInputType.text,
+      "sufix": IconButton(
+        icon: const Icon(Icons.arrow_drop_down),
+        onPressed: () {},
+      ),
+    };
+    data['zipCode'] = {
+      "value": "",
+      "name": "Zip Code",
+      "hintText": "99950",
+      "keyboardType": TextInputType.number,
+      "sufix": null
+    };
+    return data;
+  }
+
   Map<String, dynamic> toJsonVerifyNumber() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['country'] = {

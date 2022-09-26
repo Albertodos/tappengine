@@ -67,7 +67,7 @@ class _PersonalInfoVCState extends State<PersonalInfoVC> {
                       children: globals.userPersonal.userPersonal.value
                           .toJsonUserPersonal()
                           .values
-                          .map((e) => UserCards(user: e).userSettingsItem())
+                          .map((e) => UserCards(user: e).userSettingsItem(context))
                           .toList(),
                     ),
                   ],
