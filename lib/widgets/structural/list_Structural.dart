@@ -17,43 +17,41 @@ class ListStrutural extends StatelessWidget {
     return Column(
       children: [
         if (data.title != "")
-          Column(
+          Row(
             children: [
-              Row(
-                children: [
-                  Expanded(
-                      child: UILabels(
-                    text: data.title ?? "",
-                    textLines: 1,
-                    color: colorTitle,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                  )),
-                  if (data.more != "")
-                    Expanded(
-                        child: UILabels(
-                      text: data.title ?? "",
-                      textLines: 1,
-                      color: AppColors.purpura,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                    ))
-                ],
-              ),
-              const SizedBox(
-                height: 32,
-              )
+              Expanded(
+                  child: UILabels(
+                text: data.title ?? "",
+                textLines: 1,
+                color: colorTitle,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+              )),
+              if (data.more != "")
+                UILabels(
+                  text: data.title ?? "",
+                  textLines: 1,
+                  color: AppColors.purpura,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                )
             ],
           ),
+        const SizedBox(
+          height: 16,
+        ),
         ListView.builder(
           shrinkWrap: true,
           scrollDirection: data.position ?? Axis.horizontal,
           itemCount: data.data.length,
           padding: EdgeInsets.zero,
-          
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (BuildContext context, int index) {
             return data.data[index];
           },
+        ),
+        const SizedBox(
+          height: 16,
         ),
       ],
     );

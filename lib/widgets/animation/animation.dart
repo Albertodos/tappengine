@@ -34,12 +34,31 @@ class AnimationUI extends StatelessWidget {
     return TweenAnimationBuilder(
       duration: const Duration(seconds: 1),
       curve: Curves.fastOutSlowIn,
-      tween: Tween(begin: 0.8, end: 1.0),
+      tween: Tween(begin: 1.0, end: 0.3),
       builder: (context, value, child) {
         // horizontal disposition of the widget.
         return Transform.scale(
           scale: value,
           child: child,
+        );
+      },
+      child: widget,
+    );
+  }
+
+  Widget scaleX() {
+    return TweenAnimationBuilder(
+      duration: const Duration(seconds: 4),
+      curve: Curves.fastOutSlowIn,
+      tween: Tween(begin: 1.0, end: 0.3),
+      builder: (context, value, child) {
+        // horizontal disposition of the widget.
+        return Transform.scale(
+          // scale: value,
+          scaleX: value,
+          child: child,
+          origin: Offset(0, 0),
+          alignment: Alignment.topLeft,
         );
       },
       child: widget,
