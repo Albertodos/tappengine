@@ -69,7 +69,7 @@ class UILabels extends StatelessWidget {
             textAlign: textAlign,
             maxLines: textLines,
             style: TextStyle(
-                fontFamily: 'Jaldi',
+                fontFamily: 'ProximaNova',
                 fontWeight: fontWeight,
                 fontSize: fontSize,
                 color: color,
@@ -81,7 +81,7 @@ class UILabels extends StatelessWidget {
             text,
             textAlign: textAlign,
             style: TextStyle(
-                fontFamily: 'Jaldi',
+                fontFamily: 'ProximaNova',
                 fontWeight: fontWeight,
                 fontSize: fontSize,
                 color: color,

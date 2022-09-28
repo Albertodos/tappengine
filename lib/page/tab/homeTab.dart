@@ -41,6 +41,7 @@ class _HomeTabState extends State<HomeTab> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Theme.of(context).cardColor,
+        elevation: 2,
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -53,10 +54,10 @@ class _HomeTabState extends State<HomeTab> {
               icon: SvgPicture.asset("assets/icons/stocks.svg", width: 19, color: _selectedIndex == 2 ? AppColors.purpura : AppColors.gray2),
               label: "Stocks"),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/models.svg", width: 19, color: _selectedIndex == 3 ? AppColors.purpura : AppColors.gray2),
+              icon: SvgPicture.asset("assets/icons/advice.svg", width: 19, color: _selectedIndex == 3 ? AppColors.purpura : AppColors.gray2),
               label: "Advice"),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/report.svg", width: 19, color: _selectedIndex == 4 ? AppColors.purpura : AppColors.gray2),
+              icon: SvgPicture.asset("assets/icons/rewards.svg", width: 19, color: _selectedIndex == 4 ? AppColors.purpura : AppColors.gray2),
               label: "Rewards"),
         ],
         currentIndex: _selectedIndex,

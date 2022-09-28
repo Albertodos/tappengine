@@ -41,7 +41,7 @@ class _HomeVCState extends State<HomeVC> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.gray0,
+      backgroundColor: Theme.of(context).cardColor,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
