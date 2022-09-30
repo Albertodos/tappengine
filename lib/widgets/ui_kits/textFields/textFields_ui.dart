@@ -26,7 +26,7 @@ class UITextFields extends StatelessWidget {
       this.type = TextInputType.emailAddress,
       this.enable = true,
       required this.text,
-      this.color = AppColors.blue,
+      this.color = AppColors.purpura,
       this.cb,
       this.textImput = false,
       this.cbChenge,
@@ -41,7 +41,7 @@ class UITextFields extends StatelessWidget {
           decoration: BoxDecoration(
             boxShadow: textSelect.value
                 ? [
-                    BoxShadow(blurRadius: 13, offset: const Offset(3, 3), color: AppColors.blue.withOpacity(0.33)),
+                    BoxShadow(blurRadius: 13, offset: const Offset(3, 3), color: AppColors.purpura.withOpacity(0.33)),
                   ]
                 : [],
             borderRadius: BorderRadius.circular(
@@ -114,7 +114,7 @@ class UITextFields extends StatelessWidget {
                   ),
 
                   focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: AppColors.blue, width: 1),
+                    borderSide: const BorderSide(color: AppColors.purpura, width: 1),
                     borderRadius: BorderRadius.circular(
                       7.0,
                     ),

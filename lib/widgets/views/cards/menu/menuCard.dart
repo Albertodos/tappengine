@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:tappengine/constants/app_colors.dart';
 
 import '../../../ui_kits/labels_ui/label_ui.dart';
 
-class HomeMenu extends StatelessWidget {
-  const HomeMenu({super.key});
+class MenuCards extends StatelessWidget {
+  MenuCards({super.key});
+
+  final positionTabMenu = 0.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +58,66 @@ class HomeMenu extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget tabMenu(List<String> menuTab, Function(int) position) {
+    return Obx(
+      () => Column(
+        children: [
+          SizedBox(
+              height: 50,
+              width: Get.width,
+              child: !positionTabMenu.value.isNaN
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                          Expanded(
+                            child: ListView.builder(
+                              // shrinkWrap: true,
+                              itemCount: menuTab.length,
+                              scrollDirection: Axis.horizontal,
+                              padding: EdgeInsets.zero,
+
+                              itemBuilder: (BuildContext context, int index) {
+                                return InkWell(
+                                  onTap: () {
+                                    positionTabMenu.value = index;
+                                    position(index);
+                                  },
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      UILabels(
+                                        text: menuTab[index],
+                                        textLines: 1,
+                                        color: positionTabMenu.value == index ? AppColors.purpura : AppColors.black,
+                                        fontSize: 18,
+                                        fontWeight: positionTabMenu.value == index ? FontWeight.w700 : FontWeight.w400,
+                                      ),
+                                      const SizedBox(
+                                        width: 16,
+                                      )
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 4,
+                            width: 30,
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(2), color: AppColors.purpura),
+                          ),
+                        ])
+                  : null),
+          const SizedBox(
+            height: 16,
+          )
+        ],
       ),
     );
   }

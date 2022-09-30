@@ -111,4 +111,23 @@ class PublicityCards extends StatelessWidget {
       ),
     );
   }
+
+  Widget card03() {
+    return Container(
+      height: 414,
+      decoration: BoxDecoration(
+        color: AppColors.green,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.purpura.withAlpha(25),
+            spreadRadius: 0,
+            blurRadius: 8,
+            offset: Offset(0, 4), // changes position of shadow
+          ),
+        ],
+      ),
+      alignment: Alignment.center,
+    );
+  }
 }

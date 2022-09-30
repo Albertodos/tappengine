@@ -55,18 +55,18 @@ class _FirstTimeDashboardState extends State<FirstTimeDashboard> {
             child: Padding(
               padding: const EdgeInsets.only(left: 32, right: 32, bottom: 32),
               child: Column(
-                children: const [
-                  UILabels(
+                children: [
+                  const UILabels(
                     text: "How would you like to proceed?",
                     textLines: 1,
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
                     color: AppColors.purpura,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  UILabels(
+                  const UILabels(
                     text: "Please let us know if you would like assistance form our robo advisor, or you prefer to craft your own investments.",
                     textLines: 0,
                     fontSize: 12,
@@ -74,22 +74,22 @@ class _FirstTimeDashboardState extends State<FirstTimeDashboard> {
                     color: AppColors.black,
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  HomeMenu(),
-                  SizedBox(
+                  MenuCards(),
+                  const SizedBox(
                     height: 20,
                   ),
-                  HomeMenu(),
-                  SizedBox(
+                  MenuCards(),
+                  const SizedBox(
                     height: 20,
                   ),
-                  HomeMenu(),
-                  SizedBox(
+                  MenuCards(),
+                  const SizedBox(
                     height: 20,
                   ),
-                  HomeMenu()
+                  MenuCards()
                 ],
               ),
             ),

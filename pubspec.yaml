@@ -36,6 +36,7 @@ dependencies:
   shimmer:
   simple_shadow:
   http:
+  expandable_page_view:
 
 
 

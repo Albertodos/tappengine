@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tappengine/constants/app_colors.dart';
+import 'package:tappengine/page/screen/crypto/cryptoVC.dart';
 import 'package:tappengine/page/screen/home/homeVC.dart';
 
+import '../nav/cryptoNav.dart';
 import '../nav/homeNav.dart';
 
 class HomeTab extends StatefulWidget {
@@ -15,7 +17,7 @@ class HomeTab extends StatefulWidget {
 class _HomeTabState extends State<HomeTab> {
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeNav(root: HomeVC()),
-    const HomeNav(root: HomeVC()),
+    const CryptoNav(root: CryptoVC()),
     const HomeNav(root: HomeVC()),
     const HomeNav(root: HomeVC()),
     const HomeNav(root: HomeVC()),

@@ -64,30 +64,36 @@ class UILabels extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return textLines != 0
-        ? Text(
-            text,
-            textAlign: textAlign,
-            maxLines: textLines,
-            style: TextStyle(
-                fontFamily: 'ProximaNova',
-                fontWeight: fontWeight,
-                fontSize: fontSize,
-                color: color,
-                decoration: textDecoration,
-                decorationColor: color,
-                height: 1.9),
+        ? Container(
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: Text(
+              text,
+              textAlign: textAlign,
+              maxLines: textLines,
+              style: TextStyle(
+                  fontFamily: 'ProximaNova',
+                  fontWeight: fontWeight,
+                  fontSize: fontSize,
+                  color: color,
+                  decoration: textDecoration,
+                  decorationColor: color,
+                  height: 1),
+            ),
           )
-        : Text(
-            text,
-            textAlign: textAlign,
-            style: TextStyle(
-                fontFamily: 'ProximaNova',
-                fontWeight: fontWeight,
-                fontSize: fontSize,
-                color: color,
-                decoration: textDecoration,
-                decorationColor: color,
-                height: 1.9),
+        : Container(
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: Text(
+              text,
+              textAlign: textAlign,
+              style: TextStyle(
+                  fontFamily: 'ProximaNova',
+                  fontWeight: fontWeight,
+                  fontSize: fontSize,
+                  color: color,
+                  decoration: textDecoration,
+                  decorationColor: color,
+                  height: 1),
+            ),
           );
   }
 }
