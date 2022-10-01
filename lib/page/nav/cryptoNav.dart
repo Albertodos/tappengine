@@ -41,6 +41,12 @@ class _CryptoNavState extends State<CryptoNav> {
         '/schedule': (context) => const ScheduleVC(),
         '/statement': (context) => const StatementVC(),
         '/addMoney': (context) => const AddMoneyVC(),
+        '/personalInfo': (context) => const PersonalInfoVC(),
+        '/editProfile' : (context) => const EditProfileVC(),
+        '/editPhoneNumber' : (context) => const EditPhoneNumberVC(),
+        '/editEmail' : (context) => const EditEmailVC(),
+        '/editAddress' : (context) => const EditAddressVC(),
+        '/notifications' : (context) => const NotificationsVC(),
       },
     );
   }

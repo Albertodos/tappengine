@@ -48,7 +48,7 @@ class UserPersonal extends User {
       "subtitle": (identityStatus ?? false) == true ? "Verified" : "Nao Verificada",
       "trailing": trailingArrowRight(),
       "color": (identityStatus ?? false) == true ? AppColors.green : AppColors.red,
-      "root" : '/editProfile'
+      "root" : '/addMoney'
     };
     data['bank'] = {
       "leading": leading("assets/icons/bank.svg"),

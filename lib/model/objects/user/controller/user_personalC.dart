@@ -9,6 +9,9 @@ class UserPersonalC extends GetxController {
 
   var switchStatus = false.obs;
 
+  var selectedIndex = -1.obs;
+  var selectedIndex1 = -1.obs;
+
   Future chamgeUser() async {
     userPersonal.value.email = "Alberto@gmail.com";
     userPersonal.value.phone = "+238 - 9117673";

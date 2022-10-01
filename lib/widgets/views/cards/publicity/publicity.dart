@@ -33,18 +33,18 @@ class PublicityCards extends StatelessWidget {
           const Expanded(
             child: UILabels(
               text: "I'm looking for advice",
-              textLines: 1,
+              textLines: 0,
               color: AppColors.white,
               fontSize: 18,
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w600,
             ),
           ),
           const SizedBox(
             width: 16,
           ),
           SizedBox(
-            width: 50,
-            height: 50,
+            width: 36,
+            height: 36,
             child: SvgPicture.asset(
               'assets/icons/ic_advice-arrow.svg',
               fit: BoxFit.fitHeight,
@@ -83,14 +83,14 @@ class PublicityCards extends StatelessWidget {
                   textLines: 1,
                   color: AppColors.black,
                   fontSize: 16,
-                  fontWeight: FontWeight.w400,
+                  fontWeight: FontWeight.w600,
                 ),
                 UILabels(
                   text: "Crypto basics",
                   textLines: 1,
                   color: AppColors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
                 ),
               ],
             ),
@@ -98,14 +98,10 @@ class PublicityCards extends StatelessWidget {
           const SizedBox(
             width: 16,
           ),
-          SizedBox(
-            width: 50,
-            height: 50,
-            child: SvgPicture.asset(
-              'assets/icons/ic_advice-arrow.svg',
-              fit: BoxFit.fitHeight,
-              // color: AppColors.purpura.withAlpha(25),
-            ),
+          const CircleAvatar(
+            backgroundColor: AppColors.gray3,
+            radius: 20,
+            child: Icon(Icons.arrow_forward, color: AppColors.black)
           ),
         ]),
       ),
