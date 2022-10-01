@@ -20,20 +20,20 @@ class HomeVC extends StatefulWidget {
 }
 
 class _HomeVCState extends State<HomeVC> {
-  var pulldata = PullData(data: const [BalancesCards(), BalancesCards(), BalancesCards()], more: "", title: "MY Balances", position: Axis.vertical);
+  var pulldata = PullData(data: const [BalancesCards(), BalancesCards(), BalancesCards()], more: "", title: "My Balances", position: Axis.vertical);
   var pulldata2 = PullData(data: [
     MenuCards().tabMenu(["Crypto", "Stocks"], (p) {}),
     WatchlistsCards().cards01(),
     WatchlistsCards().cards01(),
     WatchlistsCards().cards01(),
     WatchlistsCards().cards01()
-  ], more: "", title: "MY Watchlists", position: Axis.vertical);
+  ], more: "", title: "My Watchlists", position: Axis.vertical);
   var pulldata3 = PullData(data: [const PublicityCards().card01()], more: "", title: "", position: Axis.vertical);
   var pulldata4 = PullData(data: [
     MenuCards().tabMenu(["Crypto", "Stocks"], (p) {}),
     const AnalyticsCards().card01()
   ], more: "", title: "Analytics", position: Axis.vertical);
-  var pulldata5 = PullData(data: [const PublicityCards().card02()], more: "Learn", title: "View All", position: Axis.vertical);
+  var pulldata5 = PullData(data: [const PublicityCards().card02()], more: "View All", title: "Learn", position: Axis.vertical);
 
   @override
   void initState() {

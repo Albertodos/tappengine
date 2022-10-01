@@ -103,22 +103,28 @@ class _CryptoVCState extends State<CryptoVC> {
                   colorTitle: AppColors.black,
                   height: 130.0,
                 ),
-                Wrap(
-                  // direction: Axis.vertical,
-                  // alignment: WrapAlignment.center,
-                  spacing: 16.0,
-                  // runAlignment:WrapAlignment.center,
-                  runSpacing: 16.0,
-                  // crossAxisAlignment: WrapCrossAlignment.center,
-                  // textDirection: TextDirection.rtl,
-                  //  verticalDirection: VerticalDirection.up,
-                  children: <Widget>[
-                    WatchlistsCards().cards03(),
-                    WatchlistsCards().cards03(),
-                    WatchlistsCards().cards03(),
-                    WatchlistsCards().cards03()
-                  ],
+                ListStrutural(
+                  data: PullData(more: "View All", title: "Today's top movers", position: Axis.vertical ,data: [
+                    Wrap(
+                    // direction: Axis.vertical,
+                    // alignment: WrapAlignment.center,
+                    spacing: 16.0,
+                    // runAlignment:WrapAlignment.center,
+                    runSpacing: 16.0,
+                    // crossAxisAlignment: WrapCrossAlignment.center,
+                    // textDirection: TextDirection.rtl,
+                    //  verticalDirection: VerticalDirection.up,
+                    children: <Widget>[
+                      WatchlistsCards().cards03(),
+                      WatchlistsCards().cards03(),
+                      WatchlistsCards().cards03(),
+                      WatchlistsCards().cards03()
+                    ],
+                  )],),
+                  colorTitle: AppColors.black,
+                  height: null,
                 ),
+
               ],
             ),
           ),

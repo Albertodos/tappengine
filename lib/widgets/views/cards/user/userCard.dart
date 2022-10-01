@@ -18,16 +18,22 @@ class UserCards extends StatelessWidget {
   Widget userWelcome(context) {
     return ListTile(
       leading: GestureDetector(
-        child: CircleAvatar(
-            radius: 27.5,
-            backgroundColor: Colors.amber,
-            child: ClipOval(
-              child: Image.asset(
-                "assets/background/profile.png",
-                fit: BoxFit.cover,
-                filterQuality: FilterQuality.high,
-              ),
-            )),
+        child: Container(
+          width: 53.0,
+          height: 53.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all( Radius.circular(50.0)),
+            border: Border.all(
+              color: AppColors.purpura2,
+              width: 1.0,
+            ),
+          ),
+          child: Image.asset(
+            "assets/background/profile.png",
+            fit: BoxFit.cover,
+            filterQuality: FilterQuality.high,
+          ),
+        ),
         onTap: () {
           print("/personalInfo");
           Navigator.pushNamed(
@@ -36,18 +42,19 @@ class UserCards extends StatelessWidget {
           );
         },
       ),
-      title: const UILabels(
+      title:  UILabels(
         text: "Welcome",
         textLines: 1,
         color: AppColors.white,
         fontSize: 18,
+        fontWeight: FontWeight.w400,
       ),
       subtitle: UILabels(
         text: user['userInfo']['name'],
         textLines: 1,
         color: AppColors.white,
         fontSize: 18,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w700,
       ),
       trailing: InkWell(
           onTap: () {
@@ -69,16 +76,23 @@ class UserCards extends StatelessWidget {
       leading: SizedBox(
         height: Get.height,
         child: GestureDetector(
-          child: CircleAvatar(
-              radius: 27.5,
-              backgroundColor: Colors.amber,
-              child: ClipOval(
-                child: Image.asset(
-                  "assets/background/profile.png",
-                  fit: BoxFit.cover,
-                  filterQuality: FilterQuality.high,
-                ),
-              )),
+          child: Container(
+            width: 53.0,
+            height: 53.0,
+            decoration: BoxDecoration(
+              color: const Color(0xff7c94b6),
+              borderRadius: BorderRadius.all( Radius.circular(50.0)),
+              border: Border.all(
+                color: AppColors.purpura2,
+                width: 1.0,
+              ),
+            ),
+            child: Image.asset(
+              "assets/background/profile.png",
+              fit: BoxFit.cover,
+              filterQuality: FilterQuality.high,
+            ),
+          ),
           // onTap: () {
           //   print("/personalInfo");
           //   Navigator.pushNamed(
@@ -89,18 +103,19 @@ class UserCards extends StatelessWidget {
         ),
       ),
       style: ListTileStyle.list,
-      title: const UILabels(
+      title:  const UILabels(
         text: "Full Name",
         textLines: 1,
-        color: AppColors.purpura,
-        fontSize: 18,
+        color: AppColors.purpura4,
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
       ),
       subtitle: UILabels(
         text: user['userInfo']['name'],
         textLines: 1,
         color: AppColors.black,
         fontSize: 18,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w600,
       ),
       trailing: SizedBox(height: Get.height, child: SvgPicture.asset("assets/icons/arrow-right.svg", color: AppColors.purpura)),
     );
@@ -121,17 +136,23 @@ class UserCards extends StatelessWidget {
           title: UILabels(
             text: user['title'],
             textLines: 1,
-            color: AppColors.purpura,
+            color: AppColors.purpura4,
             fontSize: 12,
+            fontWeight: FontWeight.w600,
           ),
           subtitle: UILabels(
             text: user['subtitle'],
             textLines: 1,
             color: user['color'],
-            fontSize: 18,
-            fontWeight: FontWeight.w500,
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
           ),
           trailing: user['trailing'],
+        ),
+        const Divider(
+          endIndent: 16,
+          indent: 66,
+          color: AppColors.gray1,
         ),
         const SizedBox(
           height: 16,

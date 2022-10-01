@@ -58,6 +58,7 @@ class BalancesCards extends StatelessWidget {
                   SizedBox(
                     width: 16,
                   ),
+                  Icon(Icons.keyboard_arrow_down, color: AppColors.green,),
                   UILabels(
                     text: "1.82%",
                     textLines: 1,
@@ -108,17 +109,18 @@ class BalancesCards extends StatelessWidget {
                         text: "\$3,00000.32",
                         textLines: 1,
                         color: AppColors.black,
-                        fontSize: 18,
+                        fontSize: 24,
                         fontWeight: FontWeight.w600,
                       ),
                       SizedBox(
                         width: 16,
                       ),
+                      Icon(Icons.keyboard_arrow_down, color: AppColors.green),
                       UILabels(
                         text: "1.82%",
                         textLines: 1,
                         color: AppColors.green,
-                        fontSize: 12,
+                        fontSize: 16,
                         fontWeight: FontWeight.w400,
                       ),
                     ],
@@ -174,6 +176,7 @@ class BalancesCards extends StatelessWidget {
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
                             ),
+                            borderColor: AppColors.gray3,
                             colorList: const [],
                             cb: (v) {})
                         .out(Colors.transparent)),
@@ -188,6 +191,7 @@ class BalancesCards extends StatelessWidget {
                         Icons.more_horiz_outlined,
                         color: AppColors.purpura,
                       ),
+                      borderColor: AppColors.gray3,
                       colorList: const [],
                       cb: (v) {
                         PaymentMethodSheet().morePaymentMethod(context, (p0) => null);

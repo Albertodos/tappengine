@@ -94,8 +94,8 @@ class MenuCards extends StatelessWidget {
                                       UILabels(
                                         text: menuTab[index],
                                         textLines: 1,
-                                        color: positionTabMenu.value == index ? AppColors.purpura : AppColors.black,
-                                        fontSize: 18,
+                                        color: positionTabMenu.value == index ? AppColors.purpura : AppColors.gray2,
+                                        fontSize: 16,
                                         fontWeight: positionTabMenu.value == index ? FontWeight.w700 : FontWeight.w400,
                                       ),
                                       const SizedBox(

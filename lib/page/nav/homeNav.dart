@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:tappengine/page/screen/crypto/add_moneyVC.dart';
 import 'package:tappengine/page/screen/home/homeVC.dart';
 import 'package:tappengine/page/screen/profile/edit_emailVC.dart';
 import 'package:tappengine/page/screen/profile/edit_phone_numberVC.dart';
@@ -34,6 +35,7 @@ class _HomeNavState extends State<HomeNav> {
         '/editEmail' : (context) => const EditEmailVC(),
         '/editAddress' : (context) => const EditAddressVC(),
         '/notifications' : (context) => const NotificationsVC(),
+        '/addMoney' : (context) => const AddMoneyVC(),
       },
     );
   }

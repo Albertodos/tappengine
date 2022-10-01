@@ -25,7 +25,7 @@ class _PersonalInfoVCState extends State<PersonalInfoVC> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.gray0,
+      backgroundColor: Theme.of(context).cardColor,
       extendBodyBehindAppBar: true,
       primary: false,
       extendBody: false,

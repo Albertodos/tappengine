@@ -6,6 +6,7 @@ import '../../../constants/app_colors.dart';
 class UIBottons extends StatelessWidget {
   final Widget labels;
   final Color color;
+  final Color borderColor;
   final void Function(String) cb;
   // final void Function(bool) cbHover;
   final List<Color> colorList;
@@ -24,6 +25,7 @@ class UIBottons extends StatelessWidget {
     this.endDGD = Alignment.topRight,
     this.radius = 8.0,
     this.disabled = false,
+    this.borderColor = AppColors.purpura,
   });
 
   @override
@@ -35,8 +37,8 @@ class UIBottons extends StatelessWidget {
     return ElevatedButton(
         style: ButtonStyle(
             backgroundColor: disabled ? MaterialStateProperty.all<Color>(AppColors.gray1) : MaterialStateProperty.all<Color>(color),
-            shadowColor: MaterialStateProperty.all<Color>(AppColors.purpura.withOpacity(0.65)),
-            elevation: MaterialStateProperty.all<double>(10),
+            //shadowColor: MaterialStateProperty.all<Color>(AppColors.purpura.withOpacity(0.65)),
+            //elevation: MaterialStateProperty.all<double>(10),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(radius),
             ))),
@@ -57,7 +59,7 @@ class UIBottons extends StatelessWidget {
       onPressed: () => cb(""),
       style: ElevatedButton.styleFrom(
           side: BorderSide(
-            color: color,
+            color: borderColor,
             style: BorderStyle.solid,
             width: 1,
           ),
