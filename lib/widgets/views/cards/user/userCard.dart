@@ -5,6 +5,8 @@ import 'package:tappengine/constants/app_colors.dart';
 import 'package:tappengine/model/objects/user/user_personal.dart';
 import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
 
+import '../../../../page/sheet/identity_verification/identity_verification.dart';
+
 class UserCards extends StatelessWidget {
   const UserCards({super.key, required this.user});
   final Map<String, dynamic> user;
@@ -13,7 +15,7 @@ class UserCards extends StatelessWidget {
     return Container();
   }
 
-  Widget userWelcome(mycontext) {
+  Widget userWelcome(context) {
     return ListTile(
       leading: GestureDetector(
         child: CircleAvatar(
@@ -29,7 +31,7 @@ class UserCards extends StatelessWidget {
         onTap: () {
           print("/personalInfo");
           Navigator.pushNamed(
-            mycontext,
+            context,
             "/personalInfo",
           );
         },
@@ -47,7 +49,11 @@ class UserCards extends StatelessWidget {
         fontSize: 18,
         fontWeight: FontWeight.bold,
       ),
-      trailing: SvgPicture.asset("assets/icons/notification.svg", color: AppColors.white),
+      trailing: InkWell(
+          onTap: () {
+            IdentifyVerication().selectIdType(context);
+          },
+          child: SvgPicture.asset("assets/icons/notification.svg", color: AppColors.white)),
     );
   }
 

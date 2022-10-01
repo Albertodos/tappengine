@@ -5,7 +5,7 @@ import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/news.dar
 import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/orders.dart';
 import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/overview.dart';
 import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/transactions.dart';
-import 'package:tappengine/page/sheet/payment_method.dart';
+import 'package:tappengine/page/sheet/payment_method/payment_method.dart';
 import '../../../../helpers/cliper.dart';
 import '../../../../constants/app_colors.dart';
 import '../../../../model/objects/pull_data.dart';

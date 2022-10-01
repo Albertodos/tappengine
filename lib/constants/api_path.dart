@@ -3,7 +3,7 @@ class ApiPath {
   // static final String BASE_URL =  "http://api.buscamilhas.local/"; // Development
   // static final String BASE_URL =  "https://api.sistema.buscamilhas.com"; // Prodution
 
-  static const String imgBaseUrl = "http://bhealthpro.bclose.pt/bclose.pt/api/uploads/files/";
+  static const String imgBaseUrl = "";
   static getBaseImageUrl(String url) {
     return url.startsWith("http") ? url : imgBaseUrl + url;
   }

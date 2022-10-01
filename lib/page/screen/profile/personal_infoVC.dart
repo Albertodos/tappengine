@@ -38,8 +38,8 @@ class _PersonalInfoVCState extends State<PersonalInfoVC> {
             backgroundColor: AppColors.purpura.withAlpha(0),
             elevation: 0,
             flexibleSpace: FlexibleSpaceBar(
-              title: Padding(
-                padding: const EdgeInsets.only(bottom: 20),
+              title: const Padding(
+                padding: EdgeInsets.only(bottom: 20),
                 // child: , //UserCards().userBack(),
               ),
               background: ClipPath(

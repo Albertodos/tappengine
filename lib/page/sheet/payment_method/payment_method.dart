@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tappengine/page/sheet/payment_method_view.dart';
 
-import '../../constants/app_colors.dart';
-import '../../widgets/ui_kits/button_ui/button_ui.dart';
-import '../../widgets/ui_kits/labels_ui/label_ui.dart';
+import '../../../constants/app_colors.dart';
+import '../../../widgets/ui_kits/button_ui/button_ui.dart';
+import '../../../widgets/ui_kits/labels_ui/label_ui.dart';
+import '../sheetview.dart';
+import '../../../helpers/globals.dart' as globals;
 
-class PaymentMethodSheet extends PaymenteMethodView {
+class PaymentMethodSheet extends SheetView {
   final positionMethod = 0.obs;
   var repeatsDate = ['Daily', 'Weekly', 'Monthly'];
+
   var moreAdd = ['Add money', 'Statements', 'Reports'];
   var selectMoreAdd = "Add money".obs;
   var seleteRepeatsDate = 'Weekly'.obs;
@@ -16,8 +18,8 @@ class PaymentMethodSheet extends PaymenteMethodView {
   void choosePaymentMethod(context) {
     showModalBottomSheet(
         isScrollControlled: true,
-        backgroundColor: Theme.of(context).cardColor,
-        context: context,
+        backgroundColor: Theme.of(globals.hometabContext).cardColor,
+        context: globals.hometabContext,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
@@ -27,7 +29,7 @@ class PaymentMethodSheet extends PaymenteMethodView {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                header("Choose Payment Method", context),
+                header("Choose Payment Method", globals.hometabContext),
                 const SizedBox(
                   height: 64,
                 ),
@@ -66,22 +68,24 @@ class PaymentMethodSheet extends PaymenteMethodView {
                         ),
                         colorList: const [],
                         cb: (v) {
-                          Navigator.pushNamed(
-                            context,
-                            "/comfirmOrder",
-                          );
+                          Navigator.pop(globals.hometabContext);
                         })),
               ],
             ),
           );
-        });
+        }).whenComplete(() {
+      Navigator.pushNamed(
+        context,
+        "/comfirmOrder",
+      );
+    });
   }
 
   void morePaymentMethod(context, Function(String) cb) {
     showModalBottomSheet(
         isScrollControlled: true,
-        backgroundColor: Theme.of(context).cardColor,
-        context: context,
+        backgroundColor: Theme.of(globals.hometabContext).cardColor,
+        context: globals.hometabContext,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
@@ -91,7 +95,7 @@ class PaymentMethodSheet extends PaymenteMethodView {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                header("Choose Payment Method", context),
+                header("Choose Payment Method", globals.hometabContext),
                 const SizedBox(
                   height: 64,
                 ),
@@ -126,8 +130,8 @@ class PaymentMethodSheet extends PaymenteMethodView {
   void repeats(context, Function(String) cb) {
     showModalBottomSheet(
         isScrollControlled: true,
-        backgroundColor: Theme.of(context).cardColor,
-        context: context,
+        backgroundColor: Theme.of(globals.hometabContext).cardColor,
+        context: globals.hometabContext,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
@@ -137,7 +141,7 @@ class PaymentMethodSheet extends PaymenteMethodView {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                header("Repeats", context),
+                header("Repeats", globals.hometabContext),
                 const SizedBox(
                   height: 64,
                 ),
@@ -171,8 +175,8 @@ class PaymentMethodSheet extends PaymenteMethodView {
   void successful(context, title, subTitle, Widget btn) {
     showModalBottomSheet(
         isScrollControlled: true,
-        backgroundColor: Theme.of(context).cardColor,
-        context: context,
+        backgroundColor: Theme.of(globals.hometabContext).cardColor,
+        context: globals.hometabContext,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
@@ -182,7 +186,7 @@ class PaymentMethodSheet extends PaymenteMethodView {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                header("Successful", context),
+                header("Successful", globals.hometabContext),
                 const SizedBox(
                   height: 64,
                 ),
@@ -190,6 +194,6 @@ class PaymentMethodSheet extends PaymenteMethodView {
               ],
             ),
           );
-        });
+        }).whenComplete(() {});
   }
 }

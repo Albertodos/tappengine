@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tappengine/page/sheet/payment_method.dart';
+import 'package:tappengine/page/sheet/payment_method/payment_method.dart';
 
 import '../../../../constants/app_colors.dart';
 import '../../../../helpers/cliper.dart';

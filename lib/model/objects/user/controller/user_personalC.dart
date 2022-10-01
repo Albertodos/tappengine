@@ -9,7 +9,7 @@ class UserPersonalC extends GetxController {
 
   var switchStatus = false.obs;
 
-  Future chamgeUser() async {
+  Future changeUser() async {
     userPersonal.value.email = "Alberto@gmail.com";
     userPersonal.value.phone = "+238 - 9117673";
     userPersonal.value.andress = 'Praia, Cabo Verde';
@@ -21,7 +21,7 @@ class UserPersonalC extends GetxController {
     userPersonal.value = userPersonal.value;
   }
 
-  chegeThema(value) {
+  chengeThema(value) {
     userPersonal.value.themaMode = value;
     userPersonal.value = userPersonal.value;
   }

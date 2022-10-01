@@ -5,7 +5,8 @@ import '../../../../constants/app_colors.dart';
 import '../../../../helpers/cliper.dart';
 import '../../../../widgets/ui_kits/button_ui/button_ui.dart';
 import '../../../../widgets/ui_kits/labels_ui/label_ui.dart';
-import '../../../sheet/payment_method.dart';
+import '../../../sheet/payment_method/payment_method.dart';
+import '../../../../helpers/globals.dart' as globals;
 
 class ComfirmOrderVC extends StatelessWidget {
   const ComfirmOrderVC({super.key});
@@ -214,6 +215,7 @@ class ComfirmOrderVC extends StatelessWidget {
             ),
             colorList: const [],
             cb: (v) {
+              Navigator.pop(globals.hometabContext);
               Navigator.pushNamed(context, "/schedule");
             }).out(AppColors.white));
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tappengine/constants/app_colors.dart';
-import 'package:tappengine/page/sheet/payment_method.dart';
+import 'package:tappengine/page/sheet/payment_method/payment_method.dart';
 import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
 
 import '../../../ui_kits/button_ui/button_ui.dart';

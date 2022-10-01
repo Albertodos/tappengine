@@ -34,7 +34,7 @@ class AnimationUI extends StatelessWidget {
     return TweenAnimationBuilder(
       duration: const Duration(seconds: 1),
       curve: Curves.fastOutSlowIn,
-      tween: Tween(begin: 1.0, end: 0.3),
+      tween: Tween(begin: 0.8, end: 1.0),
       builder: (context, value, child) {
         // horizontal disposition of the widget.
         return Transform.scale(

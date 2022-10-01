@@ -1,10 +1,11 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../constants/app_colors.dart';
 import '../../widgets/ui_kits/labels_ui/label_ui.dart';
 
-class PaymenteMethodView {
+class SheetView {
   Widget header(String title, context) {
     return InkWell(
       onTap: () {
@@ -95,7 +96,7 @@ class PaymenteMethodView {
   }
 
   Widget view02(title, subtitle, Widget btn) {
-    return Container(
+    return SizedBox(
       width: Get.width,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -215,6 +216,86 @@ class PaymenteMethodView {
           ],
         ),
       ),
+    );
+  }
+
+  Widget selectIDType(Color bg, title) {
+    return Container(
+      width: Get.width,
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        color: bg,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              height: 30,
+              width: 30,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                color: bg == AppColors.purpura ? AppColors.gray : AppColors.purpura,
+              ),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            UILabels(
+              text: title,
+              textLines: 1,
+              color: bg == AppColors.purpura ? AppColors.gray : AppColors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.w400,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget policy() {
+    return Text.rich(
+      TextSpan(
+          text: "Your photo ID and actions captured during theID verification process may constitute biometric data. please see our",
+          style: const TextStyle(fontSize: 18, color: AppColors.black, fontWeight: FontWeight.w400),
+          children: <TextSpan>[
+            TextSpan(
+                text: " privacy policy ",
+                style: const TextStyle(fontSize: 18, color: AppColors.blue, fontWeight: FontWeight.w400),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    // code to open / launch privacy policy link here
+                  }),
+            const TextSpan(
+              text: " for more information about how we store and use your biometric data. select ID type to proceed ",
+              style: TextStyle(fontSize: 18, color: AppColors.black, fontWeight: FontWeight.w400),
+            ),
+          ]),
+      textAlign: TextAlign.left,
+    );
+  }
+
+  Widget verify() {
+    return Text.rich(
+      TextSpan(
+          text: "Financial regulations require us to verify",
+          style: const TextStyle(fontSize: 18, color: AppColors.black, fontWeight: FontWeight.w400),
+          children: <TextSpan>[
+            TextSpan(
+                text: " verify ",
+                style: const TextStyle(fontSize: 18, color: AppColors.blue, fontWeight: FontWeight.w400),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    // code to open / launch privacy policy link here
+                  }),
+            const TextSpan(
+              text: " your identify. ",
+              style: TextStyle(fontSize: 18, color: AppColors.black, fontWeight: FontWeight.w400),
+            ),
+          ]),
+      textAlign: TextAlign.left,
     );
   }
 }

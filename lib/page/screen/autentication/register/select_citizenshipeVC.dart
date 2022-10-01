@@ -82,18 +82,8 @@ class _SelectCitizeShipeVCState extends State<SelectCitizeShipeVC> {
             const SizedBox(
               height: 32,
             ),
-            TweenAnimationBuilder(
-              duration: const Duration(milliseconds: 1500),
-              curve: Curves.bounceOut,
-              tween: Tween(begin: 1.0, end: 0.0),
-              builder: (context, value, child) {
-                // horizontal disposition of the widget.
-                return Transform.translate(
-                  offset: Offset(value * 50, 0.0),
-                  child: child,
-                );
-              },
-              child: Container(
+            AnimationUI(
+              widget: Container(
                 width: Get.width,
                 padding: const EdgeInsets.only(left: 30, top: 30, right: 30, bottom: 30),
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: AppColors.white),
@@ -126,7 +116,7 @@ class _SelectCitizeShipeVCState extends State<SelectCitizeShipeVC> {
                           })),
                 ]),
               ),
-            ),
+            ).scale(),
             const Expanded(child: SizedBox()),
           ],
         ),

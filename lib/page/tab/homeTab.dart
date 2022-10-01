@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tappengine/constants/app_colors.dart';
 import 'package:tappengine/page/screen/crypto/cryptoVC.dart';
 import 'package:tappengine/page/screen/home/homeVC.dart';
+import '../../helpers/globals.dart' as globals;
 
 import '../nav/cryptoNav.dart';
 import '../nav/homeNav.dart';
@@ -33,6 +34,8 @@ class _HomeTabState extends State<HomeTab> {
 
   @override
   Widget build(BuildContext context) {
+    globals.hometabContext = context;
+
     return Scaffold(
       body: Stack(
         children: <Widget>[
