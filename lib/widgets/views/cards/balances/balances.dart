@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tappengine/constants/app_colors.dart';
+import 'package:tappengine/page/screen/crypto/add_moneyVC.dart';
+import 'package:tappengine/page/screen/reusebles/more/add_money.dart';
 import 'package:tappengine/page/sheet/payment_method/payment_method.dart';
 import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
 
@@ -194,7 +196,8 @@ class BalancesCards extends StatelessWidget {
                       borderColor: AppColors.gray3,
                       colorList: const [],
                       cb: (v) {
-                        PaymentMethodSheet().morePaymentMethod(context, (p0) => null);
+                        Get.to(AddMoneyVC());
+                        //PaymentMethodSheet().morePaymentMethod(context, (p0) => null);
                       }).out(Colors.transparent)),
             ],
           ),
@@ -221,8 +224,8 @@ class BalancesCards extends StatelessWidget {
                     text: "Bitcoin",
                     textLines: 1,
                     color: AppColors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w600,
                   ),
                   Row(
                     children: const [
@@ -230,13 +233,13 @@ class BalancesCards extends StatelessWidget {
                         text: "BTC",
                         textLines: 1,
                         color: AppColors.black,
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w400,
                       ),
                       UILabels(
                         text: " • Active",
                         textLines: 1,
-                        color: AppColors.green,
+                        color: AppColors.green1,
                         fontSize: 18,
                         fontWeight: FontWeight.w400,
                       ),
@@ -292,6 +295,7 @@ class BalancesCards extends StatelessWidget {
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
                           ),
+                          borderColor: AppColors.gray3,
                           colorList: const [],
                           cb: (v) {})
                       .out(Colors.transparent)),
@@ -309,6 +313,7 @@ class BalancesCards extends StatelessWidget {
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
                             ),
+                            borderColor: AppColors.gray3,
                             colorList: const [],
                             cb: (v) {})
                         .out(Colors.transparent)),

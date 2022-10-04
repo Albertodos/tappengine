@@ -10,6 +10,7 @@ import 'package:tappengine/page/screen/profile/edit_profileVC.dart';
 import '../screen/profile/edit_addressVC.dart';
 import '../screen/profile/notificationsVC.dart';
 import '../screen/profile/personal_infoVC.dart';
+import '../screen/reusebles/more/add_money.dart';
 
 class HomeNav extends StatefulWidget {
   final Widget root;

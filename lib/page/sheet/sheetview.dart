@@ -179,7 +179,7 @@ class SheetView {
     return Container(
       width: Get.width,
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        borderRadius: const BorderRadius.all(Radius.circular(7)),
         color: bg,
       ),
       child: Padding(
