@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../../constants/app_colors.dart';
@@ -114,7 +115,7 @@ class PaymentMethodSheet extends SheetView {
                         children: [
                           Obx(() => view04(moreAdd[index] == selectMoreAdd.value ? AppColors.purpura : AppColors.white, moreAdd[index])),
                           const SizedBox(
-                            height: 16,
+                            height: 10,
                           )
                         ],
                       ),
@@ -195,5 +196,32 @@ class PaymentMethodSheet extends SheetView {
             ),
           );
         }).whenComplete(() {});
+  }
+  void MoneyAdded(context) {
+    showModalBottomSheet(
+        isScrollControlled: true,
+        backgroundColor: Theme.of(context).cardColor,
+        context: context,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        builder: (BuildContext bc) {
+          return SingleChildScrollView(
+              padding: const EdgeInsetsDirectional.only(
+                  start: 30, end: 30, bottom: 30, top: 30),
+              child: Wrap(children: [
+                Column(children: [
+                  header("Money Added", globals.hometabContext),
+                  const SizedBox(height: 30),
+                  const CircleAvatar(
+                    backgroundColor: AppColors.green,
+                    radius: 40,
+                    child: Icon(Icons.done, color: AppColors.white, size: 40),
+                  ),
+                  const SizedBox(height: 10),
+                  UILabels(text: "You've funded your USD invesment account with \$1000 ", textLines: 0, color: AppColors.purpura, textAlign: TextAlign.center, fontWeight: FontWeight.w600, fontSize: 24)
+                ])
+              ]));
+        });
   }
 }

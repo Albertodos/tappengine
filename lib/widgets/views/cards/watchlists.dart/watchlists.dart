@@ -204,8 +204,8 @@ class WatchlistsCards extends StatelessWidget {
                     child: UILabels(
                       text: "Ethereum",
                       textLines: 1,
-                      color: AppColors.purpura,
-                      fontSize: 18,
+                      color: AppColors.black,
+                      fontSize: 16,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -233,30 +233,32 @@ class WatchlistsCards extends StatelessWidget {
                 children: [
                   const Expanded(
                     child: UILabels(
-                      text: "Ethereum",
+                      text: "\$1,547.76",
                       textLines: 1,
-                      color: AppColors.purpura,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
+                      color: AppColors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                   Container(
+                    padding: const EdgeInsets.only(left: 10, right: 10),
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(4)),
-                      color: AppColors.red.withAlpha(15),
+                      color: AppColors.purpura5,
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: const [
                         Icon(
                           Icons.expand_more,
-                          color: AppColors.red,
+                          color: AppColors.purpura1,
+                          size: 20,
                         ),
                         UILabels(
-                          text: "  1.04%  ",
+                          text: "1.04%",
                           textLines: 1,
-                          color: AppColors.red,
-                          fontSize: 16,
+                          color: AppColors.purpura1,
+                          fontSize: 12,
                           fontWeight: FontWeight.w400,
                         ),
                       ],
@@ -282,6 +284,7 @@ class WatchlistsCards extends StatelessWidget {
           Container(
             height: 50,
             width: 50,
+            margin: const EdgeInsets.only(left: 5, right: 5),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(25)),
               color: AppColors.purpura.withAlpha(25),
@@ -291,7 +294,7 @@ class WatchlistsCards extends StatelessWidget {
             height: 16,
           ),
           const UILabels(
-            text: "USDC",
+            text: "USDT",
             textLines: 1,
             color: AppColors.black,
             fontSize: 18,
@@ -301,22 +304,24 @@ class WatchlistsCards extends StatelessWidget {
             height: 8,
           ),
           Container(
+            padding: const EdgeInsets.only(left: 10, right: 10),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(4)),
-              color: AppColors.red.withAlpha(15),
+              color: AppColors.purpura5,
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: const [
                 Icon(
                   Icons.expand_more,
-                  color: AppColors.red,
+                  color: AppColors.purpura1,
+                  size: 20,
                 ),
                 UILabels(
                   text: "1.04%",
                   textLines: 1,
-                  color: AppColors.red,
-                  fontSize: 16,
+                  color: AppColors.purpura1,
+                  fontSize: 12,
                   fontWeight: FontWeight.w400,
                 ),
               ],
@@ -332,7 +337,7 @@ class WatchlistsCards extends StatelessWidget {
       width: Get.width,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(16)),
-        color: AppColors.purpura.withAlpha(10),
+        color: AppColors.gray,
       ),
       child: Column(
         children: [
@@ -362,22 +367,23 @@ class WatchlistsCards extends StatelessWidget {
                           child: UILabels(
                             text: "Cardano",
                             textLines: 1,
-                            color: AppColors.purpura,
-                            fontSize: 18,
+                            color: AppColors.black,
+                            fontSize: 12,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
                         Container(
-                          height: 30,
+                          //height: 30,
+                          padding: const EdgeInsets.only(left: 10, right: 10, bottom: 2, top: 2),
                           decoration: BoxDecoration(
                             borderRadius: const BorderRadius.all(Radius.circular(4)),
-                            color: AppColors.red.withAlpha(15),
+                            color: AppColors.purpura5,
                           ),
                           child: const UILabels(
-                            text: "  1.04%  Buys ",
+                            text: "1.04%  Buys",
                             textLines: 1,
-                            color: AppColors.red,
-                            fontSize: 16,
+                            color: AppColors.purpura1,
+                            fontSize: 12,
                             fontWeight: FontWeight.w400,
                           ),
                         ),

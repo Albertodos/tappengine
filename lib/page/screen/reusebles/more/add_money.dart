@@ -6,6 +6,7 @@ import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/orders.d
 import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/overview.dart';
 import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/transactions.dart';
 import 'package:tappengine/page/sheet/payment_method/payment_method.dart';
+import 'package:tappengine/widgets/ui_kits/listMoney.dart';
 import 'package:tappengine/widgets/views/cards/menu/menuCard.dart';
 import '../../../../helpers/cliper.dart';
 import '../../../../constants/app_colors.dart';
@@ -26,7 +27,8 @@ class AddMoneyVC extends StatefulWidget {
 
 class _AddMoneyVCState extends State<AddMoneyVC> {
   final pagePosition = 0.obs;
-  PageController controller = PageController(viewportFraction: 1, keepPage: true);
+  PageController controller =
+      PageController(viewportFraction: 1, keepPage: true);
   var userLogin = User();
   var list = ["\$10", "\$50", "\$100", "\$500", "\$1000"];
 
@@ -76,7 +78,58 @@ class _AddMoneyVCState extends State<AddMoneyVC> {
               ],
             ),
           ),
-          const NumberGridCard(),
+          Padding(
+            padding: const EdgeInsets.only(left: 40.0, right: 40),
+            child: UILabels(
+                text:
+                    "All trading transactions are excuted in USD. You may incur FX charges when funding your trading account.",
+                textLines: 2,
+                color: AppColors.gray2,
+                fontWeight: FontWeight.w400,
+                fontSize: 12,
+                textAlign: TextAlign.center),
+          ),
+          GestureDetector(
+              onTap: () {
+                //TODO
+              },
+              child: const UILabels(
+                  text: "Learn more",
+                  fontWeight: FontWeight.w400,
+                  fontSize: 12,
+                  textLines: 0,
+                  color: AppColors.purpura,
+                  textAlign: TextAlign.center)),
+          const SizedBox(height: 16),
+          Padding(
+            padding: const EdgeInsets.only(left: 32.0, right: 32),
+            child: SizedBox(
+              height: 50,
+              width: Get.width,
+              child: Expanded(
+                child: SizedBox(
+                    height: 50,
+                    child: UIBottons(
+                        labels: const UILabels(
+                          text: 'Found',
+                          textLines: 0,
+                          color: AppColors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                        colorList: const [],
+                        cb: (v) {
+                          PaymentMethodSheet().MoneyAdded(context);
+                        })),
+              ),
+            ),
+          ),
+          const SizedBox(height: 32),
+          ListMoney(),
+          const Padding(
+            padding: EdgeInsets.only(left: 32.0, right: 32),
+            child: NumberGridCard(),
+          ),
           const SizedBox(
             height: 32,
           )
@@ -164,7 +217,7 @@ class NumberGridCard extends StatelessWidget {
                   color: AppColors.purpura3,
                   borderRadius: BorderRadius.circular(7),
                 ),
-                child: Icon(Icons.backspace_outlined))
+                child: Icon(Icons.backspace_outlined, color: AppColors.purpura,))
             : Container(
                 alignment: Alignment.center,
                 height: 60,
