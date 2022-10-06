@@ -16,6 +16,7 @@ import '../screen/profile/notificationsVC.dart';
 import '../screen/profile/personal_infoVC.dart';
 import '../screen/reusebles/buy_overview/statementVC.dart';
 import '../screen/reusebles/more/add_money.dart';
+import '../screen/reusebles/web/pdfVC.dart';
 
 class CryptoNav extends StatefulWidget {
   final Widget root;
@@ -40,13 +41,14 @@ class _CryptoNavState extends State<CryptoNav> {
         '/comfirmOrder': (context) => const ComfirmOrderVC(),
         '/schedule': (context) => const ScheduleVC(),
         '/statement': (context) => const StatementVC(),
+        '/pdf': (context) => const PdfVC(),
         '/addMoney': (context) => const AddMoneyVC(),
         '/personalInfo': (context) => const PersonalInfoVC(),
-        '/editProfile' : (context) => const EditProfileVC(),
-        '/editPhoneNumber' : (context) => const EditPhoneNumberVC(),
-        '/editEmail' : (context) => const EditEmailVC(),
-        '/editAddress' : (context) => const EditAddressVC(),
-        '/notifications' : (context) => const NotificationsVC(),
+        '/editProfile': (context) => const EditProfileVC(),
+        '/editPhoneNumber': (context) => const EditPhoneNumberVC(),
+        '/editEmail': (context) => const EditEmailVC(),
+        '/editAddress': (context) => const EditAddressVC(),
+        '/notifications': (context) => const NotificationsVC(),
       },
     );
   }

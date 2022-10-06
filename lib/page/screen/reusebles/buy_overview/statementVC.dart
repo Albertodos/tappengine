@@ -116,7 +116,7 @@ class _StatementVCState extends State<StatementVC> {
                           alignment: Alignment.center,
                           child: Column(
                             children: userLogin
-                                .toJsonLogin()
+                                .toJsonStatements()
                                 .values
                                 .map((e) => FromView(
                                       user: e,
@@ -160,145 +160,9 @@ class _StatementVCState extends State<StatementVC> {
                         ),
                         colorList: const [],
                         cb: (v) {
+                          Navigator.pushNamed(context, '/pdf');
                           // PaymentMethodSheet().choosePaymentMethod(context);
                         })),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget cardsAmount() {
-    return Container(
-      width: Get.width,
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(width: 1, color: AppColors.gray0),
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: AppColors.purpura.withAlpha(25),
-        //     spreadRadius: 0,
-        //     blurRadius: 28,
-        //     offset: Offset(0, 4), // changes position of shadow
-        //   ),
-        // ],
-      ),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(32),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  children: const [
-                    Expanded(
-                      child: UILabels(
-                        text: "BTC",
-                        textLines: 1,
-                        color: AppColors.black,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    UILabels(
-                      text: "+0,00024890",
-                      textLines: 1,
-                      color: AppColors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ],
-                ),
-                Row(
-                  children: const [
-                    Expanded(
-                      child: UILabels(
-                        text: "Balance: 0",
-                        textLines: 1,
-                        color: AppColors.black,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    Icon(
-                      Icons.info_outline,
-                      color: AppColors.black,
-                      size: 15,
-                    ),
-                    UILabels(
-                      text: " after 0,0000636 BTC fee",
-                      textLines: 1,
-                      color: AppColors.black,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget cardsAmount2() {
-    return Container(
-      width: Get.width,
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.purpura.withAlpha(25),
-            spreadRadius: 0,
-            blurRadius: 28,
-            offset: Offset(0, 4), // changes position of shadow
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(32),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  children: const [
-                    Expanded(
-                      child: UILabels(
-                        text: "USD",
-                        textLines: 1,
-                        color: AppColors.black,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    UILabels(
-                      text: "+0,00024890",
-                      textLines: 1,
-                      color: AppColors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ],
-                ),
-                const UILabels(
-                  text: "Balance: 11,34.55",
-                  textLines: 1,
-                  color: AppColors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                ),
               ],
             ),
           ),
