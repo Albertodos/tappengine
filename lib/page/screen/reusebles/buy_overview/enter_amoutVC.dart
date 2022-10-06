@@ -79,8 +79,8 @@ class _EnterAmountVCState extends State<EnterAmountVC> {
                             UILabels(
                               text: " 1 BTC = \$39 293, 6881",
                               textLines: 1,
-                              color: AppColors.green,
-                              fontSize: 18,
+                              color: AppColors.green1,
+                              fontSize: 16,
                               fontWeight: FontWeight.w400,
                             ),
                           ],
@@ -198,21 +198,27 @@ class _EnterAmountVCState extends State<EnterAmountVC> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Row(
-                  children: const [
+                  children:  [
                     Expanded(
-                      child: UILabels(
-                        text: "BTC",
-                        textLines: 1,
-                        color: AppColors.black,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
+                      child: Row(
+                        children: const [
+                          UILabels(
+                            text: "BTC",
+                            textLines: 1,
+                            color: AppColors.black,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          SizedBox(width: 5),
+                          Icon(Icons.arrow_drop_down_circle_outlined, size: 18, color: AppColors.purpura6),
+                        ],
                       ),
                     ),
                     UILabels(
                       text: "+0,00024890",
                       textLines: 1,
                       color: AppColors.black,
-                      fontSize: 18,
+                      fontSize: 16,
                       fontWeight: FontWeight.w400,
                     ),
                   ],
@@ -224,20 +230,20 @@ class _EnterAmountVCState extends State<EnterAmountVC> {
                         text: "Balance: 0",
                         textLines: 1,
                         color: AppColors.black,
-                        fontSize: 14,
+                        fontSize: 12,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
                     Icon(
                       Icons.info_outline,
-                      color: AppColors.black,
-                      size: 15,
+                      color: AppColors.gray2,
+                      size: 14,
                     ),
                     UILabels(
                       text: " after 0,0000636 BTC fee",
                       textLines: 1,
-                      color: AppColors.black,
-                      fontSize: 14,
+                      color: AppColors.gray2,
+                      fontSize: 12,
                       fontWeight: FontWeight.w400,
                     ),
                   ],
@@ -289,7 +295,7 @@ class _EnterAmountVCState extends State<EnterAmountVC> {
                       text: "+0,00024890",
                       textLines: 1,
                       color: AppColors.black,
-                      fontSize: 18,
+                      fontSize: 16,
                       fontWeight: FontWeight.w400,
                     ),
                   ],
@@ -298,7 +304,7 @@ class _EnterAmountVCState extends State<EnterAmountVC> {
                   text: "Balance: 11,34.55",
                   textLines: 1,
                   color: AppColors.black,
-                  fontSize: 14,
+                  fontSize: 12,
                   fontWeight: FontWeight.w400,
                 ),
               ],

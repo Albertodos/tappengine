@@ -100,6 +100,31 @@ class User {
     return data;
   }
 
+  Map<String, dynamic> toJsonStatementPDF() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['startDate'] = {
+      "value": "",
+      "name": "Start date",
+      "hintText": "Select",
+      "keyboardType": TextInputType.text,
+      "sufix": IconButton(
+        icon: const Icon(Icons.arrow_drop_down),
+        onPressed: () {},
+      ),
+    };
+    data['endDate'] = {
+      "value": "",
+      "name": "End date",
+      "hintText": "Select",
+      "keyboardType": TextInputType.text,
+      "sufix": IconButton(
+        icon: const Icon(Icons.arrow_drop_down),
+        onPressed: () {},
+      ),
+    };
+    return data;
+  }
+
   Map<String, dynamic> toJsonEditAddresss() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['streetAddress'] = {

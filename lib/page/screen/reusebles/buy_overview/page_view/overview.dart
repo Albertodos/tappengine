@@ -20,7 +20,7 @@ class _OverviewVCState extends State<OverviewVC> {
       AnalyticsCards().card01(),
     ], more: "", title: "", position: Axis.vertical);
     var pulldata3 = PullData(
-        data: [ReusablesView().list01(), ReusablesView().list01(), ReusablesView().list01(), ReusablesView().list01()],
+        data: [ReusablesView().list03()],
         more: "",
         title: "Investment",
         position: Axis.vertical);
@@ -33,17 +33,22 @@ class _OverviewVCState extends State<OverviewVC> {
       ReusablesView(),
       ReusablesView().list02(),
       ReusablesView().list02(),
-    ], more: "", title: "Important", position: Axis.vertical);
+    ], more: "", title: "About Bitcoin", position: Axis.vertical);
     var pulldata6 = PullData(data: [
       InfoCards(),
       InfoCards(),
       InfoCards().card01(),
-    ], more: "", title: "About Bitcoin", position: Axis.vertical);
+    ], more: "", title: "Important", position: Axis.vertical);
 
     return Column(
       children: [
         ListStrutural(
           data: pulldata2,
+          colorTitle: AppColors.black,
+          height: null,
+        ),
+        ListStrutural(
+          data: pulldata3,
           colorTitle: AppColors.black,
           height: null,
         ),

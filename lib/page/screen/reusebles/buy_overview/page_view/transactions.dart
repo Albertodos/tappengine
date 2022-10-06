@@ -20,7 +20,7 @@ class _TransactionsVCState extends State<TransactionsVC> {
     var pulldata = PullData(
         data: [OrdersCards().cards03(), OrdersCards().cards03(), OrdersCards().cards03()], more: "", title: "Today", position: Axis.vertical);
     var pulldata1 = PullData(
-        data: [OrdersCards().cards03(), OrdersCards().cards03(), OrdersCards().cards03()], more: "", title: "29 SET", position: Axis.vertical);
+        data: [OrdersCards().cards03(), OrdersCards().cards03(), OrdersCards().cards03()], more: "", title: "12 May", position: Axis.vertical);
 
     return Column(
       children: [

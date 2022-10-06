@@ -18,7 +18,7 @@ class OrdersCards extends StatelessWidget {
         Container(
           width: Get.width,
           decoration: BoxDecoration(
-            color: AppColors.gray,
+            color: AppColors.white,
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
@@ -39,7 +39,7 @@ class OrdersCards extends StatelessWidget {
                     width: 50,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(25)),
-                      color: AppColors.white,
+                      color: AppColors.gray3,
                     ),
                   ),
                   const SizedBox(
@@ -59,23 +59,23 @@ class OrdersCards extends StatelessWidget {
                                 textLines: 1,
                                 color: AppColors.black,
                                 fontSize: 18,
-                                fontWeight: FontWeight.w700,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                             UILabels(
-                              text: "\$3456",
+                              text: "\$34",
                               textLines: 1,
-                              color: AppColors.purpura,
+                              color: AppColors.black,
                               fontSize: 18,
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.w600,
                             ),
                           ],
                         ),
                         const UILabels(
                           text: "BNB • 161,234,261",
                           textLines: 1,
-                          color: AppColors.purpura,
-                          fontSize: 16,
+                          color: AppColors.black,
+                          fontSize: 12,
                           fontWeight: FontWeight.w400,
                         ),
                       ],
@@ -200,15 +200,15 @@ class OrdersCards extends StatelessWidget {
                           text: "Sold BTC for USD",
                           textLines: 1,
                           color: AppColors.black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       UILabels(
                         text: "-0.0928TC",
                         textLines: 1,
-                        color: AppColors.purpura,
-                        fontSize: 18,
+                        color: AppColors.black,
+                        fontSize: 16,
                         fontWeight: FontWeight.w400,
                       ),
                     ],
@@ -219,8 +219,8 @@ class OrdersCards extends StatelessWidget {
                         child: UILabels(
                           text: "18:00",
                           textLines: 1,
-                          color: AppColors.black,
-                          fontSize: 14,
+                          color: AppColors.gray2,
+                          fontSize: 12,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -228,10 +228,10 @@ class OrdersCards extends StatelessWidget {
                         width: 16,
                       ),
                       UILabels(
-                        text: "\$12,3444.09",
+                        text: "\$12",
                         textLines: 1,
-                        color: AppColors.black,
-                        fontSize: 14,
+                        color: AppColors.gray2,
+                        fontSize: 12,
                         fontWeight: FontWeight.w400,
                       ),
                     ],
@@ -242,6 +242,9 @@ class OrdersCards extends StatelessWidget {
                   Container(
                     height: 2,
                     color: AppColors.purpura.withAlpha(25),
+                  ),
+                  const SizedBox(
+                    height: 16,
                   ),
                 ],
               ),

@@ -42,8 +42,8 @@ class InfoCards extends StatelessWidget {
                   child: UILabels(
                     text: "Please be aware that cryptocurrencies can drastically fluctuate in price.",
                     textLines: 0,
-                    color: AppColors.purpura,
-                    fontSize: 18,
+                    color: AppColors.black,
+                    fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
@@ -88,16 +88,17 @@ class InfoCards extends StatelessWidget {
                 ),
                 const Expanded(
                   child: UILabels(
-                    text: "SOmething wrong? get help!",
+                    text: "Something wrong? get help!",
                     textLines: 0,
-                    color: AppColors.purpura,
-                    fontSize: 18,
+                    color: AppColors.black,
+                    fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
                 const Icon(
-                  Icons.move_up_outlined,
-                  color: AppColors.purpura,
+                  Icons.arrow_forward_ios,
+                  color: AppColors.black,
+                    size: 18,
                 ),
               ],
             ),

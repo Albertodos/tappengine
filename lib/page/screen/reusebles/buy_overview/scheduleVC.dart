@@ -135,7 +135,7 @@ class _ScheduleVCState extends State<ScheduleVC> {
                     text: title,
                     textLines: 1,
                     color: AppColors.black,
-                    fontSize: 18,
+                    fontSize: 12,
                     fontWeight: FontWeight.w400,
                   ),
                   UILabels(
@@ -143,7 +143,7 @@ class _ScheduleVCState extends State<ScheduleVC> {
                     textLines: 1,
                     color: AppColors.black,
                     fontSize: 24,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w600,
                   ),
                 ],
               ),

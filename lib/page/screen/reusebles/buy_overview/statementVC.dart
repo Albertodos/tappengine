@@ -67,28 +67,47 @@ class _StatementVCState extends State<StatementVC> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const UILabels(
-                          text: "Buy BTC",
-                          textLines: 1,
-                          color: AppColors.black,
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
-                        ),
                         Row(
-                          children: const [
-                            UILabels(
-                              text: "BTC",
-                              textLines: 1,
-                              color: AppColors.black,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const UILabels(
+                                  text: "Bitcoin",
+                                  textLines: 1,
+                                  color: AppColors.black,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                Row(
+                                  children: const [
+                                    UILabels(
+                                      text: "BTC",
+                                      textLines: 1,
+                                      color: AppColors.black,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                    UILabels(
+                                      text: " • Active",
+                                      textLines: 1,
+                                      color: AppColors.green1,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
-                            UILabels(
-                              text: " • Active",
-                              textLines: 1,
-                              color: AppColors.green,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
+                            Container(
+                              height: 60,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                color: AppColors.purpura.withAlpha(25),
+                              ),
                             ),
                           ],
                         ),
@@ -116,7 +135,7 @@ class _StatementVCState extends State<StatementVC> {
                           alignment: Alignment.center,
                           child: Column(
                             children: userLogin
-                                .toJsonLogin()
+                                .toJsonStatementPDF()
                                 .values
                                 .map((e) => FromView(
                                       user: e,
@@ -139,7 +158,7 @@ class _StatementVCState extends State<StatementVC> {
                   text:
                       "Transaction information is available here while your account is still open. If you need a copy of this after your account is closed, you will need to download it first.",
                   textLines: 0,
-                  color: AppColors.black,
+                  color: AppColors.gray2,
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
                   textAlign: TextAlign.center,

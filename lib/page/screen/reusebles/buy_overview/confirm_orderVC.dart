@@ -68,13 +68,13 @@ class ComfirmOrderVC extends StatelessWidget {
                                 color: AppColors.purpura.withAlpha(25),
                                 spreadRadius: 0,
                                 blurRadius: 8,
-                                offset: Offset(0, 4), // changes position of shadow
+                                offset: const Offset(0, 4), // changes position of shadow
                               ),
                             ],
                           ),
                           alignment: Alignment.center,
                           child: Column(
-                            children: [list(), list(), list(), list(), list()],
+                            children: [list()],
                           ),
                         ),
                       ],
@@ -91,8 +91,8 @@ class ComfirmOrderVC extends StatelessWidget {
                 const UILabels(
                   text: "Cryptocurrency prices are volatile. The value of your investment may go up, or down very quickly and can even fall to zero.",
                   textLines: 0,
-                  color: AppColors.black,
-                  fontSize: 16,
+                  color: AppColors.gray2,
+                  fontSize: 14,
                   fontWeight: FontWeight.w400,
                   textAlign: TextAlign.center,
                 ),
@@ -166,26 +166,142 @@ class ComfirmOrderVC extends StatelessWidget {
   Widget list() {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Row(
-        children: const [
-          Expanded(
-            child: UILabels(
-              text: "Market Cap",
-              textLines: 1,
-              color: AppColors.purpura,
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
-            ),
+      child: Column(
+        children: [
+          Row(
+            children: const [
+              Expanded(
+                child: UILabels(
+                  text: "Amount",
+                  textLines: 1,
+                  color: AppColors.gray2,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              SizedBox(
+                width: 16,
+              ),
+              UILabels(
+                text: "\$12",
+                textLines: 1,
+                color: AppColors.black,
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+              ),
+            ],
           ),
-          SizedBox(
-            width: 16,
+          const SizedBox(height: 16),
+          Row(
+            children:  [
+              const Expanded(
+                child: UILabels(
+                  text: "Price",
+                  textLines: 1,
+                  color: AppColors.gray2,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              const SizedBox(
+                width: 16,
+              ),
+              Row(
+                children: const [
+                  Icon(Icons.insights, color: AppColors.green1),
+                   SizedBox(width: 5),
+                   UILabels(
+                    text: "1BTC = \$12,3444.09",
+                    textLines: 1,
+                    color: AppColors.green1,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ],
+              ),
+            ],
           ),
-          UILabels(
-            text: "\$12,3444.09",
-            textLines: 1,
-            color: AppColors.black,
-            fontSize: 18,
-            fontWeight: FontWeight.w400,
+          const SizedBox(height: 16),
+          Row(
+            children: const [
+              Expanded(
+                child: UILabels(
+                  text: "Market Cap",
+                  textLines: 1,
+                  color: AppColors.gray2,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              SizedBox(
+                width: 16,
+              ),
+              UILabels(
+                text: "12,3444.09 BTC ",
+                textLines: 1,
+                color: AppColors.black,
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          Row(
+            children:  [
+              const Expanded(
+                child: UILabels(
+                  text: "Fees",
+                  textLines: 1,
+                  color: AppColors.gray2,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              const SizedBox(
+                width: 16,
+              ),
+              Row(
+                children: const[
+                  Icon(
+                    Icons.info_outline,
+                    color: AppColors.gray2,
+                    size: 14,
+                  ),
+                  SizedBox(width: 5),
+                  UILabels(
+                    text: "after 12,3444.09 BTC ",
+                    textLines: 1,
+                    color: AppColors.gray2,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          Row(
+            children: const [
+              Expanded(
+                child: UILabels(
+                  text: "Estimated total credit",
+                  textLines: 1,
+                  color: AppColors.gray2,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              SizedBox(
+                width: 16,
+              ),
+              UILabels(
+                text: "12,3444.09 BTC ",
+                textLines: 1,
+                color: AppColors.black,
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+              ),
+            ],
           ),
         ],
       ),
@@ -200,7 +316,7 @@ class ComfirmOrderVC extends StatelessWidget {
             labels: Row(
               mainAxisSize: MainAxisSize.min,
               children: const [
-                Icon(Icons.camera_indoor),
+                Icon(Icons.camera, color: AppColors.purpura),
                 SizedBox(
                   width: 16,
                 ),
@@ -214,6 +330,7 @@ class ComfirmOrderVC extends StatelessWidget {
               ],
             ),
             colorList: const [],
+            borderColor: AppColors.gray3,
             cb: (v) {
               Navigator.pop(globals.hometabContext);
               Navigator.pushNamed(context, "/schedule");

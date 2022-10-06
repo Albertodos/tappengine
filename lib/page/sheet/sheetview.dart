@@ -122,14 +122,14 @@ class SheetView {
               text: title,
               textLines: 1,
               color: AppColors.purpura,
-              fontSize: 28,
+              fontSize: 24,
               fontWeight: FontWeight.w700,
             ),
             UILabels(
               text: subtitle,
               textLines: 1,
-              color: AppColors.black,
-              fontSize: 18,
+              color: AppColors.purpura,
+              fontSize: 16,
               fontWeight: FontWeight.w400,
             ),
             const SizedBox(
