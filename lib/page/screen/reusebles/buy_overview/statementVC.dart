@@ -135,7 +135,7 @@ class _StatementVCState extends State<StatementVC> {
                           alignment: Alignment.center,
                           child: Column(
                             children: userLogin
-                                .toJsonStatementPDF()
+                                .toJsonStatements()
                                 .values
                                 .map((e) => FromView(
                                       user: e,
@@ -179,6 +179,7 @@ class _StatementVCState extends State<StatementVC> {
                         ),
                         colorList: const [],
                         cb: (v) {
+                          Navigator.pushNamed(context, '/pdf');
                           // PaymentMethodSheet().choosePaymentMethod(context);
                         })),
               ],

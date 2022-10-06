@@ -56,22 +56,35 @@ class User {
     return data;
   }
 
+  Map<String, dynamic> toJsonStatements() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['startData'] = {
+      "value": "",
+      "name": "Start date",
+      "hintText": "Seloect",
+      "keyboardType": TextInputType.emailAddress,
+      "sufix": IconButton(
+        icon: const Icon(Icons.arrow_drop_down),
+        onPressed: () {},
+      ),
+    };
+    data['endDate'] = {
+      "value": "",
+      "name": "End date",
+      "hintText": "Select",
+      "keyboardType": TextInputType.visiblePassword,
+      "sufix": IconButton(
+        icon: const Icon(Icons.arrow_drop_down),
+        onPressed: () {},
+      ),
+    };
+    return data;
+  }
+
   Map<String, dynamic> toJsonEditProfile() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['firstName'] = {
-      "value": "",
-      "name": "First Name",
-      "hintText": "First Name",
-      "keyboardType": TextInputType.text,
-      "sufix": null
-    };
-    data['lastName'] = {
-      "value": "",
-      "name": "Last Name",
-      "hintText": "Last Name",
-      "keyboardType": TextInputType.text,
-      "sufix": null
-    };
+    data['firstName'] = {"value": "", "name": "First Name", "hintText": "First Name", "keyboardType": TextInputType.text, "sufix": null};
+    data['lastName'] = {"value": "", "name": "Last Name", "hintText": "Last Name", "keyboardType": TextInputType.text, "sufix": null};
     return data;
   }
 
@@ -127,27 +140,9 @@ class User {
 
   Map<String, dynamic> toJsonEditAddresss() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['streetAddress'] = {
-      "value": "",
-      "name": "Street Address",
-      "hintText": "Street Address",
-      "keyboardType": TextInputType.text,
-      "sufix": null
-    };
-    data['aptSuit'] = {
-      "value": "",
-      "name": "Apt, Suit, etc",
-      "hintText": "Enter Apt, Suit, etc",
-      "keyboardType": TextInputType.text,
-      "sufix": null
-    };
-    data['city'] = {
-      "value": "",
-      "name": "City",
-      "hintText": "Texas",
-      "keyboardType": TextInputType.text,
-      "sufix": null
-    };
+    data['streetAddress'] = {"value": "", "name": "Street Address", "hintText": "Street Address", "keyboardType": TextInputType.text, "sufix": null};
+    data['aptSuit'] = {"value": "", "name": "Apt, Suit, etc", "hintText": "Enter Apt, Suit, etc", "keyboardType": TextInputType.text, "sufix": null};
+    data['city'] = {"value": "", "name": "City", "hintText": "Texas", "keyboardType": TextInputType.text, "sufix": null};
     data['country'] = {
       "value": "",
       "name": "Country",
@@ -158,13 +153,7 @@ class User {
         onPressed: () {},
       ),
     };
-    data['zipCode'] = {
-      "value": "",
-      "name": "Zip Code",
-      "hintText": "99950",
-      "keyboardType": TextInputType.number,
-      "sufix": null
-    };
+    data['zipCode'] = {"value": "", "name": "Zip Code", "hintText": "99950", "keyboardType": TextInputType.number, "sufix": null};
     return data;
   }
 

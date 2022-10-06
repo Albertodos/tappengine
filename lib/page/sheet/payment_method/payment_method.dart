@@ -198,7 +198,7 @@ class PaymentMethodSheet extends SheetView {
             ),
           );
         }).whenComplete(() {
-      Navigator.pushNamed(context, '/addMoney');
+      // Navigator.pushNamed(context, '/addMoney');
     });
   }
 

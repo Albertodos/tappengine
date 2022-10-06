@@ -116,6 +116,13 @@ class _EnterAmountVCState extends State<EnterAmountVC> {
                                   ),
                                 ],
                               ),
+                              child: const Icon(
+                                Icons.arrow_upward,
+                                color: AppColors.purpura,
+                                size: 30,
+                                weight: 0.1,
+                                fill: 0.2,
+                              ),
                             ),
                           ],
                         ),

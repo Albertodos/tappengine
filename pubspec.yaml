@@ -37,6 +37,7 @@ dependencies:
   simple_shadow:
   http:
   expandable_page_view:
+  syncfusion_flutter_pdfviewer:
 
 
 
