@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:tappengine/constants/app_colors.dart';
 import 'package:tappengine/model/objects/user/user.dart';
 import 'package:tappengine/page/screen/autentication/register/registerVC.dart';
+import 'package:tappengine/page/tab/homeTab.dart';
 import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
 
 import '../../../../widgets/animation/animation.dart';
@@ -116,9 +117,12 @@ class _LoginVCState extends State<LoginVC> {
                                 ),
                                 colorList: const [],
                                 cb: (v) {
-                                  setState(() {
-                                    selected = !selected;
-                                  });
+                                  // setState(() {
+                                  //   selected = !selected;
+                                  // });
+                                  Get.offAll(const HomeTab(),
+                                      duration: const Duration(seconds: 1), //duration of transitions, default 1 sec
+                                      transition: Transition.cupertino);
                                 })),
                       ],
                     ),
@@ -159,7 +163,7 @@ class _LoginVCState extends State<LoginVC> {
                 style: const TextStyle(fontSize: 12, color: AppColors.blue, fontWeight: FontWeight.w400),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
-                    Get.to(const RegisterVC(),
+                    Get.offAll(const RegisterVC(),
                         duration: const Duration(seconds: 1), //duration of transitions, default 1 sec
                         transition: Transition.cupertino);
                     // code to open / launch privacy policy link here

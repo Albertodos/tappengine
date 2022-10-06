@@ -5,8 +5,12 @@ import 'package:tappengine/page/screen/crypto/cryptoVC.dart';
 import 'package:tappengine/page/screen/home/homeVC.dart';
 import '../../helpers/globals.dart' as globals;
 
+import '../nav/adviceNav.dart';
 import '../nav/cryptoNav.dart';
 import '../nav/homeNav.dart';
+import '../nav/rewardsNav.dart';
+import '../screen/advice/ first_time_dashboard.dart';
+import '../screen/rewards/rewardsVC.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -19,9 +23,9 @@ class _HomeTabState extends State<HomeTab> {
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeNav(root: HomeVC()),
     const CryptoNav(root: CryptoVC()),
-    const HomeNav(root: HomeVC()),
-    const HomeNav(root: HomeVC()),
-    const HomeNav(root: HomeVC()),
+    const CryptoNav(root: CryptoVC()),
+    const AdviceNav(root: FirstTimeDashboard()),
+    const RewardsNav(root: RewardsVC()),
   ];
 
   int _selectedIndex = 0;

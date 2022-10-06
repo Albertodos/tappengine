@@ -2,18 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../../../constants/app_colors.dart';
+import '../rewards.dart';
 import '../user_personal.dart';
 
 class UserPersonalC extends GetxController {
   final userPersonal = UserPersonal().obs;
+  final userRewards = UserRewards().obs;
 
   var switchStatus = false.obs;
 
   Future changeUser() async {
-    userPersonal.value.email = "Alberto@gmail.com";
-    userPersonal.value.phone = "+238 - 9117673";
+    userPersonal.value.email = "maite.medina@gmail.com";
+    userPersonal.value.phone = "+238 - 9156787";
     userPersonal.value.andress = 'Praia, Cabo Verde';
-    userPersonal.value.username = 'Alberto Dos Santos';
+    userPersonal.value.username = 'Maite Medina';
     userPersonal.value.identityStatus = true;
     userPersonal.value.bankStatus = true;
     userPersonal.value.notification = true;

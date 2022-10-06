@@ -134,7 +134,7 @@ class _VerifyIdentityInfoVCState extends State<VerifyIdentityInfoVC> {
                                 setState(() {
                                   selected = !selected;
                                 });
-                                Future.delayed(const Duration(milliseconds: 8500), () {
+                                Future.delayed(const Duration(milliseconds: 800), () {
                                   Get.offAll(const HomeTab());
                                 });
                               })),

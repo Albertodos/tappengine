@@ -83,6 +83,10 @@ class UserPersonal extends User {
     data['userInfo'] = {
       "name": username ?? "",
     };
+    data['userRewards'] = {
+      "credite": "\$150",
+    };
+
     return data;
   }
 

@@ -22,7 +22,7 @@ class UserCards extends StatelessWidget {
           width: 53.0,
           height: 53.0,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.all( Radius.circular(50.0)),
+            borderRadius: BorderRadius.all(Radius.circular(50.0)),
             border: Border.all(
               color: AppColors.purpura2,
               width: 1.0,
@@ -35,14 +35,13 @@ class UserCards extends StatelessWidget {
           ),
         ),
         onTap: () {
-          print("/personalInfo");
           Navigator.pushNamed(
             context,
             "/personalInfo",
           );
         },
       ),
-      title:  UILabels(
+      title: UILabels(
         text: "Welcome",
         textLines: 1,
         color: AppColors.white,
@@ -81,7 +80,7 @@ class UserCards extends StatelessWidget {
             height: 53.0,
             decoration: BoxDecoration(
               color: const Color(0xff7c94b6),
-              borderRadius: BorderRadius.all( Radius.circular(50.0)),
+              borderRadius: BorderRadius.all(Radius.circular(50.0)),
               border: Border.all(
                 color: AppColors.purpura2,
                 width: 1.0,
@@ -103,7 +102,7 @@ class UserCards extends StatelessWidget {
         ),
       ),
       style: ListTileStyle.list,
-      title:  const UILabels(
+      title: const UILabels(
         text: "Full Name",
         textLines: 1,
         color: AppColors.purpura4,
@@ -118,6 +117,53 @@ class UserCards extends StatelessWidget {
         fontWeight: FontWeight.w600,
       ),
       trailing: SizedBox(height: Get.height, child: SvgPicture.asset("assets/icons/arrow-right.svg", color: AppColors.purpura)),
+    );
+  }
+
+  Widget userRewards(mycontext) {
+    return ListTile(
+      onTap: () {
+        // print("/personalInfo");
+        // Navigator.pushNamed(
+        //   mycontext,
+        //   "/editProfile",
+        // );
+      },
+      leading: SizedBox(
+        height: Get.height,
+        child: GestureDetector(
+          child: Container(
+            width: 60.0,
+            height: 60.0,
+            decoration: BoxDecoration(
+              color: AppColors.purpura.withAlpha(25),
+              borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+            ),
+          ),
+          // onTap: () {
+          //   print("/personalInfo");
+          //   Navigator.pushNamed(
+          //     mycontext,
+          //     "/personalInfo",
+          //   );
+          // },
+        ),
+      ),
+      style: ListTileStyle.list,
+      title: const UILabels(
+        text: "Rewards",
+        textLines: 1,
+        color: AppColors.black,
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+      ),
+      subtitle: UILabels(
+        text: user['userRewards']['credite'],
+        textLines: 1,
+        color: AppColors.black,
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+      ),
     );
   }
 
@@ -148,6 +194,52 @@ class UserCards extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
           trailing: user['trailing'],
+        ),
+        const Divider(
+          endIndent: 16,
+          indent: 66,
+          color: AppColors.gray1,
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+      ],
+    );
+  }
+
+  Widget rewardsSettingsItem(mycontext) {
+    return Column(
+      children: [
+        ListTile(
+          onTap: () {
+            // print("/personalInfo");
+            // Navigator.pushNamed(
+            //   mycontext,
+            //   user['root'],
+            // );
+          },
+          leading: user['leading'],
+          title: UILabels(
+            text: user['title'],
+            textLines: 1,
+            color: AppColors.black,
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+          ),
+          subtitle: UILabels(
+            text: user['subtitle'],
+            textLines: 1,
+            color: AppColors.black,
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+          ),
+          trailing: UILabels(
+            text: user['trailing'],
+            textLines: 1,
+            color: AppColors.purpura,
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+          ),
         ),
         const Divider(
           endIndent: 16,

@@ -125,7 +125,7 @@ class _VerifyNumberVCState extends State<VerifyNumberVC> {
                               setState(() {
                                 selected = !selected;
                               });
-                              Future.delayed(const Duration(milliseconds: 8500), () {
+                              Future.delayed(const Duration(milliseconds: 800), () {
                                 Get.offAll(const SelectCitizeShipeVC());
                               });
                             })),

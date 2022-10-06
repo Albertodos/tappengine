@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tappengine/constants/app_colors.dart';
-import 'package:tappengine/page/screen/crypto/add_moneyVC.dart';
 import 'package:tappengine/page/screen/reusebles/more/add_money.dart';
-import 'package:tappengine/page/sheet/payment_method/payment_method.dart';
 import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
 
+import '../../../../page/sheet/payment_method/payment_method.dart';
 import '../../../ui_kits/button_ui/button_ui.dart';
 
 class BalancesCards extends StatelessWidget {
@@ -60,7 +59,10 @@ class BalancesCards extends StatelessWidget {
                   SizedBox(
                     width: 16,
                   ),
-                  Icon(Icons.keyboard_arrow_down, color: AppColors.green,),
+                  Icon(
+                    Icons.keyboard_arrow_down,
+                    color: AppColors.green,
+                  ),
                   UILabels(
                     text: "1.82%",
                     textLines: 1,
@@ -196,8 +198,8 @@ class BalancesCards extends StatelessWidget {
                       borderColor: AppColors.gray3,
                       colorList: const [],
                       cb: (v) {
-                        Get.to(AddMoneyVC());
-                        //PaymentMethodSheet().morePaymentMethod(context, (p0) => null);
+                        // Get.to(AddMoneyVC());
+                        PaymentMethodSheet().morePaymentMethod(context, (p0) => null);
                       }).out(Colors.transparent)),
             ],
           ),

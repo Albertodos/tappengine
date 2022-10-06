@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tappengine/constants/app_colors.dart';
 import 'package:tappengine/model/objects/user/user.dart';
+import 'package:tappengine/page/screen/autentication/login/loginVC.dart';
 import 'package:tappengine/page/screen/autentication/register/verify_emailVC.dart';
 import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
 
@@ -116,7 +117,7 @@ class _RegisterVCState extends State<RegisterVC> {
                               setState(() {
                                 selected = !selected;
                               });
-                              Future.delayed(const Duration(milliseconds: 8500), () {
+                              Future.delayed(const Duration(milliseconds: 800), () {
                                 Get.offAll(const VerifyEmailVC());
                               });
                             })),
@@ -144,6 +145,9 @@ class _RegisterVCState extends State<RegisterVC> {
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     print("Register Page");
+                    Get.offAll(const LoginVC(),
+                        duration: const Duration(seconds: 1), //duration of transitions, default 1 sec
+                        transition: Transition.cupertino);
                     // code to open / launch privacy policy link here
                   }),
           ]),

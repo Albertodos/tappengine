@@ -44,64 +44,73 @@ class _WelcomePagesState extends State<WelcomePages> {
     return Container(
       height: Get.height,
       width: Get.width,
-      color: AppColors.gray0,
+      color: AppColors.white,
       child: SingleChildScrollView(
         child: AnimatedOpacity(
           opacity: opacityLevel,
           duration: const Duration(seconds: 1),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: Stack(
             children: [
-              const SizedBox(
-                height: 64,
-              ),
               Container(
-                width: Get.width - 60,
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: SvgPicture.asset(
-                  infoPage[widget.pagePosition][0],
-                  fit: BoxFit.cover,
-                ),
+                width: Get.width,
+                height: Get.height / 2,
+                color: AppColors.gray0,
               ),
-              const SizedBox(
-                height: 30,
-              ),
-              Container(
-                padding: const EdgeInsets.all(32),
-                decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)), color: AppColors.white),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    UILabels(
-                      text: infoPage[widget.pagePosition][1],
-                      textLines: 0,
-                      color: AppColors.purpura,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
-                      textAlign: TextAlign.center,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 64,
+                  ),
+                  Container(
+                    width: Get.width - 60,
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                    const SizedBox(
-                      height: 11,
+                    child: SvgPicture.asset(
+                      infoPage[widget.pagePosition][0],
+                      fit: BoxFit.cover,
                     ),
-                    UILabels(
-                      text: infoPage[widget.pagePosition][2],
-                      color: AppColors.black,
-                      textLines: 0,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w400,
-                      textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(32),
+                    decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)), color: AppColors.white),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        UILabels(
+                          text: infoPage[widget.pagePosition][1],
+                          textLines: 0,
+                          color: AppColors.purpura,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700,
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(
+                          height: 11,
+                        ),
+                        UILabels(
+                          text: infoPage[widget.pagePosition][2],
+                          color: AppColors.black,
+                          textLines: 0,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w400,
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(
+                          height: 200,
+                        )
+                      ],
                     ),
-                    const SizedBox(
-                      height: 200,
-                    )
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),

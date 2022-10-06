@@ -108,8 +108,7 @@ class PaymentMethodSheet extends SheetView {
                       onTap: () {
                         selectMoreAdd.value = moreAdd[index];
                         cb(selectMoreAdd.value);
-
-                        Navigator.pushNamed(context, '/addMoney');
+                        Navigator.pop(context);
                       },
                       child: Column(
                         children: [
@@ -125,7 +124,10 @@ class PaymentMethodSheet extends SheetView {
               ],
             ),
           );
-        });
+        }).whenComplete(() {
+      Navigator.pushNamed(context, '/addMoney');
+    });
+    ;
   }
 
   void repeats(context, Function(String) cb) {
@@ -195,20 +197,22 @@ class PaymentMethodSheet extends SheetView {
               ],
             ),
           );
-        }).whenComplete(() {});
+        }).whenComplete(() {
+      Navigator.pushNamed(context, '/addMoney');
+    });
   }
+
   void MoneyAdded(context) {
     showModalBottomSheet(
         isScrollControlled: true,
-        backgroundColor: Theme.of(context).cardColor,
-        context: context,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
+        backgroundColor: Theme.of(globals.hometabContext).cardColor,
+        context: globals.hometabContext,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
         builder: (BuildContext bc) {
           return SingleChildScrollView(
-              padding: const EdgeInsetsDirectional.only(
-                  start: 30, end: 30, bottom: 30, top: 30),
+              padding: const EdgeInsetsDirectional.only(start: 30, end: 30, bottom: 30, top: 30),
               child: Wrap(children: [
                 Column(children: [
                   header("Money Added", globals.hometabContext),
@@ -219,7 +223,13 @@ class PaymentMethodSheet extends SheetView {
                     child: Icon(Icons.done, color: AppColors.white, size: 40),
                   ),
                   const SizedBox(height: 10),
-                  UILabels(text: "You've funded your USD invesment account with \$1000 ", textLines: 0, color: AppColors.purpura, textAlign: TextAlign.center, fontWeight: FontWeight.w600, fontSize: 24)
+                  UILabels(
+                      text: "You've funded your USD invesment account with \$1000 ",
+                      textLines: 0,
+                      color: AppColors.purpura,
+                      textAlign: TextAlign.center,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 24)
                 ])
               ]));
         });
