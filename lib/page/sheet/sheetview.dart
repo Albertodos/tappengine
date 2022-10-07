@@ -1,6 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
+import 'package:tappengine/widgets/ui_kits/button_ui/button_ui.dart';
 
 import '../../constants/app_colors.dart';
 import '../../widgets/ui_kits/labels_ui/label_ui.dart';
@@ -18,8 +22,8 @@ class SheetView {
               text: title,
               textLines: 1,
               color: AppColors.gray2,
-              fontSize: 18,
-              fontWeight: FontWeight.w400,
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
             ),
           ),
           Container(
@@ -244,9 +248,10 @@ class SheetView {
             ),
             UILabels(
               text: title,
-              textLines: 1,
+              textLines: 0,
               color: bg == AppColors.purpura ? AppColors.gray : AppColors.black,
-              fontSize: 18,
+              fontSize: 16,
+              textAlign: TextAlign.center,
               fontWeight: FontWeight.w400,
             ),
           ],
@@ -259,18 +264,18 @@ class SheetView {
     return Text.rich(
       TextSpan(
           text: "Your photo ID and actions captured during theID verification process may constitute biometric data. please see our",
-          style: const TextStyle(fontSize: 18, color: AppColors.black, fontWeight: FontWeight.w400),
+          style: const TextStyle(fontSize: 16, color: AppColors.black, fontWeight: FontWeight.w400),
           children: <TextSpan>[
             TextSpan(
                 text: " privacy policy ",
-                style: const TextStyle(fontSize: 18, color: AppColors.blue, fontWeight: FontWeight.w400),
+                style: const TextStyle(fontSize: 16, color: AppColors.blue, fontWeight: FontWeight.w400),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     // code to open / launch privacy policy link here
                   }),
             const TextSpan(
               text: " for more information about how we store and use your biometric data. select ID type to proceed ",
-              style: TextStyle(fontSize: 18, color: AppColors.black, fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 16, color: AppColors.black, fontWeight: FontWeight.w400),
             ),
           ]),
       textAlign: TextAlign.left,
@@ -279,23 +284,271 @@ class SheetView {
 
   Widget verify() {
     return Text.rich(
+      textAlign: TextAlign.center,
       TextSpan(
           text: "Financial regulations require us to verify",
-          style: const TextStyle(fontSize: 18, color: AppColors.black, fontWeight: FontWeight.w400),
+          style: const TextStyle(fontSize: 16, color: AppColors.black, fontWeight: FontWeight.w400),
           children: <TextSpan>[
             TextSpan(
                 text: " verify ",
-                style: const TextStyle(fontSize: 18, color: AppColors.blue, fontWeight: FontWeight.w400),
+                style: const TextStyle(fontSize: 16, color: AppColors.blue, fontWeight: FontWeight.w400),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     // code to open / launch privacy policy link here
                   }),
             const TextSpan(
               text: " your identify. ",
-              style: TextStyle(fontSize: 18, color: AppColors.black, fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 16, color: AppColors.black, fontWeight: FontWeight.w400),
             ),
           ]),
-      textAlign: TextAlign.left,
+    );
+  }
+
+  Widget license(imageUrl,desc) {
+    return Stack(
+      children: <Widget>[
+        Container(
+          width: Get.width,
+          height: 200,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                color: Colors.black,
+                width: 1,
+              )
+          ),
+          child: Stack(children: [
+            SvgPicture.network(
+              imageUrl,
+              alignment: Alignment.center,
+            ),
+            Positioned(
+              right: 0,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  //crossAxisAlignment: CrossAxisAlignment.end,
+                  children: const [
+                    ClipOval(
+                      child: Material(
+                        color: Colors.white,
+                        shape: CircleBorder(
+                            side: BorderSide(color: AppColors.white)),
+                        child: SizedBox(
+                            width: 25,
+                            height: 25,
+                            child: Icon(
+                              Icons.credit_card,
+                              size: 12,
+                              color: AppColors.purpura,
+                            )),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                     ClipOval(
+                      child: Material(
+                        color: AppColors.purpura,
+                        shape: CircleBorder(
+                            side: BorderSide(color: AppColors.purpura)),
+                        child: SizedBox(
+                            width: 25,
+                            height: 25,
+                            child: Icon(
+                              Icons.wallet_giftcard,
+                              size: 12,
+                              color: AppColors.white,
+                            )),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20.0, right: 40, left: 40),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  UILabels(text: desc, textLines: 0, fontWeight: FontWeight.w400, fontSize: 14, textAlign: TextAlign.center),
+                  const SizedBox(height: 15),
+                 SizedBox(width: Get.width,
+                     child: UIBottons(
+                         labels: const UILabels(
+                           text: 'I’m Ready',
+                           textLines: 0,
+                           color: AppColors.white,
+                           fontSize: 16,
+                           fontWeight: FontWeight.w700,
+                         ),
+                         borderColor: AppColors.white,
+                         colorList: const [],
+                         cb: (v) {
+                         }).out(Colors.transparent))
+                ],
+              ),
+            )
+          ]),
+        ),
+      ],
+    );
+  }
+  Widget exampleDesc(desc) {
+    return Row(
+      children: [
+        const Icon(Icons.check_circle, color: AppColors.purpura,size: 15),
+        const SizedBox(width: 10),
+        UILabels(text: desc, textLines: 0, fontSize: 16, fontWeight: FontWeight.w400, color: AppColors.black)
+      ],
+    );
+  }
+  Widget licenseBack(imageUrl) {
+    return Stack(
+      children: <Widget>[
+        Container(
+          width: Get.width,
+          height: 200,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                color: Colors.black,
+                width: 1,
+              )
+          ),
+          child: Stack(children: [
+            SvgPicture.network(
+              imageUrl,
+              alignment: Alignment.center,
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20.0, right: 30, left: 30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  SizedBox(width: Get.width, child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(child: UIBottons(
+                          labels: const UILabels(
+                            text: 'Retake',
+                            textLines: 0,
+                            color: AppColors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
+                          borderColor: AppColors.white,
+                          colorList: const [],
+                          cb: (v) {
+                          }).out(Colors.transparent)),
+                      const SizedBox(width: 10),
+                      Expanded(child: UIBottons(
+                          labels: const UILabels(
+                            text: 'Next',
+                            textLines: 0,
+                            color: AppColors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
+                          borderColor: AppColors.white,
+                          colorList: const [],
+                          cb: (v) {
+                          })),
+                    ],
+                  ))
+                ],
+              ),
+            )
+          ]),
+        ),
+        // Container(
+        //   child: Column(
+        //     children: <Widget>[Expanded(child: Text(""))],
+        //   ),
+        // ),
+      ],
+    );
+  }
+
+  Widget circularProgress(){
+    return const Center(
+      child:  SizedBox(
+        width: 60,
+        height: 60,
+        child: CircularStepProgressIndicator(
+          totalSteps: 15,
+          currentStep: 6,
+          //padding: math.pi / 15,
+          selectedColor: AppColors.purpura,
+          unselectedColor: AppColors.gray,
+          selectedStepSize: 12.0,
+          unselectedStepSize: 12.0,
+          width: 100,
+        ),
+      ),
+    );
+  }
+
+  Widget infPlaid() {
+    return Text.rich(
+      textAlign: TextAlign.center,
+      TextSpan(
+          text: "By selecting ”Contine” you agree to the",
+          style: const TextStyle(fontSize: 16, color: AppColors.black, fontWeight: FontWeight.w400),
+          children: <TextSpan>[
+            TextSpan(
+                text: " Plaid End User Privacy Policy.",
+                style: const TextStyle(fontSize: 16, color: AppColors.blue, fontWeight: FontWeight.w400),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    // code to open / launch privacy policy link here
+                  }),
+          ]),
+    );
+  }
+
+  Widget verifyIdentily(title){
+    return Container(
+      margin: const EdgeInsets.only( bottom: 5),
+      padding: const EdgeInsets.only(right: 30, left: 30, bottom: 15,top: 15),
+      height: 85.0,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        color: AppColors.purpura,
+        border: Border.all(
+          color: AppColors.purpura,
+          width: 1.0,
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: AppColors.purpura4),
+              ),
+              const SizedBox(width: 20),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  UILabels(text: title, textLines: 0, fontSize: 16, fontWeight: FontWeight.w400),
+                  const SizedBox(height: 5),
+                  UILabels(text: "(...) ... 1557", textLines: 0, fontSize: 16, fontWeight: FontWeight.w400),
+                ],
+              )
+            ],
+          ),
+          Icon(Icons.check_circle, color: AppColors.white, size: 40),
+        ],
+      ),
     );
   }
 }

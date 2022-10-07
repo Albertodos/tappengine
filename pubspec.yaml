@@ -38,6 +38,7 @@ dependencies:
   http:
   expandable_page_view:
   syncfusion_flutter_pdfviewer:
+  step_progress_indicator:
 
 
 

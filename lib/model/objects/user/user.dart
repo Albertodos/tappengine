@@ -56,6 +56,24 @@ class User {
     return data;
   }
 
+  Map<String, dynamic> toJsonLoginPlaid() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['user'] = {
+      "value": "",
+      "name": "User Name",
+      "hintText": "useername",
+      "keyboardType": TextInputType.text,
+      "sufix": null
+    };
+    data['password'] = {
+      "value": "",
+      "name": "Password",
+      "hintText": "Password",
+      "keyboardType": TextInputType.visiblePassword,
+      "sufix": _seePassword()
+    };
+    return data;
+  }
   Map<String, dynamic> toJsonStatements() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['startData'] = {

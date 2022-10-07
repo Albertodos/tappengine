@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:tappengine/constants/app_colors.dart';
 import 'package:tappengine/model/objects/user/user_personal.dart';
+import 'package:tappengine/page/sheet/found_plaid/found_plaid.dart';
 import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
 
 import '../../../../page/sheet/identity_verification/identity_verification.dart';
@@ -58,6 +59,7 @@ class UserCards extends StatelessWidget {
       trailing: InkWell(
           onTap: () {
             IdentifyVerication().selectIdType(context);
+            //FoundPlaid().linkYourBank(context);
           },
           child: SvgPicture.asset("assets/icons/notification.svg", color: AppColors.white)),
     );
