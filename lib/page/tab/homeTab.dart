@@ -9,8 +9,10 @@ import '../nav/adviceNav.dart';
 import '../nav/cryptoNav.dart';
 import '../nav/homeNav.dart';
 import '../nav/rewardsNav.dart';
+import '../nav/strocksNav.dart';
 import '../screen/advice/ first_time_dashboard.dart';
 import '../screen/rewards/rewardsVC.dart';
+import '../screen/stocks/stocksVC.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -23,7 +25,7 @@ class _HomeTabState extends State<HomeTab> {
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeNav(root: HomeVC()),
     const CryptoNav(root: CryptoVC()),
-    const CryptoNav(root: CryptoVC()),
+    const StrocksNav(root: StrocksVC()),
     const AdviceNav(root: FirstTimeDashboard()),
     const RewardsNav(root: RewardsVC()),
   ];

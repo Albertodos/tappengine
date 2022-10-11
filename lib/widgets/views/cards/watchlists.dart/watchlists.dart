@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tappengine/widgets/animation/animation.dart';
 import '../../../../constants/app_colors.dart';
+import '../../../../page/sheet/events/eventsSheet.dart';
 import '../../../ui_kits/labels_ui/label_ui.dart';
 
 class WatchlistsCards extends StatelessWidget {
@@ -15,89 +16,94 @@ class WatchlistsCards extends StatelessWidget {
   Widget cards01() {
     return SizedBox(
       width: Get.width,
-      child: Column(
-        children: [
-          Row(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Container(
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(25)),
-                color: AppColors.purpura.withAlpha(25),
+      child: InkWell(
+        onTap: () {
+          EventsSheet().infoEvents();
+        },
+        child: Column(
+          children: [
+            Row(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Container(
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(25)),
+                  color: AppColors.purpura.withAlpha(25),
+                ),
               ),
-            ),
-            const SizedBox(
-              width: 16,
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(
-                    children:  [
-                      const Expanded(
-                        child: UILabels(
-                          text: "BNB",
+              const SizedBox(
+                width: 16,
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      children: [
+                        const Expanded(
+                          child: UILabels(
+                            text: "BNB",
+                            textLines: 1,
+                            color: AppColors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Row(
+                          children: const [
+                            Icon(Icons.keyboard_arrow_down, color: AppColors.purpura1),
+                            UILabels(
+                              text: "0.82%",
+                              textLines: 1,
+                              color: AppColors.purpura1,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: const [
+                        Expanded(
+                          child: UILabels(
+                            text: "BNB • 161,234,261",
+                            textLines: 1,
+                            color: AppColors.purpura2,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 16,
+                        ),
+                        UILabels(
+                          text: "\$12,3444.09",
                           textLines: 1,
                           color: AppColors.black,
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
                         ),
-                      ),
-                      Row(
-                        children: const [
-                          Icon(Icons.keyboard_arrow_down, color: AppColors.purpura1),
-                          UILabels(
-                            text: "0.82%",
-                            textLines: 1,
-                            color: AppColors.purpura1,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: const [
-                      Expanded(
-                        child: UILabels(
-                          text: "BNB • 161,234,261",
-                          textLines: 1,
-                          color: AppColors.purpura2,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      UILabels(
-                        text: "\$12,3444.09",
-                        textLines: 1,
-                        color: AppColors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Container(
-                    height: 2,
-                    color: AppColors.purpura.withAlpha(25),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                ],
-              ),
-            )
-          ]),
-        ],
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Container(
+                      height: 2,
+                      color: AppColors.purpura.withAlpha(25),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                  ],
+                ),
+              )
+            ]),
+          ],
+        ),
       ),
     );
   }
