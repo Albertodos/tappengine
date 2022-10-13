@@ -19,7 +19,7 @@ class _MyEventsVCState extends State<MyEventsVC> {
   @override
   Widget build(BuildContext context) {
     var pulldata1 = PullData(
-        data: [const EventsCards().cards02(context), const EventsCards().cards02(context), const EventsCards().cards02(context)],
+        data: [EventsCards().cards02(context), EventsCards().cards02(context), EventsCards().cards02(context)],
         more: "View All",
         title: "Events",
         position: Axis.vertical);
