@@ -12,10 +12,8 @@ class HttpService {
 
   static Future statusError(request) async {
     try {
-      final response =
-          await request.timeout(const Duration(seconds: 60), onTimeout: () {
-        throw TimeoutException(
-            'The connection has timed out , Please try again!');
+      final response = await request.timeout(const Duration(seconds: 60), onTimeout: () {
+        throw TimeoutException('The connection has timed out , Please try again!');
       });
       if (response.statusCode == 200) {
         var result = jsonDecode(response.body);
@@ -33,9 +31,7 @@ class HttpService {
   }
 
   static Future getService(baseUrl, url, context) async {
-    print(ApiPath.baseUrl + url);
-    var response =
-        await statusError(http.get(Uri.parse(baseUrl + url), headers: {
+    var response = await statusError(http.get(Uri.parse(baseUrl + url), headers: {
       // 'Authorization': 'Bearer ${globals.user.token}',
       // "Content-Type":"application/json",
       //
@@ -51,8 +47,7 @@ class HttpService {
   }
 
   static Future putService(Map<String, dynamic> body, url) async {
-    final response = await http.put(Uri.parse(ApiPath.baseUrl + url),
-        headers: {"Content-Type": "application/json"}, body: jsonEncode(body));
+    final response = await http.put(Uri.parse(ApiPath.baseUrl + url), headers: {"Content-Type": "application/json"}, body: jsonEncode(body));
 
     if (response.statusCode == 200) {
       return response.body;
@@ -61,7 +56,7 @@ class HttpService {
     }
   }
 
-  static Future postService(Map<String, dynamic> body,baseUrl, url, context) async {
+  static Future postService(Map<String, dynamic> body, baseUrl, url, context) async {
     final response = await statusError(http.post(
       Uri.parse(baseUrl + url),
       body: jsonEncode(body),
@@ -78,10 +73,8 @@ class HttpService {
   }
 
   static Future deleteService(Map<String, dynamic> body, action) async {
-    final response = await statusError(http.delete(
-        Uri.parse("${ApiPath.baseUrl}user/delete"),
-        headers: {"Content-Type": "application/json"},
-        body: jsonEncode(body)));
+    final response = await statusError(
+        http.delete(Uri.parse("${ApiPath.baseUrl}user/delete"), headers: {"Content-Type": "application/json"}, body: jsonEncode(body)));
     if (response.statusCode == 200) {
       return response.body;
     } else {
@@ -90,8 +83,7 @@ class HttpService {
   }
 
   static Future uploadImageService(myId, File foto) async {
-    final request = http.MultipartRequest(
-        'POST', Uri.parse("${ApiPath.baseUrl}profile/upload"));
+    final request = http.MultipartRequest('POST', Uri.parse("${ApiPath.baseUrl}profile/upload"));
     request.files.add(await http.MultipartFile.fromPath('foto', foto.path));
     request.fields['user_id'] = myId;
 
@@ -99,12 +91,10 @@ class HttpService {
     return res;
   }
 
-  static requestAlertError(
-      BuildContext context, ErrorRequest errorRequest) async {
+  static requestAlertError(BuildContext context, ErrorRequest errorRequest) async {
     switch (errorRequest) {
       case ErrorRequest.timeOut:
-        Get.snackbar(
-            "Tapp Engine", "The connection has timed out, Please try again!");
+        Get.snackbar("Tapp Engine", "The connection has timed out, Please try again!");
         break;
       case ErrorRequest.internet:
         Get.snackbar("Tapp Engine", "No internet connection");
