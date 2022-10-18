@@ -6,10 +6,11 @@ import 'package:tappengine/model/objects/user/user.dart';
 import 'package:tappengine/page/screen/autentication/login/loginVC.dart';
 import 'package:tappengine/page/screen/autentication/register/verify_emailVC.dart';
 import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
-
+import '../../../../helpers/globals.dart' as globals;
 import '../../../../widgets/animation/animation.dart';
 import '../../../../widgets/ui_kits/button_ui/button_ui.dart';
 import '../../../../widgets/views/form/form.dart';
+import '../../../../widgets/views/reusebles/reusables.dart';
 
 class RegisterVC extends StatefulWidget {
   const RegisterVC({Key? key}) : super(key: key);
@@ -21,8 +22,8 @@ class RegisterVC extends StatefulWidget {
 class _RegisterVCState extends State<RegisterVC> {
   bool selected = true;
   double opacityLevel = 0.0;
-  bool _passwordVisible = false;
   var userLogin = User();
+  bool isChecked = false;
 
   @override
   void initState() {
@@ -45,87 +46,114 @@ class _RegisterVCState extends State<RegisterVC> {
         width: Get.width,
         padding: const EdgeInsets.all(30),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 64,
+              height: 16,
             ),
-            const UILabels(
-              text: "Create your account",
-              textLines: 1,
-              fontSize: 22,
-              fontWeight: FontWeight.w500,
-              color: AppColors.black,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            AnimationUI(
-              widget: Container(
-                width: Get.width,
-                padding: const EdgeInsets.only(left: 30, top: 40, right: 30, bottom: 30),
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: AppColors.white),
+            const ReusablesView().isBack(),
+            Expanded(
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Column(
-                      children: userLogin
-                          .toJsonRegister()
-                          .values
-                          .map((e) => FromView(
-                                user: e,
-                              ))
-                          .toList(),
+                    const SizedBox(
+                      height: 44,
+                    ),
+                    const UILabels(
+                      text: "Create your account",
+                      textLines: 1,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.black,
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    policy(),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    SizedBox(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width,
-                        child: UIBottons(
-                            labels: Row(
+                    AnimationUI(
+                      widget: Container(
+                        width: Get.width,
+                        padding: const EdgeInsets.only(left: 30, top: 40, right: 30, bottom: 30),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: AppColors.white),
+                        child: Column(
+                          children: [
+                            Column(
+                              children: globals.userPersonal.userFroms.value
+                                  .froms(["name", "email", "password", "coutryResidence"])
+                                  .values
+                                  .map((e) => FromView(
+                                        user: e,
+                                        onSubmitted: (k) {},
+                                      ))
+                                  .toList(),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Expanded(
-                                  child: UILabels(
-                                    text: 'Create account',
-                                    textLines: 0,
-                                    color: AppColors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700,
-                                    textAlign: TextAlign.center,
-                                  ),
+                                SizedBox(height: 20, width: 20, child: checkbox()),
+                                const SizedBox(
+                                  width: 8,
                                 ),
-                                if (!selected)
-                                  const Positioned(
-                                    right: 30,
-                                    top: 15,
-                                    child: SizedBox(
-                                      width: 20,
-                                      height: 20,
-                                      child: CircularProgressIndicator(
-                                        color: AppColors.white,
-                                      ),
-                                    ),
-                                  )
+                                Expanded(child: policy()),
                               ],
                             ),
-                            colorList: const [],
-                            cb: (v) {
-                              setState(() {
-                                selected = !selected;
-                              });
-                              Future.delayed(const Duration(milliseconds: 800), () {
-                                Get.offAll(const VerifyEmailVC());
-                              });
-                            })),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            SizedBox(
+                                height: 50,
+                                width: MediaQuery.of(context).size.width,
+                                child: UIBottons(
+                                    labels: Row(
+                                      children: [
+                                        const Expanded(
+                                          child: UILabels(
+                                            text: 'Create account',
+                                            textLines: 0,
+                                            color: AppColors.white,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w700,
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                        if (!selected)
+                                          const Positioned(
+                                            right: 30,
+                                            top: 15,
+                                            child: SizedBox(
+                                              width: 20,
+                                              height: 20,
+                                              child: CircularProgressIndicator(
+                                                color: AppColors.white,
+                                              ),
+                                            ),
+                                          )
+                                      ],
+                                    ),
+                                    colorList: const [],
+                                    cb: (v) {
+                                      setState(() {
+                                        selected = !selected;
+                                      });
+                                      Future.delayed(const Duration(milliseconds: 800), () {
+                                        Get.offAll(const VerifyEmailVC());
+                                      });
+                                    })),
+                          ],
+                        ),
+                      ),
+                    ).scale(),
+                    const SizedBox(
+                      height: 32,
+                    )
                   ],
                 ),
               ),
-            ).scale(),
-            const Expanded(child: SizedBox()),
+            ),
             gotoLogin(),
           ],
         ),
@@ -144,7 +172,6 @@ class _RegisterVCState extends State<RegisterVC> {
                 style: const TextStyle(fontSize: 12, color: AppColors.blue, fontWeight: FontWeight.w400),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
-                    print("Register Page");
                     Get.offAll(const LoginVC(),
                         duration: const Duration(seconds: 1), //duration of transitions, default 1 sec
                         transition: Transition.cupertino);
@@ -181,6 +208,18 @@ class _RegisterVCState extends State<RegisterVC> {
                   }),
           ]),
       textAlign: TextAlign.left,
+    );
+  }
+
+  Widget checkbox() {
+    return Checkbox(
+      checkColor: AppColors.purpura,
+      value: isChecked,
+      onChanged: (bool? value) {
+        setState(() {
+          isChecked = value!;
+        });
+      },
     );
   }
 }
