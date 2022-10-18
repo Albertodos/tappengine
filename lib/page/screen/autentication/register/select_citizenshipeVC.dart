@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:tappengine/constants/app_colors.dart';
 import 'package:tappengine/model/objects/user/user.dart';
 import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
-
+import '../../../../helpers/globals.dart' as globals;
 import '../../../../widgets/animation/animation.dart';
 import '../../../../widgets/ui_kits/button_ui/button_ui.dart';
 import '../../../../widgets/views/form/form.dart';
@@ -88,8 +88,17 @@ class _SelectCitizeShipeVCState extends State<SelectCitizeShipeVC> {
                 padding: const EdgeInsets.only(left: 30, top: 30, right: 30, bottom: 30),
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: AppColors.white),
                 child: Column(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.center, children: [
-                  FromView(
-                    user: userLogin.toJsonVerifyNumber()['country'],
+                  Column(
+                    children: globals.userPersonal.userFroms.value
+                        .froms([
+                          "citizenship",
+                        ])
+                        .values
+                        .map((e) => FromView(
+                              user: e,
+                              onSubmitted: (k) {},
+                            ))
+                        .toList(),
                   ),
                   const SizedBox(
                     height: 30,

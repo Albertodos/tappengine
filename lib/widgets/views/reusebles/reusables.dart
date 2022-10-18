@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../../constants/app_colors.dart';
 import '../../ui_kits/labels_ui/label_ui.dart';
 
@@ -130,7 +131,7 @@ class ReusablesView extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Row(
-          children:  [
+          children: [
             const Expanded(
               child: UILabels(
                 text: "Total Holdings",
@@ -168,8 +169,8 @@ class ReusablesView extends StatelessWidget {
           height: 16,
         ),
         Row(
-          children:  const [
-             Expanded(
+          children: const [
+            Expanded(
               child: UILabels(
                 text: "Total Value",
                 textLines: 1,
@@ -178,7 +179,7 @@ class ReusablesView extends StatelessWidget {
                 fontWeight: FontWeight.w400,
               ),
             ),
-             SizedBox(
+            SizedBox(
               width: 16,
             ),
             UILabels(
@@ -201,7 +202,7 @@ class ReusablesView extends StatelessWidget {
           height: 16,
         ),
         Row(
-          children:  [
+          children: [
             const Expanded(
               child: UILabels(
                 text: "Unrealised Return",
@@ -239,6 +240,21 @@ class ReusablesView extends StatelessWidget {
           height: 8,
         ),
       ],
+    );
+  }
+
+  Widget isBack() {
+    return Container(
+      height: 40,
+      width: 40,
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: AppColors.purpura.withAlpha(25)),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SvgPicture.asset(
+          'assets/icons/back-arrow.svg',
+          color: AppColors.purpura,
+        ),
+      ),
     );
   }
 }

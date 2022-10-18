@@ -16,6 +16,7 @@ class User {
   String? image;
   String? tipo;
   String? token;
+  String? password;
   bool? notification;
   bool? identityStatus;
   bool? bankStatus;
@@ -37,43 +38,6 @@ class User {
     token = json['token'].toString();
   }
 
-  Map<String, dynamic> toJsonLogin() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['email'] = {
-      "value": "",
-      "name": "Email and username",
-      "hintText": "Email/useername",
-      "keyboardType": TextInputType.emailAddress,
-      "sufix": null
-    };
-    data['password'] = {
-      "value": "",
-      "name": "Password",
-      "hintText": "Password",
-      "keyboardType": TextInputType.visiblePassword,
-      "sufix": _seePassword()
-    };
-    return data;
-  }
-
-  Map<String, dynamic> toJsonLoginPlaid() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['user'] = {
-      "value": "",
-      "name": "User Name",
-      "hintText": "useername",
-      "keyboardType": TextInputType.text,
-      "sufix": null
-    };
-    data['password'] = {
-      "value": "",
-      "name": "Password",
-      "hintText": "Password",
-      "keyboardType": TextInputType.visiblePassword,
-      "sufix": _seePassword()
-    };
-    return data;
-  }
   Map<String, dynamic> toJsonStatements() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['startData'] = {
@@ -337,36 +301,6 @@ class User {
       ),
     };
 
-    return data;
-  }
-
-  Map<String, dynamic> toJsonRegister() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['name'] = {"value": "", "name": "Full Name", "hintText": "Full Name", "keyboardType": TextInputType.name, "sufix": null};
-
-    data['email'] = {
-      "value": "",
-      "name": "Email Address",
-      "hintText": "Email/useername",
-      "keyboardType": TextInputType.emailAddress,
-    };
-    data['password'] = {
-      "value": "",
-      "name": "Passord",
-      "hintText": "Password",
-      "keyboardType": TextInputType.visiblePassword,
-      "sufix": _seePassword()
-    };
-    data['coutry'] = {
-      "value": "",
-      "name": "Crountry of Residence",
-      "hintText": "Country of Residence",
-      "keyboardType": TextInputType.name,
-      "sufix": IconButton(
-        icon: const Icon(Icons.arrow_drop_down),
-        onPressed: () {},
-      )
-    };
     return data;
   }
 

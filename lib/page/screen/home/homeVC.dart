@@ -39,9 +39,6 @@ class _HomeVCState extends State<HomeVC> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(const Duration(seconds: 1), () {
-      globals.userPersonal.changeUser();
-    });
   }
 
   @override

@@ -16,6 +16,7 @@ import '../../../../widgets/ui_kits/button_ui/button_ui.dart';
 import '../../../../widgets/ui_kits/labels_ui/label_ui.dart';
 import '../../../../widgets/views/cards/balances/balances.dart';
 import '../../../../widgets/views/form/form.dart';
+import '../../../../helpers/globals.dart' as globals;
 
 class StatementVC extends StatefulWidget {
   const StatementVC({super.key});
@@ -134,11 +135,15 @@ class _StatementVCState extends State<StatementVC> {
                           ),
                           alignment: Alignment.center,
                           child: Column(
-                            children: userLogin
-                                .toJsonStatements()
+                            children: globals.userPersonal.userFroms.value
+                                .froms([
+                                  "email",
+                                  "password",
+                                ])
                                 .values
                                 .map((e) => FromView(
                                       user: e,
+                                      onSubmitted: (k) {},
                                     ))
                                 .toList(),
                           ),

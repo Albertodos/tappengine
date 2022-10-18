@@ -17,8 +17,7 @@ class FoundPlaid extends SheetView {
         backgroundColor: Theme.of(globals.hometabContext).cardColor,
         context: globals.hometabContext,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
         builder: (BuildContext bc) {
           return Padding(
@@ -33,9 +32,7 @@ class FoundPlaid extends SheetView {
                 Container(
                   width: 60,
                   height: 60,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: AppColors.purpura4),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: AppColors.purpura4),
                 ),
                 const SizedBox(
                   height: 16,
@@ -58,8 +55,7 @@ class FoundPlaid extends SheetView {
                 ),
                 const SizedBox(height: 16),
                 const UILabels(
-                  text:
-                      'Your identify is being verified. We will email you once your verification has completed.',
+                  text: 'Your identify is being verified. We will email you once your verification has completed.',
                   textLines: 2,
                   color: AppColors.black,
                   fontSize: 16,
@@ -117,8 +113,7 @@ class FoundPlaid extends SheetView {
         backgroundColor: Theme.of(globals.hometabContext).cardColor,
         context: globals.hometabContext,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
         builder: (BuildContext bc) {
           return Padding(
@@ -134,9 +129,7 @@ class FoundPlaid extends SheetView {
                 Container(
                   width: 120,
                   height: 60,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: AppColors.purpura4),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: AppColors.purpura4),
                 ),
                 const SizedBox(
                   height: 16,
@@ -150,15 +143,9 @@ class FoundPlaid extends SheetView {
                 ),
                 const SizedBox(height: 16),
                 ListTile(
-                  title: const UILabels(
-                      text: "Secure",
-                      textLines: 1,
-                      color: AppColors.black,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18),
+                  title: const UILabels(text: "Secure", textLines: 1, color: AppColors.black, fontWeight: FontWeight.w600, fontSize: 18),
                   subtitle: const UILabels(
-                      text:
-                          "Encryption helps protect your personal finanical data",
+                      text: "Encryption helps protect your personal finanical data",
                       textLines: 2,
                       color: AppColors.black,
                       fontWeight: FontWeight.w400,
@@ -166,22 +153,14 @@ class FoundPlaid extends SheetView {
                   leading: Container(
                     width: 30,
                     height: 30,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: AppColors.purpura4),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: AppColors.purpura4),
                   ),
                 ),
                 const Divider(),
                 ListTile(
-                  title: const UILabels(
-                      text: "Private",
-                      textLines: 1,
-                      color: AppColors.black,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18),
+                  title: const UILabels(text: "Private", textLines: 1, color: AppColors.black, fontWeight: FontWeight.w600, fontSize: 18),
                   subtitle: const UILabels(
-                      text:
-                      "Your credentials will never be made accessible to Affinity Plus",
+                      text: "Your credentials will never be made accessible to Affinity Plus",
                       textLines: 2,
                       color: AppColors.black,
                       fontWeight: FontWeight.w400,
@@ -189,9 +168,7 @@ class FoundPlaid extends SheetView {
                   leading: Container(
                     width: 30,
                     height: 30,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: AppColors.purpura4),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: AppColors.purpura4),
                   ),
                 ),
                 const Divider(),
@@ -228,8 +205,7 @@ class FoundPlaid extends SheetView {
         backgroundColor: Theme.of(globals.hometabContext).cardColor,
         context: globals.hometabContext,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
         builder: (BuildContext bc) {
           return Padding(
@@ -245,17 +221,13 @@ class FoundPlaid extends SheetView {
                 Container(
                   width: 120,
                   height: 60,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: AppColors.purpura4),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: AppColors.purpura4),
                 ),
                 const SizedBox(height: 16),
                 Container(
                   width: 120,
                   height: 40,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: AppColors.purpura4),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: AppColors.purpura4),
                 ),
                 const SizedBox(height: 16),
                 const UILabels(
@@ -267,28 +239,38 @@ class FoundPlaid extends SheetView {
                 ),
                 const SizedBox(height: 16),
                 Column(
-                  children: userLogin
-                      .toJsonLoginPlaid()
+                  children: globals.userPersonal.userFroms.value
+                      .froms([
+                        "email",
+                        "password",
+                      ])
                       .values
                       .map((e) => FromView(
-                    user: e,
-                  ))
+                            user: e,
+                            onSubmitted: (k) {
+                              // k == 'password'
+                              //     ? globals.userPersonal.validateLogin()
+                              //         ? login()
+                              //         : loginError()
+                              //     : null;
+                            },
+                          ))
                       .toList(),
                 ),
                 const SizedBox(height: 32),
-              GestureDetector(
-                child: Center(
-                  child: const UILabels(
-                    text: 'Reset Password',
-                    textLines: 2,
-                    color: AppColors.blue,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    textAlign: TextAlign.center,
+                GestureDetector(
+                  child: Center(
+                    child: const UILabels(
+                      text: 'Reset Password',
+                      textLines: 2,
+                      color: AppColors.blue,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
+                  onTap: () {},
                 ),
-                onTap: (){},
-              ),
                 const SizedBox(height: 8),
                 SizedBox(
                   height: 50,
@@ -309,8 +291,7 @@ class FoundPlaid extends SheetView {
               ],
             ),
           );
-        }).whenComplete(() {
-    });
+        }).whenComplete(() {});
   }
 
   void verifyIdentity(context) {
@@ -319,8 +300,7 @@ class FoundPlaid extends SheetView {
         backgroundColor: Theme.of(globals.hometabContext).cardColor,
         context: globals.hometabContext,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
         builder: (BuildContext bc) {
           return Padding(
@@ -349,7 +329,7 @@ class FoundPlaid extends SheetView {
                   fontWeight: FontWeight.w400,
                 ),
                 const SizedBox(height: 32),
-                verifyIdentily( "Text"),
+                verifyIdentily("Text"),
                 const SizedBox(height: 32),
                 GestureDetector(
                   child: const Center(
@@ -362,7 +342,7 @@ class FoundPlaid extends SheetView {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  onTap: (){},
+                  onTap: () {},
                 ),
                 const SizedBox(height: 8),
                 SizedBox(
@@ -395,8 +375,7 @@ class FoundPlaid extends SheetView {
         backgroundColor: Theme.of(globals.hometabContext).cardColor,
         context: globals.hometabContext,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
         builder: (BuildContext bc) {
           return Padding(
@@ -425,7 +404,7 @@ class FoundPlaid extends SheetView {
                   fontWeight: FontWeight.w400,
                 ),
                 const SizedBox(height: 32),
-                verifyIdentily( "Individual"),
+                verifyIdentily("Individual"),
                 const SizedBox(height: 32),
                 SizedBox(
                   height: 50,
@@ -439,8 +418,7 @@ class FoundPlaid extends SheetView {
                         fontWeight: FontWeight.w700,
                       ),
                       colorList: const [],
-                      cb: (v) {
-                      }),
+                      cb: (v) {}),
                 )
               ],
             ),

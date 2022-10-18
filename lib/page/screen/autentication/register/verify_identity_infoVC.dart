@@ -6,7 +6,7 @@ import 'package:tappengine/model/objects/user/user.dart';
 import 'package:tappengine/page/screen/autentication/register/verify_emailVC.dart';
 import 'package:tappengine/page/tab/homeTab.dart';
 import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
-
+import '../../../../helpers/globals.dart' as globals;
 import '../../../../widgets/animation/animation.dart';
 import '../../../../widgets/ui_kits/button_ui/button_ui.dart';
 import '../../../../widgets/views/form/form.dart';
@@ -98,11 +98,15 @@ class _VerifyIdentityInfoVCState extends State<VerifyIdentityInfoVC> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: userLogin
-                        .toJsonVerifyIdentity3()
+                    children: globals.userPersonal.userFroms.value
+                        .froms([
+                          "email",
+                          "password",
+                        ])
                         .values
                         .map((e) => FromView(
                               user: e,
+                              onSubmitted: (k) {},
                             ))
                         .toList(),
                   ),

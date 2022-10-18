@@ -18,7 +18,6 @@ class UITextFields extends StatelessWidget {
   final bool passwordVisible;
   final bool enable;
   final TextInputType type;
-  final TextEditingController? inputText = TextEditingController();
   var textSelect = false.obs;
   UITextFields(
       {super.key,
@@ -86,7 +85,6 @@ class UITextFields extends StatelessWidget {
                   }
                 },
 
-                controller: inputText,
                 obscureText: !passwordVisible,
                 onChanged: (text) {
                   cbChenge!(text, cname!);

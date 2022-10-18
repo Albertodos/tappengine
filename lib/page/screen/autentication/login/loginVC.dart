@@ -7,10 +7,12 @@ import 'package:tappengine/model/objects/user/user.dart';
 import 'package:tappengine/page/screen/autentication/register/registerVC.dart';
 import 'package:tappengine/page/tab/homeTab.dart';
 import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
-
+import '../../../../helpers/globals.dart' as globals;
 import '../../../../widgets/animation/animation.dart';
 import '../../../../widgets/ui_kits/button_ui/button_ui.dart';
 import '../../../../widgets/views/form/form.dart';
+import '../../../../widgets/views/reusebles/reusables.dart';
+import '../controller/autentication.dart';
 
 class LoginVC extends StatefulWidget {
   const LoginVC({Key? key}) : super(key: key);
@@ -20,21 +22,18 @@ class LoginVC extends StatefulWidget {
 }
 
 class _LoginVCState extends State<LoginVC> {
+  final Autentication autenticationC = Get.put(Autentication());
+
   bool selected = true;
   double opacityLevel = 0.0;
   bool _passwordVisible = false;
   var userLogin = User();
+  var loading = false.obs;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(const Duration(milliseconds: 50), () {
-      setState(() {
-        // selected = true;
-        opacityLevel = opacityLevel = 1.0;
-      });
-    });
   }
 
   @override
@@ -45,108 +44,140 @@ class _LoginVCState extends State<LoginVC> {
         height: Get.height,
         width: Get.width,
         padding: const EdgeInsets.all(30),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 64,
-            ),
-            SizedBox(
-              height: 120,
-              child: SvgPicture.asset(
-                'assets/logo/complete_logo.svg',
-                fit: BoxFit.fitHeight,
+        child: Obx(
+          () => Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 16,
               ),
-            ),
-            const SizedBox(
-              height: 28,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            AnimationUI(
-              widget: Stack(
-                alignment: Alignment.topCenter,
-                children: [
-                  Container(
-                    width: Get.width,
-                    padding: const EdgeInsets.only(left: 30, top: 40, right: 30, bottom: 40),
-                    margin: const EdgeInsets.only(top: 32),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: AppColors.white),
-                    child: Column(
-                      children: [
-                        Column(
-                          children: userLogin
-                              .toJsonLogin()
-                              .values
-                              .map((e) => FromView(
-                                    user: e,
-                                  ))
-                              .toList(),
+              const ReusablesView().isBack(),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 44,
+                      ),
+                      SizedBox(
+                        height: 120,
+                        child: SvgPicture.asset(
+                          'assets/logo/complete_logo.svg',
+                          fit: BoxFit.fitHeight,
                         ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        SizedBox(
-                            height: 50,
-                            child: UIBottons(
-                                labels: Row(
-                                  children: [
-                                    const Expanded(
-                                      child: UILabels(
-                                        text: 'Sign In',
-                                        textLines: 0,
-                                        color: AppColors.white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w700,
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                    if (!selected)
-                                      const Positioned(
-                                        right: 30,
-                                        top: 15,
-                                        child: SizedBox(
-                                          width: 20,
-                                          height: 20,
-                                          child: CircularProgressIndicator(
-                                            color: AppColors.white,
+                      ),
+                      const SizedBox(
+                        height: 28,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      AnimationUI(
+                        widget: Stack(
+                          alignment: Alignment.topCenter,
+                          children: [
+                            Container(
+                              width: Get.width,
+                              padding: const EdgeInsets.only(left: 30, top: 40, right: 30, bottom: 40),
+                              margin: const EdgeInsets.only(top: 32),
+                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: AppColors.white),
+                              child: Column(
+                                children: [
+                                  Column(
+                                    children: globals.userPersonal.userFroms.value
+                                        .froms([
+                                          "email",
+                                          "password",
+                                        ])
+                                        .values
+                                        .map((e) => FromView(
+                                              user: e,
+                                              onSubmitted: (k) {
+                                                // k == 'password'
+                                                //     ? globals.userPersonal.validateLogin()
+                                                //         ? login()
+                                                //         : loginError()
+                                                //     : null;
+                                                autenticationC.login(context, userLogin.email.toString()).then((value) {
+                                                  print(value);
+                                                });
+                                              },
+                                            ))
+                                        .toList(),
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  SizedBox(
+                                      height: 50,
+                                      child: UIBottons(
+                                          labels: Row(
+                                            children: [
+                                              const Expanded(
+                                                child: UILabels(
+                                                  text: 'Login',
+                                                  textLines: 0,
+                                                  color: AppColors.white,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w700,
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ),
+                                              if (!selected)
+                                                const Positioned(
+                                                  right: 30,
+                                                  top: 15,
+                                                  child: SizedBox(
+                                                    width: 20,
+                                                    height: 20,
+                                                    child: CircularProgressIndicator(
+                                                      color: AppColors.white,
+                                                    ),
+                                                  ),
+                                                )
+                                            ],
                                           ),
-                                        ),
-                                      )
-                                  ],
-                                ),
-                                colorList: const [],
-                                cb: (v) {
-                                  // setState(() {
-                                  //   selected = !selected;
-                                  // });
-                                  Get.offAll(const HomeTab(),
-                                      duration: const Duration(seconds: 1), //duration of transitions, default 1 sec
-                                      transition: Transition.cupertino);
-                                })),
-                      ],
-                    ),
+                                          colorList: const [],
+                                          cb: (v) {
+                                            // setState(() {
+                                            //   selected = !selected;
+                                            // });
+
+                                            autenticationC.login(context, userLogin.email.toString()).then((value) {
+                                              Get.offAll(const HomeTab(),
+                                                  duration: const Duration(seconds: 1), //duration of transitions, default 1 sec
+                                                  transition: Transition.cupertino);
+                                            });
+                                            // Get.offAll(const HomeTab(),
+                                            //     duration: const Duration(seconds: 1), //duration of transitions, default 1 sec
+                                            //     transition: Transition.cupertino);
+                                          })),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              height: 64,
+                              width: 64,
+                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: AppColors.purpura.withAlpha(25)),
+                              child: SvgPicture.asset(
+                                'assets/icons/user_login.svg',
+                                fit: BoxFit.fitHeight,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ).scale(),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                    ],
                   ),
-                  Container(
-                    height: 64,
-                    width: 64,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: AppColors.purpura.withAlpha(25)),
-                    child: SvgPicture.asset(
-                      'assets/icons/user_login.svg',
-                      fit: BoxFit.fitHeight,
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ).scale(),
-            const SizedBox(
-              height: 20,
-            ),
-            const Expanded(
-              child: SizedBox(),
-            ),
-            gotoRegister(),
-          ],
+              gotoRegister(),
+            ],
+          ),
         ),
       ),
     );
