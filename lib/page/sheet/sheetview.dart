@@ -223,6 +223,44 @@ class SheetView {
     );
   }
 
+  Widget view05(Color bg, value) {
+    return Container(
+      width: Get.width,
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        color: bg,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Row(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.center, children: [
+              Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(100)),
+                  color: bg == AppColors.purpura ? AppColors.gray : AppColors.purpura,
+                ),
+              ),
+              const SizedBox(
+                width: 16,
+              ),
+              UILabels(
+                text: value,
+                textLines: 1,
+                color: bg == AppColors.purpura ? AppColors.gray : AppColors.black,
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+              ),
+
+            ]),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget selectIDType(Color bg, title) {
     return Container(
       width: Get.width,

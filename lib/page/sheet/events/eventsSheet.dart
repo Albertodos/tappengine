@@ -32,14 +32,14 @@ class EventsSheet extends SheetView {
                   width: 120,
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(60)),
-                    color: AppColors.red,
+                    color: AppColors.black,
                   ),
                 ),
                 const SizedBox(
                   height: 32,
                 ),
                 const UILabels(
-                  text: 'McDonald s - Dividend',
+                  text: 'Netflix',
                   textLines: 0,
                   color: AppColors.purpura,
                   fontSize: 24,
@@ -218,14 +218,14 @@ class EventsSheet extends SheetView {
                 children: const [
                   Icon(
                     Icons.info_outline,
-                    color: AppColors.blue,
+                    color: AppColors.blue1,
                     size: 20,
                   ),
                   SizedBox(width: 5),
                   UILabels(
                     text: "Cash Dividend",
                     textLines: 1,
-                    color: AppColors.blue,
+                    color: AppColors.blue1,
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),
@@ -305,7 +305,7 @@ class EventsSheet extends SheetView {
               ),
             ],
           ),
-          const SizedBox(height: 16),
+          //const SizedBox(height: 16),
         ],
       ),
     );

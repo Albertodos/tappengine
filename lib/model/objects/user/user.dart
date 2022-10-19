@@ -278,6 +278,31 @@ class User {
     return data;
   }
 
+  Map<String, dynamic> toJsonTransaction() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['OrderDate'] = {
+      "value": "",
+      "name": "Order date",
+      "hintText": "Last 30 days",
+      "keyboardType": TextInputType.text,
+      "sufix": IconButton(
+        icon: const Icon(Icons.arrow_drop_down),
+        onPressed: () {},
+      ),
+    };
+    data['TransactionType'] = {
+      "value": "",
+      "name": "Transaction Type",
+      "hintText": "Show all",
+      "keyboardType": TextInputType.text,
+      "sufix": IconButton(
+        icon: const Icon(Icons.arrow_drop_down),
+        onPressed: () {},
+      ),
+    };
+    return data;
+  }
+
   Map<String, dynamic> toJsonVerifyIdentity3() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['question1'] = {

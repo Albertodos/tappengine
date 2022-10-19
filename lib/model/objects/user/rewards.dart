@@ -9,42 +9,42 @@ class UserRewards extends User {
   Map<String, dynamic> toJsonUserRewards() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['1'] = {
-      "leading": leading("assets/icons/sms.svg"),
+      "leading": leading("assets/icons/rewards.svg"),
       "title": "Buy Bitcoin (BTC)",
       "subtitle": 'k27 July, 06:42 pm',
       "trailing": "+\$10",
       "root": ''
     };
     data['2'] = {
-      "leading": leading("assets/icons/sms.svg"),
+      "leading": leading("assets/icons/rewards.svg"),
       "title": "Buy Bitcoin (BTC)",
       "subtitle": 'k27 July, 06:42 pm',
       "trailing": "+\$10",
       "root": ''
     };
     data['3'] = {
-      "leading": leading("assets/icons/sms.svg"),
+      "leading": leading("assets/icons/rewards.svg"),
       "title": "Buy Bitcoin (BTC)",
       "subtitle": 'k27 July, 06:42 pm',
       "trailing": "+\$10",
       "root": ''
     };
     data['4'] = {
-      "leading": leading("assets/icons/sms.svg"),
+      "leading": leading("assets/icons/rewards.svg"),
       "title": "Buy Bitcoin (BTC)",
       "subtitle": 'k27 July, 06:42 pm',
       "trailing": "+\$10",
       "root": ''
     };
     data['5'] = {
-      "leading": leading("assets/icons/sms.svg"),
+      "leading": leading("assets/icons/rewards.svg"),
       "title": "Buy Bitcoin (BTC)",
       "subtitle": 'k27 July, 06:42 pm',
       "trailing": "+\$10",
       "root": ''
     };
     data['6'] = {
-      "leading": leading("assets/icons/sms.svg"),
+      "leading": leading("assets/icons/rewards.svg"),
       "title": "Buy Bitcoin (BTC)",
       "subtitle": 'k27 July, 06:42 pm',
       "trailing": "+\$10",

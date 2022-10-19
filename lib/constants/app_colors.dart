@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const blue = Color.fromRGBO(34, 86, 165, 1);
+  static const blue1 = Color.fromRGBO(87, 110, 237, 1);
   static const gray = Color.fromRGBO(251, 249, 255, 1);
   static const gray0 = Color.fromRGBO(240, 242, 249, 1);
   static const gray1 = Color.fromRGBO(229, 221, 244, 1);
@@ -18,6 +19,7 @@ class AppColors {
   static const purpura4 = Color.fromRGBO(174, 149, 218, 1);
   static const purpura5 = Color.fromRGBO(254, 239, 250, 1);
   static const purpura6 = Color.fromRGBO(192, 175, 203, 1);
+  static const purpura7 = Color.fromRGBO(188, 177, 194, 1);
 
   static const black = Color.fromRGBO(0, 0, 0, 1);
   static const white = Color.fromRGBO(255, 255, 255, 1);

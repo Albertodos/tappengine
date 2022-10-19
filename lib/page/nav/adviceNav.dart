@@ -5,6 +5,7 @@ import 'package:tappengine/page/screen/home/homeVC.dart';
 import 'package:tappengine/page/screen/profile/edit_emailVC.dart';
 import 'package:tappengine/page/screen/profile/edit_phone_numberVC.dart';
 import 'package:tappengine/page/screen/profile/edit_profileVC.dart';
+import '../screen/advice/adviceVC.dart';
 import '../screen/profile/edit_addressVC.dart';
 import '../screen/profile/notificationsVC.dart';
 import '../screen/profile/personal_infoVC.dart';
@@ -28,6 +29,7 @@ class _AdviceNavState extends State<AdviceNav> {
       routes: {
         '/': (context) => widget.root,
         '/home': (context) => const HomeVC(),
+        '/advice': (context) => const AdviceVC(),
         '/personalInfo': (context) => const PersonalInfoVC(),
         '/editProfile': (context) => const EditProfileVC(),
         '/editPhoneNumber': (context) => const EditPhoneNumberVC(),

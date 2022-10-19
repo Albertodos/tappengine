@@ -225,14 +225,14 @@ class UserCards extends StatelessWidget {
             text: user['title'],
             textLines: 1,
             color: AppColors.black,
-            fontSize: 16,
+            fontSize: 14,
             fontWeight: FontWeight.w400,
           ),
           subtitle: UILabels(
             text: user['subtitle'],
             textLines: 1,
             color: AppColors.black,
-            fontSize: 16,
+            fontSize: 12,
             fontWeight: FontWeight.w400,
           ),
           trailing: UILabels(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tappengine/constants/app_colors.dart';
+import 'package:tappengine/page/screen/advice/adviceVC.dart';
 import 'package:tappengine/page/screen/crypto/cryptoVC.dart';
 import 'package:tappengine/page/screen/home/homeVC.dart';
 import '../../helpers/globals.dart' as globals;
@@ -26,7 +27,7 @@ class _HomeTabState extends State<HomeTab> {
     const HomeNav(root: HomeVC()),
     const CryptoNav(root: CryptoVC()),
     const StrocksNav(root: StrocksVC()),
-    const AdviceNav(root: FirstTimeDashboard()),
+    const AdviceNav(root: AdviceVC()),
     const RewardsNav(root: RewardsVC()),
   ];
 
