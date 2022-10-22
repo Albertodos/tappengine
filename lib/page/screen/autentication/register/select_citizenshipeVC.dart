@@ -64,18 +64,18 @@ class _SelectCitizeShipeVCState extends State<SelectCitizeShipeVC> {
             const UILabels(
               text: "Select your citizenship",
               textLines: 1,
-              fontSize: 22,
-              fontWeight: FontWeight.w500,
+              fontSize: 24,
+              fontWeight: FontWeight.w700,
               color: AppColors.black,
             ),
             const SizedBox(
               height: 16,
             ),
             const UILabels(
-              text: "Tappengine is legally required to collect this information. If you're a citizen of more than one country, please pick one.",
+              text: "Affinity Plus is legally required to collect this information. If you're a citizen of more than one country, please pick one.",
               textLines: 0,
               fontSize: 12,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w400,
               color: AppColors.black,
               textAlign: TextAlign.center,
             ),

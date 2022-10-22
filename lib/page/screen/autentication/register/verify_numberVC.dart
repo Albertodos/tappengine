@@ -66,8 +66,8 @@ class _VerifyNumberVCState extends State<VerifyNumberVC> {
               const UILabels(
                 text: "Set up two-step verification",
                 textLines: 0,
-                fontSize: 22,
-                fontWeight: FontWeight.w500,
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
                 color: AppColors.black,
               ),
               const SizedBox(
@@ -100,10 +100,10 @@ class _VerifyNumberVCState extends State<VerifyNumberVC> {
                       ),
                       const UILabels(
                         text:
-                            "Security is critical at Tappengine. To help keep your account safe, we'll text you a varification code when you sign in on a new device.",
+                            "Security is critical at Affinity Plus. To help keep your account safe, we'll text you a varification code when you sign in on a new device.",
                         textLines: 0,
                         fontSize: 12,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w400,
                         color: AppColors.black,
                         textAlign: TextAlign.center,
                       ),
@@ -149,11 +149,11 @@ class _VerifyNumberVCState extends State<VerifyNumberVC> {
     return Text.rich(
       TextSpan(
           text: "Code didn't arrive?",
-          style: const TextStyle(fontSize: 12, color: AppColors.black, fontWeight: FontWeight.w400),
+          style: const TextStyle(fontSize: 16, color: AppColors.black, fontWeight: FontWeight.w400),
           children: <TextSpan>[
             TextSpan(
                 text: "Resend",
-                style: const TextStyle(fontSize: 12, color: AppColors.blue, fontWeight: FontWeight.w400),
+                style: const TextStyle(fontSize: 16, color: AppColors.blue, fontWeight: FontWeight.w700),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     print("Register Page");

@@ -62,8 +62,8 @@ class _VerifyIdentityInfoVCState extends State<VerifyIdentityInfoVC> {
               const UILabels(
                 text: "Verify your info",
                 textLines: 1,
-                fontSize: 22,
-                fontWeight: FontWeight.w500,
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
                 color: AppColors.black,
               ),
               const SizedBox(

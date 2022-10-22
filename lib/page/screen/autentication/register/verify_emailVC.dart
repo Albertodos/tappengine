@@ -60,8 +60,8 @@ class _VerifyEmailVCState extends State<VerifyEmailVC> {
             const UILabels(
               text: "Verify your email",
               textLines: 1,
-              fontSize: 22,
-              fontWeight: FontWeight.w500,
+              fontSize: 24,
+              fontWeight: FontWeight.w700,
               color: AppColors.black,
             ),
             const SizedBox(
@@ -89,11 +89,11 @@ class _VerifyEmailVCState extends State<VerifyEmailVC> {
     return Text.rich(
       TextSpan(
           text: "Email didn't arrive? ",
-          style: const TextStyle(fontSize: 12, color: AppColors.black, fontWeight: FontWeight.w400),
+          style: const TextStyle(fontSize: 16, color: AppColors.black, fontWeight: FontWeight.w400),
           children: <TextSpan>[
             TextSpan(
                 text: "Resend",
-                style: const TextStyle(fontSize: 12, color: AppColors.blue, fontWeight: FontWeight.w400),
+                style: const TextStyle(fontSize: 16, color: AppColors.blue, fontWeight: FontWeight.w700),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     Get.offAll(const VerifyNumberVC());
@@ -108,18 +108,18 @@ class _VerifyEmailVCState extends State<VerifyEmailVC> {
     return Text.rich(
       TextSpan(
           text: "We sent a verification email to",
-          style: const TextStyle(fontSize: 12, color: AppColors.black, fontWeight: FontWeight.w400),
+          style: const TextStyle(fontSize: 16, color: AppColors.black, fontWeight: FontWeight.w400),
           children: <TextSpan>[
             TextSpan(
                 text: " kayfadeyi@tappengine.com.",
-                style: const TextStyle(fontSize: 12, color: AppColors.blue, fontWeight: FontWeight.w400),
+                style: const TextStyle(fontSize: 16, color: AppColors.blue, fontWeight: FontWeight.w400),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     // code to open / launch privacy policy link here
                   }),
             const TextSpan(
               text: " the link inside to get started! ",
-              style: TextStyle(fontSize: 12, color: AppColors.black, fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 16, color: AppColors.black, fontWeight: FontWeight.w400),
             ),
           ]),
       textAlign: TextAlign.center,

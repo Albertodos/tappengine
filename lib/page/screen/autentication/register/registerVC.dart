@@ -63,8 +63,8 @@ class _RegisterVCState extends State<RegisterVC> {
                     const UILabels(
                       text: "Create your account",
                       textLines: 1,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w500,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
                       color: AppColors.black,
                     ),
                     const SizedBox(
@@ -154,7 +154,39 @@ class _RegisterVCState extends State<RegisterVC> {
                 ),
               ),
             ),
-            gotoLogin(),
+            SizedBox(
+              width: Get.width,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children:  [
+                  const UILabels(
+                    text: "Already have a Afinity Plus account? ",
+                    textLines: 0,
+                    color: AppColors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    textAlign: TextAlign.center,
+                  ),
+                  GestureDetector(
+                    child: const UILabels(
+                      text: "Login",
+                      textLines: 0,
+                      color: AppColors.blue,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      textAlign: TextAlign.center,
+                    ),
+                    onTap: (){
+                      Get.offAll(const LoginVC(),
+                          duration: const Duration(seconds: 1), //duration of transitions, default 1 sec
+                          transition: Transition.cupertino);
+                    },
+                  ),
+                ],
+              ),
+            ),
+
+            //gotoLogin(),
           ],
         ),
       ),
@@ -164,7 +196,7 @@ class _RegisterVCState extends State<RegisterVC> {
   Widget gotoLogin() {
     return Text.rich(
       TextSpan(
-          text: "Already have a tappengine account? ",
+          text: "Already have a Afinity Plus account? ",
           style: const TextStyle(fontSize: 12, color: AppColors.black, fontWeight: FontWeight.w400),
           children: <TextSpan>[
             TextSpan(

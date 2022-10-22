@@ -67,22 +67,14 @@ class _VerifyIdentityVCState extends State<VerifyIdentityVC> {
               const UILabels(
                 text: "Verify your identity",
                 textLines: 1,
-                fontSize: 22,
-                fontWeight: FontWeight.w500,
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
                 color: AppColors.black,
               ),
               const SizedBox(
                 height: 20,
               ),
-              const UILabels(
-                text:
-                    "Financial regulations require us to verify your identity. Once complete, you can buy, sell or transfer cryptocurrency. Learn more.",
-                textLines: 0,
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-                color: AppColors.black,
-                textAlign: TextAlign.center,
-              ),
+              inf(),
               const SizedBox(
                 height: 20,
               ),
@@ -209,6 +201,23 @@ class _VerifyIdentityVCState extends State<VerifyIdentityVC> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget inf() {
+    return Text.rich(
+      TextSpan(
+          text: "Financial regulations require us to verify your identity. Once complete, you can buy, sell or transfer cryptocurrency.",
+          style: const TextStyle(fontSize: 12, color: AppColors.black, fontWeight: FontWeight.w400),
+          children: <TextSpan>[
+            TextSpan(
+                text: " Learn more.",
+                style: const TextStyle(fontSize: 12, color: AppColors.blue, fontWeight: FontWeight.w600),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                  }),
+          ]),
+      textAlign: TextAlign.center,
     );
   }
 }

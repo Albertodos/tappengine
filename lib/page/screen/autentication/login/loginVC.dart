@@ -81,7 +81,7 @@ class _LoginVCState extends State<LoginVC> {
                               width: Get.width,
                               padding: const EdgeInsets.only(left: 30, top: 40, right: 30, bottom: 40),
                               margin: const EdgeInsets.only(top: 32),
-                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: AppColors.white),
+                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: AppColors.white),
                               child: Column(
                                 children: [
                                   Column(
@@ -175,7 +175,39 @@ class _LoginVCState extends State<LoginVC> {
                   ),
                 ),
               ),
-              gotoRegister(),
+              SizedBox(
+                width: Get.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const UILabels(
+                      text: "Haven't an account? ",
+                      textLines: 0,
+                      color: AppColors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      textAlign: TextAlign.center,
+                    ),
+                    GestureDetector(
+                      child: const UILabels(
+                        text: "Create an account",
+                        textLines: 0,
+                        color: AppColors.blue,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        textAlign: TextAlign.center,
+                      ),
+                      onTap: (){
+                        Get.offAll(const RegisterVC(),
+                            duration: const Duration(seconds: 1), //duration of transitions, default 1 sec
+                            transition: Transition.cupertino);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+
+              //gotoRegister(),
             ],
           ),
         ),
