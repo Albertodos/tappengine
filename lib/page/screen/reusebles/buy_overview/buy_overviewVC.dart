@@ -15,12 +15,7 @@ import '../../../../model/objects/pull_data.dart';
 import '../../../../widgets/structural/list_Structural.dart';
 import '../../../../widgets/ui_kits/button_ui/button_ui.dart';
 import '../../../../widgets/ui_kits/labels_ui/label_ui.dart';
-import '../../../../widgets/views/cards/analytics/analytics.dart';
-import '../../../../widgets/views/cards/balances/balances.dart';
-import '../../../../widgets/views/cards/menu/menuCard.dart';
-import '../../../../widgets/views/cards/publicity/publicity.dart';
-import '../../../../widgets/views/cards/user/userCard.dart';
-import '../../../../widgets/views/cards/watchlists.dart/watchlists.dart';
+import '../../../../widgets/views/cards/crypto/cryptos.dart';
 
 class BuyOverviewVC extends StatefulWidget {
   const BuyOverviewVC({super.key});
@@ -35,20 +30,20 @@ class _BuyOverviewVCState extends State<BuyOverviewVC> {
 
   @override
   Widget build(BuildContext context) {
-    var pulldata = PullData(data: [const BalancesCards().card02(context)], more: "", title: "", position: Axis.vertical);
-    var pulldata2 = PullData(data: [
-      MenuCards().tabMenu([
-        "Overview",
-        "News",
-        "Orders",
-        "Transactions",
-      ], (p) {
-        controller.animateToPage(p,
-            curve: Curves.decelerate, duration: const Duration(milliseconds: 300)); // for animated jump. Requires a curve and a duration
+    var pulldata = PullData(data: [CryptoCards.card02(context)], more: "", title: "", position: Axis.vertical);
+    // var pulldata2 = PullData(data: [
+    //   MenuCards().tabMenu([
+    //     "Overview",
+    //     "News",
+    //     "Orders",
+    //     "Transactions",
+    //   ], (p) {
+    //     controller.animateToPage(p,
+    //         curve: Curves.decelerate, duration: const Duration(milliseconds: 300)); // for animated jump. Requires a curve and a duration
 
-        pagePosition.value = p;
-      }),
-    ], more: "", title: "", position: Axis.vertical);
+    //     pagePosition.value = p;
+    //   }),
+    // ], more: "", title: "", position: Axis.vertical);
 
     return Scaffold(
       backgroundColor: Theme.of(context).cardColor,
@@ -95,11 +90,11 @@ class _BuyOverviewVCState extends State<BuyOverviewVC> {
                         colorTitle: AppColors.black,
                         height: null,
                       ),
-                      ListStrutural(
-                        data: pulldata2,
-                        colorTitle: AppColors.black,
-                        height: null,
-                      ),
+                      // ListStrutural(
+                      //   data: pulldata2,
+                      //   colorTitle: AppColors.black,
+                      //   height: null,
+                      // ),
                       ExpandablePageView(
                         controller: controller,
                         onPageChanged: (value) {},
