@@ -15,6 +15,7 @@ class HttpService {
       final response = await request.timeout(const Duration(seconds: 60), onTimeout: () {
         throw TimeoutException('The connection has timed out , Please try again!');
       });
+      print(response.statusCode);
       if (response.statusCode == 200) {
         var result = jsonDecode(response.body);
         return result;
@@ -31,15 +32,33 @@ class HttpService {
   }
 
   static Future getService(url, context) async {
+    print(ApiPath.baseUrl + url);
     var response = await statusError(http.get(Uri.parse(ApiPath.baseUrl + url), headers: {
       // 'Authorization': 'Bearer ${globals.user.token}',
-      // "Content-Type":"application/json",
+      // "Content-Type": "application/json",
       //
       // 'Content-type': 'text/plain',
     }));
 
     if (response.runtimeType == ErrorRequest) {
-      requestAlertError(context, response);
+      // requestAlertError(context, response);
+
+      return null;
+    }
+    return response;
+  }
+
+  static Future getMicroService(url, context) async {
+    print(ApiPath.baseUrlMicro + url);
+    var response = await statusError(http.get(Uri.parse(ApiPath.baseUrlMicro + url), headers: {
+      // 'Authorization': 'Bearer ${globals.user.token}',
+      // "Content-Type": "application/json",
+      //
+      // 'Content-type': 'text/plain',
+    }));
+
+    if (response.runtimeType == ErrorRequest) {
+      // requestAlertError(context, response);
 
       return null;
     }

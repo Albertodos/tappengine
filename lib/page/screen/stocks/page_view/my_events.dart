@@ -18,11 +18,11 @@ class MyEventsVC extends StatefulWidget {
 class _MyEventsVCState extends State<MyEventsVC> {
   @override
   Widget build(BuildContext context) {
-    var pulldata1 = PullData(
-        data: [EventsCards().cards02(context), EventsCards().cards02(context), EventsCards().cards02(context)],
-        more: "View All",
-        title: "Events",
-        position: Axis.vertical);
+    // var pulldata1 = PullData(
+    //     data: [EventsCards().cards02(context), EventsCards().cards02(context), EventsCards().cards02(context)],
+    //     more: "View All",
+    //     title: "Events",
+    //     position: Axis.vertical);
 
     return Column(
       children: [
@@ -49,11 +49,11 @@ class _MyEventsVCState extends State<MyEventsVC> {
         const SizedBox(
           height: 32,
         ),
-        ListStrutural(
-          data: pulldata1,
-          colorTitle: AppColors.black,
-          height: null,
-        ),
+        // ListStrutural(
+        //   data: pulldata1,
+        //   colorTitle: AppColors.black,
+        //   height: null,
+        // ),
       ],
     );
   }

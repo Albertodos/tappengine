@@ -21,21 +21,21 @@ class _CorporateEventsVCState extends State<CorporateEventsVC> {
   var eventesPosition = 0.obs;
   @override
   Widget build(BuildContext context) {
-    var pulldata = PullData(data: [
-      EventsCards().cardHearder(context, (v) {
-        eventesPosition.value = v;
-      })
-    ], more: "", title: "", position: Axis.vertical);
-    var pulldata1 = PullData(
-        data: [EventsCards().cards02(context), EventsCards().cards02(context), EventsCards().cards02(context)],
-        more: "View All",
-        title: "Events",
-        position: Axis.vertical);
-    var pulldata2 = PullData(
-        data: [EventsCards().cards01(context), EventsCards().cards01(context), EventsCards().cards01(context)],
-        more: "View All",
-        title: "Events",
-        position: Axis.vertical);
+    // var pulldata = PullData(data: [
+    //   EventsCards().cardHearder(context, (v) {
+    //     eventesPosition.value = v;
+    //   })
+    // ], more: "", title: "", position: Axis.vertical);
+    // var pulldata1 = PullData(
+    //     data: [EventsCards().cards02(context), EventsCards().cards02(context), EventsCards().cards02(context)],
+    //     more: "View All",
+    //     title: "Events",
+    //     position: Axis.vertical);
+    // var pulldata2 = PullData(
+    //     data: [EventsCards().cards01(context), EventsCards().cards01(context), EventsCards().cards01(context)],
+    //     more: "View All",
+    //     title: "Events",
+    //     position: Axis.vertical);
 
     return Scaffold(
       backgroundColor: Theme.of(context).cardColor,
@@ -74,11 +74,11 @@ class _CorporateEventsVCState extends State<CorporateEventsVC> {
             child: Obx(
               () => Column(
                 children: [
-                  ListStrutural(
-                    data: pulldata,
-                    colorTitle: AppColors.black,
-                    height: null,
-                  ),
+                  // ListStrutural(
+                  //   data: pulldata,
+                  //   colorTitle: AppColors.black,
+                  //   height: null,
+                  // ),
                   Padding(
                     padding: const EdgeInsets.only(left: 32, right: 32),
                     child: Container(
@@ -102,17 +102,17 @@ class _CorporateEventsVCState extends State<CorporateEventsVC> {
                   const SizedBox(
                     height: 32,
                   ),
-                  eventesPosition.value == 0
-                      ? ListStrutural(
-                          data: pulldata1,
-                          colorTitle: AppColors.black,
-                          height: null,
-                        )
-                      : ListStrutural(
-                          data: pulldata2,
-                          colorTitle: AppColors.black,
-                          height: null,
-                        ),
+                  // eventesPosition.value == 0
+                  //     ? ListStrutural(
+                  //         data: pulldata1,
+                  //         colorTitle: AppColors.black,
+                  //         height: null,
+                  //       )
+                  //     : ListStrutural(
+                  //         data: pulldata2,
+                  //         colorTitle: AppColors.black,
+                  //         height: null,
+                  //       ),
                 ],
               ),
             ),

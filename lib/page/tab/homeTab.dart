@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:tappengine/constants/app_colors.dart';
-import 'package:tappengine/page/screen/crypto/cryptoVC.dart';
-import 'package:tappengine/page/screen/home/homeVC.dart';
+import 'package:tappengine/page/nav/productsNav.dart';
+import 'package:tappengine/page/screen/products/productsVC.dart';
 import '../../helpers/globals.dart' as globals;
 
-import '../nav/adviceNav.dart';
-import '../nav/cryptoNav.dart';
-import '../nav/homeNav.dart';
-import '../nav/rewardsNav.dart';
-import '../nav/strocksNav.dart';
-import '../screen/advice/ first_time_dashboard.dart';
-import '../screen/rewards/rewardsVC.dart';
-import '../screen/stocks/stocksVC.dart';
+import '../screen/products/controller/productsC.dart';
+import 'controller/tab_controller.dart';
+import 'moreSheet.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -22,61 +17,80 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  static final List<Widget> _widgetOptions = <Widget>[
-    const HomeNav(root: HomeVC()),
-    const CryptoNav(root: CryptoVC()),
-    const StrocksNav(root: StrocksVC()),
-    const AdviceNav(root: FirstTimeDashboard()),
-    const RewardsNav(root: RewardsVC()),
-  ];
+  final TabC tabC = Get.put(TabC());
+  final ProductsC productsC = Get.put(ProductsC());
+
+  var widgetOptions = <Widget>[].obs;
 
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
+    if (index == 4) {
+      if (tabC.barItems.length > 5) {
+        MoreSheet().choosePaymentMethod(tabC.products.getRange(4, tabC.products.length).toList(), context);
+      } else {
+        setState(() {
+          _selectedIndex = index;
+        });
+      }
+    } else {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    tabC.getproducts(context).then((value) {
+      widgetOptions.value =
+          tabC.products.map((element) => ProductsNav(key: Key(element.name.toString()), dataUrl: element.dataUrl.toString())).toList();
     });
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     globals.hometabContext = context;
 
-    return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Center(
-            child: _widgetOptions.elementAt(_selectedIndex),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Theme.of(context).cardColor,
-        elevation: 2,
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/home.svg", width: 19, color: _selectedIndex == 0 ? AppColors.purpura : AppColors.gray2),
-              label: "Home"),
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/crypto.svg", width: 19, color: _selectedIndex == 1 ? AppColors.purpura : AppColors.gray2),
-              label: "Crypto"),
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/stocks.svg", width: 19, color: _selectedIndex == 2 ? AppColors.purpura : AppColors.gray2),
-              label: "Stocks"),
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/advice.svg", width: 19, color: _selectedIndex == 3 ? AppColors.purpura : AppColors.gray2),
-              label: "Advice"),
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/rewards.svg", width: 19, color: _selectedIndex == 4 ? AppColors.purpura : AppColors.gray2),
-              label: "Rewards"),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: AppColors.purpura,
-        onTap: _onItemTapped,
-        // unselectedLabelStyle: Styles.style9,
-        // selectedLabelStyle: Styles.style9,
-      ),
+    return Obx(
+      () => tabC.barItems.isNotEmpty
+          ? Scaffold(
+              body: Stack(
+                children: <Widget>[
+                  Center(
+                    child: widgetOptions.isNotEmpty
+                        ? widgetOptions[_selectedIndex]
+                        : const Center(
+                            child: CircularProgressIndicator(
+                              color: AppColors.black,
+                            ),
+                          ),
+                  ),
+                ],
+              ),
+              bottomNavigationBar: BottomNavigationBar(
+                backgroundColor: Theme.of(context).cardColor,
+                elevation: 2,
+                type: BottomNavigationBarType.fixed,
+                items: tabC.barItems.length > 5 ? getMoreBarItem() : tabC.barItems,
+                currentIndex: _selectedIndex,
+                selectedItemColor: AppColors.purpura,
+                onTap: _onItemTapped,
+                // unselectedLabelStyle: Styles.style9,
+                // selectedLabelStyle: Styles.style9,
+              ),
+            )
+          : const Scaffold(
+              body: Center(
+              child: CircularProgressIndicator(
+                color: AppColors.black,
+              ),
+            )),
     );
+  }
+
+  List<BottomNavigationBarItem> getMoreBarItem() {
+    return tabC.barItems.getRange(0, 4).toList() + [tabC.getMoreBarItems()];
   }
 }

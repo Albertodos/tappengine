@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:tappengine/constants/app_colors.dart';
 import 'package:tappengine/page/screen/reusebles/more/add_money.dart';
 import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
 
+import '../../../../dependencies/shimmer/shimmer.dart';
 import '../../../../page/sheet/payment_method/payment_method.dart';
 import '../../../ui_kits/button_ui/button_ui.dart';
+import 'model/products_vies.dart';
 
-class BalancesCards extends StatelessWidget {
-  const BalancesCards({super.key});
+class ProductsCards extends StatelessWidget {
+  final ProductsView productsView;
+  const ProductsCards({super.key, required this.productsView});
 
   @override
   Widget build(BuildContext context) {
@@ -32,15 +36,15 @@ class BalancesCards extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              const UILabels(
-                text: "Crypto",
+              UILabels(
+                text: productsView.name ?? "",
                 textLines: 1,
                 color: AppColors.black,
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
               ),
-              const UILabels(
-                text: "\$3,00000.32",
+              UILabels(
+                text: productsView.value ?? "",
                 textLines: 1,
                 color: AppColors.black,
                 fontSize: 18,
@@ -48,23 +52,23 @@ class BalancesCards extends StatelessWidget {
               ),
               Row(
                 mainAxisSize: MainAxisSize.min,
-                children: const [
+                children: [
                   UILabels(
-                    text: "+\$2,33543563",
+                    text: productsView.valueChange ?? "",
                     textLines: 1,
                     color: AppColors.black,
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 16,
                   ),
-                  Icon(
+                  const Icon(
                     Icons.keyboard_arrow_down,
                     color: AppColors.green,
                   ),
                   UILabels(
-                    text: "1.82%",
+                    text: productsView.percent ?? "",
                     textLines: 1,
                     color: AppColors.green,
                     fontSize: 12,
@@ -323,6 +327,86 @@ class BalancesCards extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget shimmer() {
+    return ShimmerDependencies().shimmer(
+      SizedBox(
+        width: Get.width,
+        child: Row(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Container(
+            height: 60,
+            width: 60,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(16)),
+              color: AppColors.purpura.withAlpha(25),
+            ),
+          ),
+          const SizedBox(
+            width: 16,
+          ),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const UILabels(
+                  text: ".................",
+                  textLines: 1,
+                  color: AppColors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                ),
+                const UILabels(
+                  text: "............",
+                  textLines: 1,
+                  color: AppColors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    UILabels(
+                      text: "........",
+                      textLines: 1,
+                      color: AppColors.black,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Icon(
+                      Icons.keyboard_arrow_down,
+                      color: AppColors.green,
+                    ),
+                    UILabels(
+                      text: ".........",
+                      textLines: 1,
+                      color: AppColors.green,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                Container(
+                  height: 2,
+                  color: AppColors.purpura.withAlpha(25),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+              ],
+            ),
+          )
+        ]),
       ),
     );
   }

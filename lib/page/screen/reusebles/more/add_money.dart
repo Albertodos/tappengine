@@ -15,7 +15,7 @@ import '../../../../model/objects/user/user.dart';
 import '../../../../widgets/structural/list_Structural.dart';
 import '../../../../widgets/ui_kits/button_ui/button_ui.dart';
 import '../../../../widgets/ui_kits/labels_ui/label_ui.dart';
-import '../../../../widgets/views/cards/balances/balances.dart';
+import '../../../../widgets/views/cards/products/products.dart';
 import '../../../../widgets/views/form/form.dart';
 
 class AddMoneyVC extends StatefulWidget {
@@ -27,8 +27,7 @@ class AddMoneyVC extends StatefulWidget {
 
 class _AddMoneyVCState extends State<AddMoneyVC> {
   final pagePosition = 0.obs;
-  PageController controller =
-      PageController(viewportFraction: 1, keepPage: true);
+  PageController controller = PageController(viewportFraction: 1, keepPage: true);
   var userLogin = User();
   var list = ["\$10", "\$50", "\$100", "\$500", "\$1000"];
 
@@ -81,8 +80,7 @@ class _AddMoneyVCState extends State<AddMoneyVC> {
           Padding(
             padding: const EdgeInsets.only(left: 40.0, right: 40),
             child: UILabels(
-                text:
-                    "All trading transactions are excuted in USD. You may incur FX charges when funding your trading account.",
+                text: "All trading transactions are excuted in USD. You may incur FX charges when funding your trading account.",
                 textLines: 2,
                 color: AppColors.gray2,
                 fontWeight: FontWeight.w400,
@@ -217,7 +215,10 @@ class NumberGridCard extends StatelessWidget {
                   color: AppColors.purpura3,
                   borderRadius: BorderRadius.circular(7),
                 ),
-                child: Icon(Icons.backspace_outlined, color: AppColors.purpura,))
+                child: Icon(
+                  Icons.backspace_outlined,
+                  color: AppColors.purpura,
+                ))
             : Container(
                 alignment: Alignment.center,
                 height: 60,

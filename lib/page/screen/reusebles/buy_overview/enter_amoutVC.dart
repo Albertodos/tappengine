@@ -12,7 +12,7 @@ import '../../../../model/objects/pull_data.dart';
 import '../../../../widgets/structural/list_Structural.dart';
 import '../../../../widgets/ui_kits/button_ui/button_ui.dart';
 import '../../../../widgets/ui_kits/labels_ui/label_ui.dart';
-import '../../../../widgets/views/cards/balances/balances.dart';
+import '../../../../widgets/views/cards/products/products.dart';
 
 class EnterAmountVC extends StatefulWidget {
   const EnterAmountVC({super.key});
@@ -205,7 +205,7 @@ class _EnterAmountVCState extends State<EnterAmountVC> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Row(
-                  children:  [
+                  children: [
                     Expanded(
                       child: Row(
                         children: const [

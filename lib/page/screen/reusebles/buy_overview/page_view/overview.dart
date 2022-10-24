@@ -19,11 +19,7 @@ class _OverviewVCState extends State<OverviewVC> {
     var pulldata2 = PullData(data: [
       AnalyticsCards().card01(),
     ], more: "", title: "", position: Axis.vertical);
-    var pulldata3 = PullData(
-        data: [ReusablesView().list03()],
-        more: "",
-        title: "Investment",
-        position: Axis.vertical);
+    var pulldata3 = PullData(data: [ReusablesView().list03()], more: "", title: "Investment", position: Axis.vertical);
     var pulldata4 = PullData(
         data: [ReusablesView().list01(), ReusablesView().list01(), ReusablesView().list01(), ReusablesView().list01()],
         more: "Info",

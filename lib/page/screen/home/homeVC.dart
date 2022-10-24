@@ -8,7 +8,7 @@ import 'package:tappengine/widgets/views/cards/analytics/analytics.dart';
 import 'package:tappengine/widgets/views/cards/publicity/publicity.dart';
 import 'package:tappengine/widgets/views/cards/user/userCard.dart';
 import '../../../../helpers/globals.dart' as globals;
-import '../../../widgets/views/cards/balances/balances.dart';
+import '../../../widgets/views/cards/products/products.dart';
 import '../../../widgets/views/cards/menu/menuCard.dart';
 import '../../../widgets/views/cards/watchlists.dart/watchlists.dart';
 
@@ -20,20 +20,20 @@ class HomeVC extends StatefulWidget {
 }
 
 class _HomeVCState extends State<HomeVC> {
-  var pulldata = PullData(data: const [BalancesCards(), BalancesCards(), BalancesCards()], more: "", title: "My Balances", position: Axis.vertical);
-  var pulldata2 = PullData(data: [
-    MenuCards().tabMenu(["Crypto", "Stocks"], (p) {}),
-    WatchlistsCards().cards01(),
-    WatchlistsCards().cards01(),
-    WatchlistsCards().cards01(),
-    WatchlistsCards().cards01()
-  ], more: "", title: "My Watchlists", position: Axis.vertical);
-  var pulldata3 = PullData(data: [const PublicityCards().card01()], more: "", title: "", position: Axis.vertical);
-  var pulldata4 = PullData(data: [
-    MenuCards().tabMenu(["Crypto", "Stocks"], (p) {}),
-    const AnalyticsCards().card01()
-  ], more: "", title: "Analytics", position: Axis.vertical);
-  var pulldata5 = PullData(data: [const PublicityCards().card02()], more: "View All", title: "Learn", position: Axis.vertical);
+  // var pulldata = PullData(data: const [BalancesCards(), BalancesCards(), BalancesCards()], more: "", title: "My Balances", position: Axis.vertical);
+  // var pulldata2 = PullData(data: [
+  //   MenuCards().tabMenu(["Crypto", "Stocks"], (p) {}),
+  //   WatchlistsCards().cards01(),
+  //   WatchlistsCards().cards01(),
+  //   WatchlistsCards().cards01(),
+  //   WatchlistsCards().cards01()
+  // ], more: "", title: "My Watchlists", position: Axis.vertical);
+  // var pulldata3 = PullData(data: [const PublicityCards().card01()], more: "", title: "", position: Axis.vertical);
+  // var pulldata4 = PullData(data: [
+  //   MenuCards().tabMenu(["Crypto", "Stocks"], (p) {}),
+  //   const AnalyticsCards().card01()
+  // ], more: "", title: "Analytics", position: Axis.vertical);
+  // var pulldata5 = PullData(data: [const PublicityCards().card02()], more: "View All", title: "Learn", position: Axis.vertical);
 
   @override
   void initState() {
@@ -76,37 +76,37 @@ class _HomeVCState extends State<HomeVC> {
               expandedTitleScale: 1,
             ),
           ),
-          SliverToBoxAdapter(
-            child: Column(
-              children: [
-                ListStrutural(
-                  data: pulldata,
-                  colorTitle: AppColors.black,
-                  height: null,
-                ),
-                ListStrutural(
-                  data: pulldata2,
-                  colorTitle: AppColors.black,
-                  height: null,
-                ),
-                ListStrutural(
-                  data: pulldata3,
-                  colorTitle: AppColors.black,
-                  height: null,
-                ),
-                ListStrutural(
-                  data: pulldata4,
-                  colorTitle: AppColors.black,
-                  height: null,
-                ),
-                ListStrutural(
-                  data: pulldata5,
-                  colorTitle: AppColors.black,
-                  height: null,
-                ),
-              ],
-            ),
-          ),
+          // SliverToBoxAdapter(
+          //   child: Column(
+          //     children: [
+          //       ListStrutural(
+          //         data: pulldata,
+          //         colorTitle: AppColors.black,
+          //         height: null,
+          //       ),
+          //       ListStrutural(
+          //         data: pulldata2,
+          //         colorTitle: AppColors.black,
+          //         height: null,
+          //       ),
+          //       ListStrutural(
+          //         data: pulldata3,
+          //         colorTitle: AppColors.black,
+          //         height: null,
+          //       ),
+          //       ListStrutural(
+          //         data: pulldata4,
+          //         colorTitle: AppColors.black,
+          //         height: null,
+          //       ),
+          //       ListStrutural(
+          //         data: pulldata5,
+          //         colorTitle: AppColors.black,
+          //         height: null,
+          //       ),
+          //     ],
+          //   ),
+          // ),
         ],
       ),
     );

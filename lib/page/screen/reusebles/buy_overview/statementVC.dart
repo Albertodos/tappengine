@@ -14,7 +14,7 @@ import '../../../../model/objects/user/user.dart';
 import '../../../../widgets/structural/list_Structural.dart';
 import '../../../../widgets/ui_kits/button_ui/button_ui.dart';
 import '../../../../widgets/ui_kits/labels_ui/label_ui.dart';
-import '../../../../widgets/views/cards/balances/balances.dart';
+import '../../../../widgets/views/cards/products/products.dart';
 import '../../../../widgets/views/form/form.dart';
 import '../../../../helpers/globals.dart' as globals;
 

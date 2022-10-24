@@ -5,6 +5,6 @@ import '../../constants/app_colors.dart';
 
 class ShimmerDependencies {
   Widget shimmer(Widget widget) {
-    return Shimmer.fromColors(baseColor: AppColors.gray, highlightColor: AppColors.gray1, enabled: true, child: widget);
+    return Shimmer.fromColors(baseColor: AppColors.gray, highlightColor: AppColors.black.withAlpha(25), enabled: true, child: widget);
   }
 }
