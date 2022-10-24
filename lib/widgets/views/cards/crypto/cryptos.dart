@@ -673,6 +673,7 @@ class CryptoCards extends StatelessWidget {
   Widget cryptoDashboard01(context) {
     return InkWell(
       onTap: () {
+        cryptoC.selectCrypto.value = crypto;
         Navigator.pushNamed(context, "/buyOverview");
       },
       child: Container(
