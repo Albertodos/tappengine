@@ -6,6 +6,7 @@ import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/news.dar
 import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/orders.dart';
 import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/overview.dart';
 import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/transactions.dart';
+import 'package:tappengine/widgets/views/cards/crypto/model/crypto.dart';
 import 'package:tappengine/widgets/views/cards/info/info.dart';
 import 'package:tappengine/widgets/views/reusebles/reusables.dart';
 import '../../../../helpers/cliper.dart';
@@ -15,6 +16,7 @@ import '../../../../model/objects/pull_data.dart';
 import '../../../../widgets/structural/list_Structural.dart';
 import '../../../../widgets/ui_kits/button_ui/button_ui.dart';
 import '../../../../widgets/ui_kits/labels_ui/label_ui.dart';
+import '../../../../widgets/views/cards/crypto/controller/controller.dart';
 import '../../../../widgets/views/cards/crypto/cryptos.dart';
 
 class BuyOverviewVC extends StatefulWidget {
@@ -27,10 +29,14 @@ class BuyOverviewVC extends StatefulWidget {
 class _BuyOverviewVCState extends State<BuyOverviewVC> {
   final pagePosition = 0.obs;
   PageController controller = PageController(viewportFraction: 1, keepPage: true);
-
+  final CryptoC cryptoC = Get.find();
   @override
   Widget build(BuildContext context) {
-    var pulldata = PullData(data: [CryptoCards.card02(context)], more: "", title: "", position: Axis.vertical);
+    var pulldata = PullData(data: [
+      CryptoCards(
+        crypto: cryptoC.selectCrypto.value,
+      ).card02(context)
+    ], more: "", title: "", position: Axis.vertical);
     // var pulldata2 = PullData(data: [
     //   MenuCards().tabMenu([
     //     "Overview",

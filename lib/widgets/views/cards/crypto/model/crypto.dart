@@ -8,6 +8,7 @@ class Crypto {
   String? valueChange;
   String? percent;
   String? img;
+  String? fromsymbol;
 
   Crypto({this.id, this.name, this.value, this.valueChange, this.percent, this.img});
 
@@ -18,6 +19,7 @@ class Crypto {
     valueChange = json['lastVolume'];
     percent = json['percentagePriceChange'];
     img = json['imageUrl'];
+    fromsymbol = json['fromsymbol'];
   }
 
   //  "id": 45,
