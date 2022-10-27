@@ -11,7 +11,7 @@ import 'package:tappengine/widgets/views/cards/crypto/model/tab_menu.dart';
 
 import '../../../../dependencies/http/http.dart';
 import '../../../../widgets/views/cards/analytics/analytics.dart';
-import '../../../../widgets/views/cards/products/model/products_vies.dart';
+import '../../../../widgets/views/cards/products/model/products_view.dart';
 import '../../../../widgets/views/cards/products/products.dart';
 import '../../../../widgets/views/cards/crypto/cryptos.dart';
 import '../../../../widgets/views/cards/menu/menuCard.dart';
@@ -46,12 +46,35 @@ class ProductsC extends GetxController {
           pullData[position].data = value;
         });
         break;
+      case "CryptoBalances":
+        await CryptoBalances().getListDataItem(data.dataUrl, context).then((value) {
+          pullData[position].data = [value.cryptoHeader(context)];
+        });
+        break;
       case "CryptoDashboard01":
         await Crypto().getListDataItem(data.dataUrl, context).then((value) {
-          var cryptoDashboard = value.map((e) => e.cryptoDashboard01(context));
-          pullData[position].position = Axis.vertical;
-          pullData[position].height = 220;
+          var cryptoDashboard = value.map((e) => e.cryptoDashboard01(context)).toList();
+          pullData[position].position = Axis.horizontal;
+          pullData[position].height = 300.0;
           pullData[position].data = cryptoDashboard;
+        });
+        break;
+
+      case "CryptoGrid/2":
+        await Crypto().getListDataItem(data.dataUrl, context).then((value) {
+          pullData[position].data = [
+            Wrap(
+              // direction: Axis.vertical,
+              // alignment: WrapAlignment.center,
+              spacing: 16.0,
+              // runAlignment:WrapAlignment.center,
+              runSpacing: 16.0,
+              // crossAxisAlignment: WrapCrossAlignment.center,
+              // textDirection: TextDirection.rtl,
+              //  verticalDirection: VerticalDirection.up,
+              children: value.map((e) => e.cryptoGrid_2(context)).toList(),
+            )
+          ];
         });
         break;
 

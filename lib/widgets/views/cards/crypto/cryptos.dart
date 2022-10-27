@@ -9,8 +9,9 @@ import '../../../ui_kits/button_ui/button_ui.dart';
 import 'model/crypto.dart';
 
 class CryptoCards extends StatelessWidget {
-  final Crypto crypto;
-  CryptoCards({super.key, required this.crypto});
+  final Crypto? crypto;
+  final CryptoBalances? cryptoBalances;
+  CryptoCards({super.key, this.crypto, this.cryptoBalances});
   final CryptoC cryptoC = Get.put(CryptoC());
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class CryptoCards extends StatelessWidget {
       child: InkWell(
         onTap: () {
           // EventsSheet().infoEvents();
-          cryptoC.selectCrypto.value = crypto;
+          cryptoC.selectCrypto.value = crypto!;
           Navigator.pushNamed(context, "/buyOverview");
         },
         child: Column(
@@ -32,7 +33,7 @@ class CryptoCards extends StatelessWidget {
                   borderRadius: const BorderRadius.all(Radius.circular(25)),
                   color: AppColors.purpura.withAlpha(25),
                 ),
-                child: Image.network((crypto.img.toString()), height: 19, width: 19),
+                child: Image.network((crypto!.img.toString()), height: 19, width: 19),
               ),
               const SizedBox(
                 width: 16,
@@ -47,7 +48,7 @@ class CryptoCards extends StatelessWidget {
                       children: [
                         Expanded(
                           child: UILabels(
-                            text: crypto.name ?? "",
+                            text: crypto!.name ?? "",
                             textLines: 1,
                             color: AppColors.black,
                             fontSize: 16,
@@ -58,7 +59,7 @@ class CryptoCards extends StatelessWidget {
                           children: [
                             const Icon(Icons.keyboard_arrow_down, color: AppColors.purpura1),
                             UILabels(
-                              text: crypto.percent ?? "",
+                              text: crypto!.percent ?? "",
                               textLines: 1,
                               color: AppColors.purpura1,
                               fontSize: 12,
@@ -72,7 +73,7 @@ class CryptoCards extends StatelessWidget {
                       children: [
                         Expanded(
                           child: UILabels(
-                            text: "${crypto.name} • ${crypto.valueChange}",
+                            text: "${crypto!.name} • ${crypto!.valueChange}",
                             textLines: 1,
                             color: AppColors.purpura2,
                             fontSize: 12,
@@ -83,7 +84,7 @@ class CryptoCards extends StatelessWidget {
                           width: 16,
                         ),
                         UILabels(
-                          text: crypto.value ?? "",
+                          text: crypto!.value ?? "",
                           textLines: 1,
                           color: AppColors.black,
                           fontSize: 16,
@@ -111,7 +112,7 @@ class CryptoCards extends StatelessWidget {
     );
   }
 
-  Widget card01(context) {
+  Widget cryptoHeader(context) {
     return SizedBox(
       width: Get.width,
       child: Column(
@@ -233,7 +234,7 @@ class CryptoCards extends StatelessWidget {
     );
   }
 
-  Widget card02(context) {
+  Widget cryptoPreviewHeader(context) {
     return SizedBox(
       width: Get.width,
       child: Column(
@@ -245,7 +246,7 @@ class CryptoCards extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   UILabels(
-                    text: crypto.name ?? "",
+                    text: crypto!.name ?? "",
                     textLines: 1,
                     color: AppColors.black,
                     fontSize: 24,
@@ -254,7 +255,7 @@ class CryptoCards extends StatelessWidget {
                   Row(
                     children: [
                       UILabels(
-                        text: crypto.fromsymbol ?? "",
+                        text: crypto!.fromsymbol ?? "",
                         textLines: 1,
                         color: AppColors.black,
                         fontSize: 16,
@@ -282,7 +283,7 @@ class CryptoCards extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(10)),
                 color: AppColors.purpura.withAlpha(25),
               ),
-              child: Image.network((crypto.img.toString()), height: 19, width: 19),
+              child: Image.network((crypto!.img.toString()), height: 19, width: 19),
             ),
           ]),
           const SizedBox(
@@ -350,74 +351,82 @@ class CryptoCards extends StatelessWidget {
     );
   }
 
-  Widget cards03() {
-    return Container(
-      width: (Get.width / 2) - 44,
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
-        color: AppColors.purpura.withAlpha(10),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 40,
-              width: 40,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(25)),
-                color: AppColors.white,
+  Widget cryptoGrid_2(context) {
+    return InkWell(
+      onTap: () {
+        // EventsSheet().infoEvents();
+        cryptoC.selectCrypto.value = crypto!;
+        Navigator.pushNamed(context, "/buyOverview");
+      },
+      child: Container(
+        width: (Get.width / 2) - 44,
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
+          color: AppColors.purpura.withAlpha(10),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 40,
+                width: 40,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(25)),
+                  color: AppColors.white,
+                ),
+                child: Image.network((crypto!.img.toString()), height: 19, width: 19),
               ),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            const UILabels(
-              text: "Ethereum",
-              textLines: 1,
-              color: AppColors.black,
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
-            ),
-            const UILabels(
-              text: "ETH",
-              textLines: 1,
-              color: AppColors.black,
-              fontSize: 24,
-              fontWeight: FontWeight.w600,
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Container(
-              height: 30,
-              width: 70,
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(4)),
-                color: AppColors.red.withAlpha(15),
+              const SizedBox(
+                height: 16,
               ),
-              child: Row(
-                children: const [
-                  Icon(Icons.keyboard_arrow_down, color: AppColors.red),
-                  UILabels(
-                    text: "  1.04%  ",
-                    textLines: 1,
-                    color: AppColors.red,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ],
+              UILabels(
+                text: crypto!.name.toString(),
+                textLines: 1,
+                color: AppColors.black,
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
               ),
-            )
-          ],
+              UILabels(
+                text: crypto!.fromsymbol.toString(),
+                textLines: 1,
+                color: AppColors.black,
+                fontSize: 24,
+                fontWeight: FontWeight.w600,
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Container(
+                height: 30,
+                width: 70,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(4)),
+                  color: AppColors.red.withAlpha(15),
+                ),
+                child: Row(
+                  children: [
+                    const Icon(Icons.keyboard_arrow_down, color: AppColors.red),
+                    UILabels(
+                      text: crypto!.percent.toString(),
+                      textLines: 1,
+                      color: AppColors.red,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget cards04(context) {
+  Widget cryptoGrid(context) {
     return InkWell(
       onTap: () {
         Navigator.pushNamed(
@@ -448,9 +457,9 @@ class CryptoCards extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Expanded(
+                  Expanded(
                     child: UILabels(
-                      text: "Ethereum",
+                      text: crypto!.name ?? "",
                       textLines: 1,
                       color: AppColors.black,
                       fontSize: 16,
@@ -464,11 +473,12 @@ class CryptoCards extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(25)),
                       color: AppColors.white,
                     ),
+                    child: Image.network((crypto!.img.toString()), height: 19, width: 19),
                   ),
                 ],
               ),
-              const UILabels(
-                text: "ETH",
+              UILabels(
+                text: crypto!.fromsymbol ?? '',
                 textLines: 1,
                 color: AppColors.black,
                 fontSize: 24,
@@ -479,9 +489,9 @@ class CryptoCards extends StatelessWidget {
               ),
               Row(
                 children: [
-                  const Expanded(
+                  Expanded(
                     child: UILabels(
-                      text: "\$1,547.76",
+                      text: crypto!.value ?? "",
                       textLines: 1,
                       color: AppColors.black,
                       fontSize: 16,
@@ -490,20 +500,20 @@ class CryptoCards extends StatelessWidget {
                   ),
                   Container(
                     padding: const EdgeInsets.only(left: 10, right: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(4)),
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(4)),
                       color: AppColors.purpura5,
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        Icon(
+                      children: [
+                        const Icon(
                           Icons.expand_more,
                           color: AppColors.purpura1,
                           size: 20,
                         ),
                         UILabels(
-                          text: "1.04%",
+                          text: crypto!.percent ?? "",
                           textLines: 1,
                           color: AppColors.purpura1,
                           fontSize: 12,
@@ -673,7 +683,7 @@ class CryptoCards extends StatelessWidget {
   Widget cryptoDashboard01(context) {
     return InkWell(
       onTap: () {
-        cryptoC.selectCrypto.value = crypto;
+        cryptoC.selectCrypto.value = crypto!;
         Navigator.pushNamed(context, "/buyOverview");
       },
       child: Container(
@@ -699,14 +709,14 @@ class CryptoCards extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               UILabels(
-                text: crypto.name ?? "",
+                text: crypto!.name ?? "",
                 textLines: 1,
                 color: AppColors.black,
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
               ),
               UILabels(
-                text: crypto.value ?? "",
+                text: crypto!.value ?? "",
                 textLines: 1,
                 color: AppColors.black,
                 fontSize: 24,

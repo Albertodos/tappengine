@@ -8,7 +8,7 @@ import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
 import '../../../../dependencies/shimmer/shimmer.dart';
 import '../../../../page/sheet/payment_method/payment_method.dart';
 import '../../../ui_kits/button_ui/button_ui.dart';
-import 'model/products_vies.dart';
+import 'model/products_view.dart';
 
 class ProductsCards extends StatelessWidget {
   final ProductsView productsView;

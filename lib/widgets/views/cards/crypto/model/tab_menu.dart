@@ -6,7 +6,7 @@ import 'package:tappengine/widgets/views/cards/analytics/analytics.dart';
 import '../../../../../constants/app_colors.dart';
 import '../../../../../dependencies/http/http.dart';
 import '../../../../structural/list_Structural.dart';
-import '../../products/model/products_vies.dart';
+import '../../products/model/products_view.dart';
 import 'crypto.dart';
 
 class TabMenu {

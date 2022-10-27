@@ -18,6 +18,7 @@ import '../../../../widgets/ui_kits/button_ui/button_ui.dart';
 import '../../../../widgets/ui_kits/labels_ui/label_ui.dart';
 import '../../../../widgets/views/cards/crypto/controller/controller.dart';
 import '../../../../widgets/views/cards/crypto/cryptos.dart';
+import '../../../../widgets/views/cards/menu/menuCard.dart';
 
 class BuyOverviewVC extends StatefulWidget {
   const BuyOverviewVC({super.key});
@@ -35,21 +36,21 @@ class _BuyOverviewVCState extends State<BuyOverviewVC> {
     var pulldata = PullData(data: [
       CryptoCards(
         crypto: cryptoC.selectCrypto.value,
-      ).card02(context)
+      ).cryptoPreviewHeader(context)
     ], more: "", title: "", position: Axis.vertical);
-    // var pulldata2 = PullData(data: [
-    //   MenuCards().tabMenu([
-    //     "Overview",
-    //     "News",
-    //     "Orders",
-    //     "Transactions",
-    //   ], (p) {
-    //     controller.animateToPage(p,
-    //         curve: Curves.decelerate, duration: const Duration(milliseconds: 300)); // for animated jump. Requires a curve and a duration
+    var pulldata2 = PullData(data: [
+      MenuCards().tabMenu([
+        "Overview",
+        "News",
+        "Orders",
+        "Transactions",
+      ], (p) {
+        controller.animateToPage(p,
+            curve: Curves.decelerate, duration: const Duration(milliseconds: 300)); // for animated jump. Requires a curve and a duration
 
-    //     pagePosition.value = p;
-    //   }),
-    // ], more: "", title: "", position: Axis.vertical);
+        pagePosition.value = p;
+      }),
+    ], more: "", title: "", position: Axis.vertical);
 
     return Scaffold(
       backgroundColor: Theme.of(context).cardColor,
@@ -96,11 +97,11 @@ class _BuyOverviewVCState extends State<BuyOverviewVC> {
                         colorTitle: AppColors.black,
                         height: null,
                       ),
-                      // ListStrutural(
-                      //   data: pulldata2,
-                      //   colorTitle: AppColors.black,
-                      //   height: null,
-                      // ),
+                      ListStrutural(
+                        data: pulldata2,
+                        colorTitle: AppColors.black,
+                        height: null,
+                      ),
                       ExpandablePageView(
                         controller: controller,
                         onPageChanged: (value) {},

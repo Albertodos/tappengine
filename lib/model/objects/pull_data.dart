@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tappengine/widgets/views/cards/products/model/products_vies.dart';
-
 import '../../dependencies/http/http.dart';
+import '../../widgets/views/cards/products/model/products_view.dart';
 import '../../widgets/views/cards/products/products.dart';
 
 class PullData {
