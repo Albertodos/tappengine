@@ -42,6 +42,7 @@ dependencies:
   syncfusion_flutter_datepicker:
   step_progress_indicator:
   shared_preferences:
+  syncfusion_flutter_charts:
 
 
 

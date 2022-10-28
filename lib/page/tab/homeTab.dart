@@ -43,8 +43,10 @@ class _HomeTabState extends State<HomeTab> {
   @override
   void initState() {
     tabC.getproducts(context).then((value) {
-      widgetOptions.value =
-          tabC.products.map((element) => ProductsNav(key: Key(element.name.toString()), dataUrl: element.dataUrl.toString())).toList();
+      widgetOptions.value = tabC.products.map((element) {
+        var controller = ProductsNav(key: Key(element.id.toString()), data: element);
+        return controller;
+      }).toList();
     });
     super.initState();
   }

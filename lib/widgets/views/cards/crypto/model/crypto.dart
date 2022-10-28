@@ -2,31 +2,45 @@ import '../../../../../dependencies/http/http.dart';
 import '../cryptos.dart';
 
 class Crypto {
-  int? id;
+  String? id;
+
   String? name;
   String? value;
   String? valueChange;
   String? percent;
   String? img;
   String? fromsymbol;
+  String? supplierId;
+  String? tosymbol;
   CryptoBalances? cryptoBalances;
+  List<DashboardData>? dashboardData;
 
   Crypto({this.id, this.name, this.value, this.valueChange, this.percent, this.img});
 
   Crypto.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['coinName'];
-    value = json['price'];
-    valueChange = json['lastVolume'];
-    percent = json['percentagePriceChange'];
-    img = json['imageUrl'];
-    fromsymbol = json['fromsymbol'];
+    id = json['id'].toString();
+    name = json['coinName'].toString();
+    value = json['price'].toString();
+    valueChange = json['lastVolume'].toString();
+    percent = json['percentagePriceChange'].toString();
+    img = json['imageUrl'].toString();
+    fromsymbol = json['fromsymbol'].toString();
+    supplierId = json['supplierId'].toString();
+    tosymbol = json['tosymbol'].toString();
   }
 
   Future<List<CryptoCards>> getListDataItem(url, context) async {
     var response = await HttpService.getMicroService(url, context);
     var crypto = List<CryptoCards>.from(response.map((e) => CryptoCards(crypto: Crypto.fromJson(e))).toList());
+    getDashboardData(2, context);
     return crypto;
+  }
+
+  Future<List<DashboardData>> getDashboardData(filter, context) async {
+    var response = await HttpService.getMicroService("Watchlist/GetDashboardData/$fromsymbol/$tosymbol/$filter", context);
+    dashboardData = List<DashboardData>.from(response.map((e) => DashboardData.fromJson(e)).toList());
+
+    return dashboardData ?? [];
   }
 }
 
@@ -51,8 +65,25 @@ class CryptoBalances {
   }
 
   Future<CryptoCards> getListDataItem(url, context) async {
-    var response = await HttpService.getService(url, context);
+    var response = await HttpService.getMicroService(url, context);
     var cryptoBalances = CryptoCards(cryptoBalances: CryptoBalances.fromJson(response));
     return cryptoBalances;
+  }
+}
+
+class DashboardData {
+  String? y;
+  DateTime? x;
+
+  DashboardData({this.x, this.y});
+
+  DashboardData.fromJson(Map<String, dynamic> json) {
+    x = getDataTime(json['x']);
+    y = json['y'];
+  }
+  static DateTime getDataTime(String data) {
+    var dateTime = DateTime.parse(data);
+
+    return dateTime;
   }
 }

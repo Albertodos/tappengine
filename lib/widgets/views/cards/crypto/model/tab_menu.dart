@@ -60,7 +60,7 @@ class TabMenu {
                 itemCount: value.length,
                 padding: EdgeInsets.zero,
                 itemBuilder: (BuildContext context, int index) {
-                  return value.map((e) => e.cryptoDashboard01(context)).toList()[index];
+                  return value.map((e) => e.cryptoDashboard02(context)).toList()[index];
                 },
               ),
             )

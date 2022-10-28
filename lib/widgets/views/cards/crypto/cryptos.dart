@@ -6,6 +6,7 @@ import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
 import 'package:tappengine/widgets/views/cards/crypto/controller/controller.dart';
 import '../../../../page/sheet/payment_method/payment_method.dart';
 import '../../../ui_kits/button_ui/button_ui.dart';
+import '../analytics/analytics.dart';
 import 'model/crypto.dart';
 
 class CryptoCards extends StatelessWidget {
@@ -741,6 +742,90 @@ class CryptoCards extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget cryptoDashboard02(context) {
+    return Container(
+      height: 260,
+      margin: const EdgeInsets.all(10),
+      width: Get.width - 100,
+      decoration: BoxDecoration(
+        color: AppColors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.purpura.withAlpha(25),
+            spreadRadius: 0,
+            blurRadius: 8,
+            offset: Offset(0, 4), // changes position of shadow
+          ),
+        ],
+      ),
+      alignment: Alignment.center,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: UILabels(
+                    text: crypto!.name ?? '',
+                    textLines: 1,
+                    color: AppColors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Row(
+                  children: const [
+                    UILabels(
+                      text: "last 12 months",
+                      textLines: 1,
+                      color: AppColors.purpura,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    Icon(Icons.keyboard_arrow_down, color: AppColors.purpura),
+                  ],
+                ),
+              ],
+            ),
+            UILabels(
+              text: crypto!.value ?? '',
+              textLines: 1,
+              color: AppColors.black,
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
+            ),
+            Row(
+              children: [
+                const Icon(Icons.keyboard_arrow_down, color: AppColors.green),
+                UILabels(
+                  text: crypto!.valueChange ?? '',
+                  textLines: 1,
+                  color: AppColors.green,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            AnalyticsCards(
+              crypto: crypto,
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+          ],
         ),
       ),
     );

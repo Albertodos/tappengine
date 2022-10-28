@@ -93,7 +93,7 @@ class ProductsCards extends StatelessWidget {
     );
   }
 
-  Widget card01(context) {
+  Widget productsHeader(context) {
     return SizedBox(
       width: Get.width,
       child: Column(
@@ -104,28 +104,28 @@ class ProductsCards extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const UILabels(
-                    text: "Crypto balances",
+                  UILabels(
+                    text: productsView.name ?? "",
                     textLines: 1,
                     color: AppColors.black,
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),
                   Row(
-                    children: const [
+                    children: [
                       UILabels(
-                        text: "\$3,00000.32",
+                        text: productsView.value ?? "",
                         textLines: 1,
                         color: AppColors.black,
                         fontSize: 24,
                         fontWeight: FontWeight.w600,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 16,
                       ),
-                      Icon(Icons.keyboard_arrow_down, color: AppColors.green),
+                      const Icon(Icons.keyboard_arrow_down, color: AppColors.green),
                       UILabels(
-                        text: "1.82%",
+                        text: productsView.percent ?? "",
                         textLines: 1,
                         color: AppColors.green,
                         fontSize: 16,

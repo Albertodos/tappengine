@@ -51,7 +51,7 @@ class HttpService {
   static Future getMicroService(url, context) async {
     print(ApiPath.baseUrlMicro + url);
     var response = await statusError(http.get(Uri.parse(ApiPath.baseUrlMicro + url), headers: {
-      // 'Authorization': 'Bearer ${globals.user.token}',
+      'Authorization': 'Bearer ${ApiPath.token}',
       // "Content-Type": "application/json",
       //
       // 'Content-type': 'text/plain',

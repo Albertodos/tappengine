@@ -62,6 +62,11 @@ class _PersonalInfoVCState extends State<PersonalInfoVC> {
               child: Obx(
                 () => Column(
                   children: [
+                    LinearProgressIndicator(
+                      minHeight: 50.0,
+                      backgroundColor: Colors.blue[100],
+                      color: Colors.blue,
+                    ),
                     UserCards(user: globals.userPersonal.userPersonal.value.toJsonInfo()).userInfo(context),
                     Column(
                       children: globals.userPersonal.userPersonal.value

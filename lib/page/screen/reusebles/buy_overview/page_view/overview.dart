@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:tappengine/widgets/views/cards/crypto/model/crypto.dart';
 import 'package:tappengine/widgets/views/cards/info/info.dart';
 import 'package:tappengine/widgets/views/reusebles/reusables.dart';
 import '../../../../../constants/app_colors.dart';
 import '../../../../../model/objects/pull_data.dart';
 import '../../../../../widgets/structural/list_Structural.dart';
 import '../../../../../widgets/views/cards/analytics/analytics.dart';
+import '../../../../../widgets/views/cards/analytics/graph.dart';
 
 class OverviewVC extends StatefulWidget {
-  const OverviewVC({super.key});
+  final Crypto crypto;
+  const OverviewVC({super.key, required this.crypto});
 
   @override
   State<OverviewVC> createState() => _OverviewVCState();
@@ -15,9 +18,17 @@ class OverviewVC extends StatefulWidget {
 
 class _OverviewVCState extends State<OverviewVC> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var pulldata2 = PullData(data: [
-      AnalyticsCards().card01(),
+      AnalyticsCards(
+        crypto: widget.crypto,
+      ).graph(context)
     ], more: "", title: "", position: Axis.vertical);
     var pulldata3 = PullData(data: [ReusablesView().list03()], more: "", title: "Investment", position: Axis.vertical);
     var pulldata4 = PullData(
@@ -48,21 +59,21 @@ class _OverviewVCState extends State<OverviewVC> {
           colorTitle: AppColors.black,
           height: null,
         ),
-        ListStrutural(
-          data: pulldata4,
-          colorTitle: AppColors.black,
-          height: null,
-        ),
-        ListStrutural(
-          data: pulldata5,
-          colorTitle: AppColors.black,
-          height: null,
-        ),
-        ListStrutural(
-          data: pulldata6,
-          colorTitle: AppColors.black,
-          height: null,
-        ),
+        // ListStrutural(
+        //   data: pulldata4,
+        //   colorTitle: AppColors.black,
+        //   height: null,
+        // ),
+        // ListStrutural(
+        //   data: pulldata5,
+        //   colorTitle: AppColors.black,
+        //   height: null,
+        // ),
+        // ListStrutural(
+        //   data: pulldata6,
+        //   colorTitle: AppColors.black,
+        //   height: null,
+        // ),
       ],
     );
   }

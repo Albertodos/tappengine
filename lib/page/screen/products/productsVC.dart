@@ -1,23 +1,16 @@
+// ignore_for_file: file_names
+
 import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tappengine/constants/app_colors.dart';
 import 'package:tappengine/helpers/cliper.dart';
-import 'package:tappengine/model/objects/pull_data.dart';
 import 'package:tappengine/widgets/structural/list_Structural.dart';
-import 'package:tappengine/widgets/views/cards/analytics/analytics.dart';
 import 'package:tappengine/widgets/views/cards/crypto/model/tab_menu.dart';
-import 'package:tappengine/widgets/views/cards/publicity/publicity.dart';
 import 'package:tappengine/widgets/views/cards/user/userCard.dart';
 import '../../../../helpers/globals.dart' as globals;
 import '../../../widgets/ui_kits/labels_ui/label_ui.dart';
-import '../../../widgets/views/cards/products/products.dart';
 import '../../../widgets/views/cards/menu/menuCard.dart';
-import '../../../widgets/views/cards/watchlists.dart/watchlists.dart';
-import '../reusebles/buy_overview/page_view/news.dart';
-import '../reusebles/buy_overview/page_view/orders.dart';
-import '../reusebles/buy_overview/page_view/overview.dart';
-import '../reusebles/buy_overview/page_view/transactions.dart';
 import 'controller/productsC.dart';
 
 class ProductsVC extends StatefulWidget {

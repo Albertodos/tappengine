@@ -11,16 +11,10 @@ import 'package:tappengine/widgets/views/cards/crypto/model/tab_menu.dart';
 
 import '../../../../dependencies/http/http.dart';
 import '../../../../widgets/views/cards/analytics/analytics.dart';
+import '../../../../widgets/views/cards/news/model/news.dart';
+import '../../../../widgets/views/cards/news/news.dart';
 import '../../../../widgets/views/cards/products/model/products_view.dart';
-import '../../../../widgets/views/cards/products/products.dart';
-import '../../../../widgets/views/cards/crypto/cryptos.dart';
-import '../../../../widgets/views/cards/menu/menuCard.dart';
 import '../../../../widgets/views/cards/publicity/publicity.dart';
-import '../../../../widgets/views/cards/watchlists.dart/watchlists.dart';
-import '../../reusebles/buy_overview/page_view/news.dart';
-import '../../reusebles/buy_overview/page_view/orders.dart';
-import '../../reusebles/buy_overview/page_view/overview.dart';
-import '../../reusebles/buy_overview/page_view/transactions.dart';
 
 class ProductsC extends GetxController {
   final pullData = <PullData>[].obs;
@@ -44,11 +38,6 @@ class ProductsC extends GetxController {
       case "CryptoListView":
         await Crypto().getListDataItem(data.dataUrl, context).then((value) {
           pullData[position].data = value;
-        });
-        break;
-      case "CryptoBalances":
-        await CryptoBalances().getListDataItem(data.dataUrl, context).then((value) {
-          pullData[position].data = [value.cryptoHeader(context)];
         });
         break;
       case "CryptoDashboard01":
@@ -84,6 +73,13 @@ class ProductsC extends GetxController {
         });
 
         break;
+      case "ProductBalances":
+        await ProductsView().getListDataItem(data.dataUrl, context).then((value) {
+          var productsHeader = value.map((e) => e.productsHeader(context)).toList();
+          pullData[position].data = productsHeader;
+        });
+
+        break;
       case "MenuTab":
         await TabMenu().getTabmenu(data.dataUrl, context).then((value) {
           pullData[position].data = value;
@@ -97,11 +93,20 @@ class ProductsC extends GetxController {
       case "CryptoAnalyticsGridView":
         pullData[position].data = [
           // MenuCards().tabMenu(["Crypto", "Stocks"], (p) {}),
+
           AnalyticsCards().card01(),
         ];
         break;
       case "PubCrypto":
         pullData[position].data = [PublicityCards().card02()];
+        break;
+      case "News":
+        await News().getListDataItem(data.dataUrl, context).then((value) {
+          pullData[position].position = Axis.horizontal;
+          pullData[position].height = 420.0;
+          pullData[position].data = value;
+        });
+
         break;
 
       default:

@@ -6,6 +6,7 @@ import 'package:tappengine/page/screen/products/productsVC.dart';
 import 'package:tappengine/page/screen/profile/edit_emailVC.dart';
 import 'package:tappengine/page/screen/profile/edit_phone_numberVC.dart';
 import 'package:tappengine/page/screen/profile/edit_profileVC.dart';
+import 'package:tappengine/page/tab/model/products.dart';
 import '../screen/crypto/investVC.dart';
 import '../screen/profile/edit_addressVC.dart';
 import '../screen/profile/notificationsVC.dart';
@@ -19,8 +20,8 @@ import '../screen/reusebles/more/add_money.dart';
 import '../screen/reusebles/web/pdfVC.dart';
 
 class ProductsNav extends StatefulWidget {
-  final String dataUrl;
-  const ProductsNav({super.key, required this.dataUrl});
+  final Products data;
+  const ProductsNav({super.key, required this.data});
   @override
   State<ProductsNav> createState() => _ProductsNavState();
 }
@@ -34,8 +35,8 @@ class _ProductsNavState extends State<ProductsNav> {
       initialRoute: '/',
       routes: {
         '/': (context) => ProductsVC(
-              key: Key(widget.dataUrl),
-              dataUrl: widget.dataUrl,
+              key: Key(widget.data.dataUrl.toString()),
+              dataUrl: widget.data.dataUrl.toString(),
             ),
         '/home': (context) => const HomeVC(),
         '/personalInfo': (context) => const PersonalInfoVC(),

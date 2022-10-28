@@ -3,13 +3,74 @@ import 'package:get/get.dart';
 
 import '../../../../constants/app_colors.dart';
 import '../../../ui_kits/labels_ui/label_ui.dart';
+import '../crypto/model/crypto.dart';
+import 'graph.dart';
 
 class AnalyticsCards extends StatelessWidget {
-  const AnalyticsCards({super.key});
+  final Crypto? crypto;
+  final dashboardData = <DashboardData>[].obs;
+  AnalyticsCards({super.key, this.crypto});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    if (crypto!.dashboardData?.isEmpty ?? true) {
+      crypto!.getDashboardData("2", context).then(
+        (value) {
+          dashboardData.value = value;
+        },
+      );
+    } else {
+      dashboardData.value = crypto!.dashboardData ?? [];
+    }
+    return Expanded(
+      child: Obx(
+        () => Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: dashboardData
+                .map(
+                  (e) => Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              color: AppColors.purpura3,
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              color: AppColors.purpura,
+                            ),
+                            height: getHeigth(double.parse(e.y ?? "0")),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+                .toList()),
+      ),
+    );
+  }
+
+  Widget graph(BuildContext context) {
+    if (crypto!.dashboardData?.isEmpty ?? true) {
+      crypto!.getDashboardData("2", context).then(
+        (value) {
+          dashboardData.value = value;
+        },
+      );
+    } else {
+      dashboardData.value = crypto!.dashboardData ?? [];
+    }
+    return Obx(() => CustomGraphic(
+          chartDataList: dashboardData,
+        ));
   }
 
   Widget card01() {
@@ -120,5 +181,10 @@ class AnalyticsCards extends StatelessWidget {
       ),
       alignment: Alignment.center,
     );
+  }
+
+  double getHeigth(double value) {
+    var max = dashboardData.reduce((curr, next) => double.parse(curr.y ?? "0") > double.parse(next.y ?? "0") ? curr : next);
+    return (value * 120) / double.parse(max.y ?? "0");
   }
 }
