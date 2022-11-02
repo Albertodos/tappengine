@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tappengine/widgets/views/cards/crypto/cryptos.dart';
 import 'package:tappengine/widgets/views/cards/crypto/model/crypto.dart';
 import 'package:tappengine/widgets/views/cards/info/info.dart';
 import 'package:tappengine/widgets/views/reusebles/reusables.dart';
@@ -26,9 +27,9 @@ class _OverviewVCState extends State<OverviewVC> {
   @override
   Widget build(BuildContext context) {
     var pulldata2 = PullData(data: [
-      AnalyticsCards(
+      CryptoCards(
         crypto: widget.crypto,
-      ).graph(context)
+      ).cryptoDashboard01(context),
     ], more: "", title: "", position: Axis.vertical);
     var pulldata3 = PullData(data: [ReusablesView().list03()], more: "", title: "Investment", position: Axis.vertical);
     var pulldata4 = PullData(

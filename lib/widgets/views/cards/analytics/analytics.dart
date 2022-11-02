@@ -14,7 +14,7 @@ class AnalyticsCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (crypto!.dashboardData?.isEmpty ?? true) {
-      crypto!.getDashboardData("2", context).then(
+      crypto!.getDashboardData("1", context).then(
         (value) {
           dashboardData.value = value;
         },
@@ -59,8 +59,10 @@ class AnalyticsCards extends StatelessWidget {
   }
 
   Widget graph(BuildContext context) {
+    var period = ["1D", "7D", "1M", "1Y", "Max"];
+
     if (crypto!.dashboardData?.isEmpty ?? true) {
-      crypto!.getDashboardData("2", context).then(
+      crypto!.getDashboardData("1", context).then(
         (value) {
           dashboardData.value = value;
         },
@@ -68,9 +70,37 @@ class AnalyticsCards extends StatelessWidget {
     } else {
       dashboardData.value = crypto!.dashboardData ?? [];
     }
-    return Obx(() => CustomGraphic(
-          chartDataList: dashboardData,
-        ));
+    return SizedBox(
+      height: 221,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Obx(() => dashboardData.isNotEmpty
+              ? SizedBox(
+                  height: 180,
+                  child: CustomGraphic(
+                    chartDataList: dashboardData,
+                  ),
+                )
+              : const Center(
+                  child: CircularProgressIndicator(
+                    color: AppColors.black,
+                  ),
+                )),
+          Row(
+            children: period
+                .map((e) => periodFilterButton(e, e, period.indexOf(e).toString(), (v) {
+                      crypto!.getDashboardData(v, context).then(
+                        (value) {
+                          dashboardData.value = value;
+                        },
+                      );
+                    }))
+                .toList(),
+          ),
+        ],
+      ),
+    );
   }
 
   Widget card01() {
@@ -186,5 +216,34 @@ class AnalyticsCards extends StatelessWidget {
   double getHeigth(double value) {
     var max = dashboardData.reduce((curr, next) => double.parse(curr.y ?? "0") > double.parse(next.y ?? "0") ? curr : next);
     return (value * 120) / double.parse(max.y ?? "0");
+  }
+
+  final select = '1D'.obs;
+  Widget periodFilterButton(value, period, index, Function(String) cb) {
+    return Expanded(
+      child: Obx(
+        () => InkWell(
+          onTap: () {
+            select.value = value;
+            cb(index);
+          },
+          child: Container(
+            alignment: Alignment.center,
+            // padding: const EdgeInsets.only(left: 8, right: 8),
+            height: 30,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: select.value == value ? AppColors.purpura2 : AppColors.white.withAlpha(0),
+            ),
+            child: UILabels(
+              text: value,
+              color: select.value == value ? AppColors.white : AppColors.black,
+              textLines: 1,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

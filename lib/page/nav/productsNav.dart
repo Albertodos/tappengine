@@ -27,33 +27,33 @@ class ProductsNav extends StatefulWidget {
 }
 
 class _ProductsNavState extends State<ProductsNav> {
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'home',
-      // Start the app with the "/" named route. In this case, the app starts
-      // on the FirstScreen widget.
-      initialRoute: '/',
-      routes: {
-        '/': (context) => ProductsVC(
-              key: Key(widget.data.dataUrl.toString()),
-              dataUrl: widget.data.dataUrl.toString(),
-            ),
-        '/home': (context) => const HomeVC(),
-        '/personalInfo': (context) => const PersonalInfoVC(),
-        '/editProfile': (context) => const EditProfileVC(),
-        '/editPhoneNumber': (context) => const EditPhoneNumberVC(),
-        '/editEmail': (context) => const EditEmailVC(),
-        '/editAddress': (context) => const EditAddressVC(),
-        '/notifications': (context) => const NotificationsVC(),
-        '/addMoney': (context) => const AddMoneyVC(),
-        '/invest': (context) => const InvestVC(),
-        '/buyOverview': (context) => const BuyOverviewVC(),
-        '/enterAmount': (context) => const EnterAmountVC(),
-        '/comfirmOrder': (context) => const ComfirmOrderVC(),
-        '/schedule': (context) => const ScheduleVC(),
-        '/statement': (context) => const StatementVC(),
-        '/pdf': (context) => const PdfVC(),
-      },
-    );
+        title: widget.data.name ?? "...",
+        // Start the app with the "/" named route. In this case, the app starts
+        // on the FirstScreen widget.
+        initialRoute: '/${widget.data.name}/',
+        routes: {
+          '/${widget.data.name}/': (context) => ProductsVC(
+                key: Key(widget.data.dataUrl.toString()),
+                dataUrl: widget.data.dataUrl.toString(),
+              ),
+          '/${widget.data.name}/home': (context) => const HomeVC(),
+          '/${widget.data.name}/personalInfo': (context) => const PersonalInfoVC(),
+          '/${widget.data.name}/editProfile': (context) => const EditProfileVC(),
+          '/${widget.data.name}/editPhoneNumber': (context) => const EditPhoneNumberVC(),
+          '/${widget.data.name}/editEmail': (context) => const EditEmailVC(),
+          '/${widget.data.name}/editAddress': (context) => const EditAddressVC(),
+          '/${widget.data.name}/notifications': (context) => const NotificationsVC(),
+          '/${widget.data.name}/addMoney': (context) => const AddMoneyVC(),
+          '/${widget.data.name}/invest': (context) => const InvestVC(),
+          '/${widget.data.name}/buyOverview': (context) => const BuyOverviewVC(),
+          '/${widget.data.name}/enterAmount': (context) => const EnterAmountVC(),
+          '/${widget.data.name}/comfirmOrder': (context) => const ComfirmOrderVC(),
+          '/${widget.data.name}/schedule': (context) => const ScheduleVC(),
+          '/${widget.data.name}/statement': (context) => const StatementVC(),
+          '/${widget.data.name}/pdf': (context) => const PdfVC(),
+        });
   }
 }

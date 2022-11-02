@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import '../../../../helpers/globals.dart' as globals;
 import 'package:get/get.dart';
 import 'package:tappengine/constants/app_colors.dart';
+import 'package:tappengine/helpers/utils.dart';
 import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
 import 'package:tappengine/widgets/views/cards/crypto/controller/controller.dart';
 import '../../../../page/sheet/payment_method/payment_method.dart';
@@ -22,7 +23,7 @@ class CryptoCards extends StatelessWidget {
         onTap: () {
           // EventsSheet().infoEvents();
           cryptoC.selectCrypto.value = crypto!;
-          Navigator.pushNamed(context, "/buyOverview");
+          Navigator.pushNamed(context, "/${globals.rootName}/buyOverview");
         },
         child: Column(
           children: [
@@ -187,7 +188,7 @@ class CryptoCards extends StatelessWidget {
                       cb: (v) {
                         Navigator.pushNamed(
                           context,
-                          "/invest",
+                          "/${globals.rootName}/invest",
                         );
                       })),
               const SizedBox(
@@ -306,7 +307,7 @@ class CryptoCards extends StatelessWidget {
                       cb: (v) {
                         Navigator.pushNamed(
                           context,
-                          "/enterAmount",
+                          "/${globals.rootName}/enterAmount",
                         );
                       })),
               const SizedBox(
@@ -357,7 +358,7 @@ class CryptoCards extends StatelessWidget {
       onTap: () {
         // EventsSheet().infoEvents();
         cryptoC.selectCrypto.value = crypto!;
-        Navigator.pushNamed(context, "/buyOverview");
+        Navigator.pushNamed(context, "/${globals.rootName}/buyOverview");
       },
       child: Container(
         width: (Get.width / 2) - 44,
@@ -432,7 +433,7 @@ class CryptoCards extends StatelessWidget {
       onTap: () {
         Navigator.pushNamed(
           context,
-          "/buyOverview",
+          "/${globals.rootName}/buyOverview",
         );
       },
       child: Container(
@@ -682,66 +683,88 @@ class CryptoCards extends StatelessWidget {
   }
 
   Widget cryptoDashboard01(context) {
-    return InkWell(
-      onTap: () {
-        cryptoC.selectCrypto.value = crypto!;
-        Navigator.pushNamed(context, "/buyOverview");
-      },
-      child: Container(
-        height: 300,
-        margin: const EdgeInsets.all(10),
-        width: Get.width - 100,
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.purpura.withAlpha(25),
-              spreadRadius: 0,
-              blurRadius: 8,
-              offset: Offset(0, 4), // changes position of shadow
+    var isLoveValue = false.obs;
+
+    return Container(
+      margin: const EdgeInsets.all(10),
+      width: Get.width - 100,
+      decoration: BoxDecoration(
+        color: AppColors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.purpura.withAlpha(25),
+            spreadRadius: 0,
+            blurRadius: 8,
+            offset: Offset(0, 4), // changes position of shadow
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: UILabels(
+                    text: crypto!.value ?? "",
+                    textLines: 1,
+                    color: AppColors.black,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    isLoveValue.value = !isLoveValue.value;
+                  },
+                  icon: Obx(() => Utlis().selectStar(isLoveValue)),
+                )
+              ],
+            ),
+            Row(
+              children: [
+                const Icon(Icons.keyboard_arrow_down, color: AppColors.green),
+                UILabels(
+                  text: crypto!.percent ?? "",
+                  textLines: 1,
+                  color: AppColors.green,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                ),
+                const UILabels(
+                  text: " • Today",
+                  textLines: 1,
+                  color: AppColors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            SizedBox(
+              height: 210,
+              child: AnalyticsCards(
+                crypto: crypto,
+              ).graph(context),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            const UILabels(
+              text:
+                  "Data displayed above is indicative only. actual exection price may vary. past performance is not a reliable indicator of future results.",
+              textLines: 0,
+              color: AppColors.black,
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
             ),
           ],
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              UILabels(
-                text: crypto!.name ?? "",
-                textLines: 1,
-                color: AppColors.black,
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-              ),
-              UILabels(
-                text: crypto!.value ?? "",
-                textLines: 1,
-                color: AppColors.black,
-                fontSize: 24,
-                fontWeight: FontWeight.w600,
-              ),
-              const UILabels(
-                text: "Today",
-                textLines: 1,
-                color: AppColors.black,
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              SizedBox(
-                height: 140,
-                child: SvgPicture.asset(
-                  "assets/images/graph01.svg",
-                  fit: BoxFit.fitHeight,
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );

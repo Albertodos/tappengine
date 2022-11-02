@@ -23,7 +23,7 @@ class News {
   }
 
   Future<List<NewsCards>> getListDataItem(url, context) async {
-    var response = await HttpService.getMicroService("Watchlist/GetLastedNews/BTC", context);
+    var response = await HttpService.getMicroService(url, context);
     print(response);
     var crypto = List<NewsCards>.from(response['data']
         .map((e) => NewsCards(

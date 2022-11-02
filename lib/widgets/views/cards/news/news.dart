@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:tappengine/constants/app_colors.dart';
 import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
-import 'package:tappengine/widgets/views/cards/crypto/controller/controller.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'model/news.dart';
 
@@ -13,7 +12,9 @@ class NewsCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        _launchUrl(news.url);
+      },
       child: Container(
         height: 420,
         margin: const EdgeInsets.all(10),
@@ -39,9 +40,10 @@ class NewsCards extends StatelessWidget {
               Expanded(
                 child: SizedBox(
                   height: 220,
+                  width: Get.width,
                   child: Image.network(
                     news.img ?? "",
-                    fit: BoxFit.fitWidth,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
@@ -78,5 +80,15 @@ class NewsCards extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _launchUrl(_url) async {
+    Uri url = Uri.parse(_url);
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.platformDefault,
+    )) {
+      throw 'Could not launch $_url';
+    }
   }
 }

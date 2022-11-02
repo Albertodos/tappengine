@@ -25,6 +25,8 @@ class _HomeTabState extends State<HomeTab> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
+    globals.rootName = tabC.products[index].name ?? "";
+
     if (index == 4) {
       if (tabC.barItems.length > 5) {
         MoreSheet().choosePaymentMethod(tabC.products.getRange(4, tabC.products.length).toList(), context);
@@ -44,7 +46,7 @@ class _HomeTabState extends State<HomeTab> {
   void initState() {
     tabC.getproducts(context).then((value) {
       widgetOptions.value = tabC.products.map((element) {
-        var controller = ProductsNav(key: Key(element.id.toString()), data: element);
+        var controller = ProductsNav(key: Key(element.name.toString()), data: element);
         return controller;
       }).toList();
     });

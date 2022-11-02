@@ -1,38 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:tappengine/widgets/views/cards/info/info.dart';
-import 'package:tappengine/widgets/views/reusebles/reusables.dart';
+import 'package:get/get.dart';
 import '../../../../../constants/app_colors.dart';
 import '../../../../../model/objects/pull_data.dart';
 import '../../../../../widgets/structural/list_Structural.dart';
-import '../../../../../widgets/views/cards/analytics/analytics.dart';
-import '../../../../../widgets/views/cards/orders/orders.dart';
+import '../../../../../widgets/views/cards/crypto/controller/controller.dart';
+import '../../../../../widgets/views/cards/crypto/model/crypto.dart';
+import '../../../../../widgets/views/cards/transaction/model/transaction.dart';
+import '../../../../../widgets/views/cards/transaction/transaction.dart';
 
 class TransactionsVC extends StatefulWidget {
-  const TransactionsVC({super.key});
+  final Crypto crypto;
+  const TransactionsVC({super.key, required this.crypto});
 
   @override
   State<TransactionsVC> createState() => _TransactionsVCState();
 }
 
 class _TransactionsVCState extends State<TransactionsVC> {
+  final transaction = <TransactionCards>[].obs;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    Transactions()
+        .getListDataItem("Transactions/GetUserTransactionsByAsset/1/${widget.crypto.fromsymbol}/1/10", widget.crypto, context)
+        .then((value) {
+      transaction.value = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    var pulldata = PullData(
-        data: [OrdersCards().cards03(), OrdersCards().cards03(), OrdersCards().cards03()], more: "", title: "Today", position: Axis.vertical);
-    var pulldata1 = PullData(
-        data: [OrdersCards().cards03(), OrdersCards().cards03(), OrdersCards().cards03()], more: "", title: "12 May", position: Axis.vertical);
-
     return Column(
       children: [
-        ListStrutural(
-          data: pulldata,
-          colorTitle: AppColors.black,
-          height: null,
-        ),
-        ListStrutural(
-          data: pulldata1,
-          colorTitle: AppColors.black,
-          height: null,
+        Obx(
+          () => transaction.isNotEmpty
+              ? ListStrutural(
+                  data: PullData(data: transaction, more: "", title: "", position: Axis.vertical),
+                  colorTitle: AppColors.black,
+                  height: null,
+                )
+              : const CircularProgressIndicator(
+                  color: AppColors.black,
+                ),
         ),
       ],
     );

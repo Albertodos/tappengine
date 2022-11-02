@@ -20,7 +20,6 @@ class ProductsC extends GetxController {
   final pullData = <PullData>[].obs;
 
   Future getproductsView(url, context) async {
-    print(url);
     var response = await HttpService.getService(url, context);
     if (response is List) {
       pullData.value = List<PullData>.from(response.map((e) => PullData.fromJson(e, context)).toList());

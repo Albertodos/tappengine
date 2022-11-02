@@ -48,6 +48,24 @@ class HttpService {
     return response;
   }
 
+  static Future postMicroService(url, context) async {
+    final response = await statusError(http.post(
+      Uri.parse(ApiPath.baseUrlMicro + url),
+
+      // body: jsonEncode(body),
+      headers: {
+        // "Content-Type": "application/json",
+        'Authorization': 'Bearer ${ApiPath.token}',
+      },
+    ));
+    if (response.runtimeType == ErrorRequest) {
+      // requestAlertError(context, response);
+
+      return null;
+    }
+    return response;
+  }
+
   static Future getMicroService(url, context) async {
     print(ApiPath.baseUrlMicro + url);
     var response = await statusError(http.get(Uri.parse(ApiPath.baseUrlMicro + url), headers: {

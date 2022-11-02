@@ -104,15 +104,19 @@ class _BuyOverviewVCState extends State<BuyOverviewVC> {
                       ),
                       ExpandablePageView(
                         controller: controller,
-                        physics: const NeverScrollableScrollPhysics(),
+                        // physics: const NeverScrollableScrollPhysics(),
                         onPageChanged: (value) {},
                         children: [
                           OverviewVC(
                             crypto: cryptoC.selectCrypto.value,
                           ),
-                          const NewsVC(),
-                          const OrdersVC(),
-                          const TransactionsVC(),
+                          NewsVC(
+                            crypto: cryptoC.selectCrypto.value,
+                          ),
+                          OrdersVC(
+                            crypto: cryptoC.selectCrypto.value,
+                          ),
+                          TransactionsVC(crypto: cryptoC.selectCrypto.value),
                         ],
                       ),
                     ],

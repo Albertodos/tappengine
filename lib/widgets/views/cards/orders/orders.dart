@@ -3,16 +3,14 @@ import 'package:get/get.dart';
 
 import '../../../../constants/app_colors.dart';
 import '../../../ui_kits/labels_ui/label_ui.dart';
+import 'model/orders.dart';
 
 class OrdersCards extends StatelessWidget {
-  const OrdersCards({super.key});
+  final Orders orders;
+  const OrdersCards({super.key, required this.orders});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
-  }
-
-  Widget cards01() {
     return Column(
       children: [
         Container(
@@ -52,10 +50,10 @@ class OrdersCards extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Row(
-                          children: const [
+                          children: [
                             Expanded(
                               child: UILabels(
-                                text: "Recurring buy BTC",
+                                text: "${orders.typeName} buy ${orders.asset}",
                                 textLines: 1,
                                 color: AppColors.black,
                                 fontSize: 18,
@@ -63,7 +61,7 @@ class OrdersCards extends StatelessWidget {
                               ),
                             ),
                             UILabels(
-                              text: "\$34",
+                              text: "${orders.price}",
                               textLines: 1,
                               color: AppColors.black,
                               fontSize: 18,
@@ -71,8 +69,8 @@ class OrdersCards extends StatelessWidget {
                             ),
                           ],
                         ),
-                        const UILabels(
-                          text: "BNB • 161,234,261",
+                        UILabels(
+                          text: orders.time ?? "",
                           textLines: 1,
                           color: AppColors.black,
                           fontSize: 12,
