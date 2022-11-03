@@ -4,7 +4,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:tappengine/constants/app_colors.dart';
 import 'package:tappengine/page/screen/reusebles/more/add_money.dart';
 import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
-
+import '../../../../helpers/globals.dart' as globals;
 import '../../../../dependencies/shimmer/shimmer.dart';
 import '../../../../page/sheet/payment_method/payment_method.dart';
 import '../../../ui_kits/button_ui/button_ui.dart';
@@ -167,7 +167,7 @@ class ProductsCards extends StatelessWidget {
                       cb: (v) {
                         Navigator.pushNamed(
                           context,
-                          "/invest",
+                          "/${globals.rootName}/invest",
                         );
                       })),
               const SizedBox(

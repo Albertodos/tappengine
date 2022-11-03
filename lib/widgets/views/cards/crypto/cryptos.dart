@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tappengine/widgets/views/cards/orders/model/orders.dart';
 import '../../../../helpers/globals.dart' as globals;
 import 'package:get/get.dart';
 import 'package:tappengine/constants/app_colors.dart';
@@ -186,6 +187,9 @@ class CryptoCards extends StatelessWidget {
                       ),
                       colorList: const [],
                       cb: (v) {
+                        print("/${globals.rootName}/invest");
+                        print("/${globals.rootName}/invest");
+
                         Navigator.pushNamed(
                           context,
                           "/${globals.rootName}/invest",
@@ -848,6 +852,67 @@ class CryptoCards extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget cryptoDashboard03(context) {
+    return Container(
+      margin: const EdgeInsets.all(10),
+      width: Get.width - 100,
+      height: 300,
+      decoration: BoxDecoration(
+        color: AppColors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.purpura.withAlpha(25),
+            spreadRadius: 0,
+            blurRadius: 8,
+            offset: Offset(0, 4), // changes position of shadow
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const UILabels(
+              text: "Profit and Loss",
+              textLines: 1,
+              color: AppColors.black,
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+            ),
+            UILabels(
+              text: crypto!.value ?? "........",
+              textLines: 1,
+              color: AppColors.black,
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
+            ),
+            UILabels(
+              text: crypto!.dayMonth ?? ".......",
+              textLines: 1,
+              color: AppColors.black,
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            Expanded(
+              child: AnalyticsCards(
+                crypto: crypto,
+              ).graph2(context),
+            ),
+            const SizedBox(
+              height: 16,
+            )
           ],
         ),
       ),

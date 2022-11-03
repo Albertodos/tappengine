@@ -103,6 +103,27 @@ class AnalyticsCards extends StatelessWidget {
     );
   }
 
+  Widget graph2(BuildContext context) {
+    if (crypto!.dashboardData?.isEmpty ?? true) {
+      crypto!.getDashboardData("1", context).then(
+        (value) {
+          dashboardData.value = value;
+        },
+      );
+    } else {
+      dashboardData.value = crypto!.dashboardData ?? [];
+    }
+    return Obx(() => dashboardData.isNotEmpty
+        ? CustomGraphic(
+            chartDataList: dashboardData,
+          )
+        : const Center(
+            child: CircularProgressIndicator(
+              color: AppColors.black,
+            ),
+          ));
+  }
+
   Widget card01() {
     return Container(
       height: 260,

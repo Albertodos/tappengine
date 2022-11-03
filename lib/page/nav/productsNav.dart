@@ -39,6 +39,10 @@ class _ProductsNavState extends State<ProductsNav> {
                 key: Key(widget.data.dataUrl.toString()),
                 dataUrl: widget.data.dataUrl.toString(),
               ),
+          '/${widget.data.name}/crypto': (context) => ProductsVC(
+                key: Key(widget.data.dataUrl.toString()),
+                dataUrl: widget.data.dataUrl.toString(),
+              ),
           '/${widget.data.name}/home': (context) => const HomeVC(),
           '/${widget.data.name}/personalInfo': (context) => const PersonalInfoVC(),
           '/${widget.data.name}/editProfile': (context) => const EditProfileVC(),

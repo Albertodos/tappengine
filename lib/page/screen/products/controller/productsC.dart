@@ -1,20 +1,16 @@
-import 'dart:convert';
-
-import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:tappengine/constants/api_path.dart';
 import 'package:tappengine/model/objects/pull_data.dart';
+import 'package:tappengine/widgets/views/cards/cms/model/cms.dart';
 import 'package:tappengine/widgets/views/cards/crypto/model/crypto.dart';
 import 'package:tappengine/widgets/views/cards/crypto/model/tab_menu.dart';
+import 'package:tappengine/widgets/views/cards/orders/model/orders.dart';
+import 'package:tappengine/widgets/views/cards/publicity/model/publicity.dart';
 
 import '../../../../dependencies/http/http.dart';
 import '../../../../widgets/views/cards/analytics/analytics.dart';
 import '../../../../widgets/views/cards/news/model/news.dart';
-import '../../../../widgets/views/cards/news/news.dart';
 import '../../../../widgets/views/cards/products/model/products_view.dart';
-import '../../../../widgets/views/cards/publicity/publicity.dart';
 
 class ProductsC extends GetxController {
   final pullData = <PullData>[].obs;
@@ -43,7 +39,15 @@ class ProductsC extends GetxController {
         await Crypto().getListDataItem(data.dataUrl, context).then((value) {
           var cryptoDashboard = value.map((e) => e.cryptoDashboard01(context)).toList();
           pullData[position].position = Axis.horizontal;
-          pullData[position].height = 300.0;
+          pullData[position].height = 420.0;
+          pullData[position].data = cryptoDashboard;
+        });
+        break;
+      case "CryptoDashboard03":
+        await Crypto().getListDataItem(data.dataUrl, context).then((value) {
+          var cryptoDashboard = value.map((e) => e.cryptoDashboard03(context)).toList();
+          pullData[position].position = Axis.horizontal;
+          pullData[position].height = 320.0;
           pullData[position].data = cryptoDashboard;
         });
         break;
@@ -87,7 +91,9 @@ class ProductsC extends GetxController {
         break;
 
       case "PubAdvice":
-        pullData[position].data = [const PublicityCards().card01()];
+        await Publicity().getListDataItem(data.dataUrl, context).then((value) {
+          pullData[position].data = [value];
+        });
         break;
       case "CryptoAnalyticsGridView":
         pullData[position].data = [
@@ -97,8 +103,27 @@ class ProductsC extends GetxController {
         ];
         break;
       case "PubCrypto":
-        pullData[position].data = [PublicityCards().card02()];
+        await Publicity().getListDataItem(data.dataUrl, context).then((value) {
+          pullData[position].data = [value.pubCrypto(context)];
+        });
         break;
+      case "CMS01":
+        await CMS().getListDataItem(data.dataUrl, context).then((value) {
+          var cms = value.map((e) => e).toList();
+          pullData[position].position = Axis.horizontal;
+          pullData[position].height = 300.0;
+          pullData[position].data = cms;
+        });
+        break;
+      case "OrdersList":
+        await Orders().getListDataItem(data.dataUrl, context).then((value) {
+          var cms = value.map((e) => e.ordersList()).toList();
+          pullData[position].position = Axis.horizontal;
+          pullData[position].height = 100.0;
+          pullData[position].data = cms;
+        });
+        break;
+
       case "News":
         await News().getListDataItem(data.dataUrl, context).then((value) {
           pullData[position].position = Axis.horizontal;

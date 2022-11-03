@@ -31,8 +31,23 @@ class HttpService {
     }
   }
 
+  static Future getCMSService(url, context) async {
+    var response = await statusError(http.get(Uri.parse(ApiPath.baseUrlCMS + url), headers: {
+      // 'Authorization': 'Bearer ${globals.user.token}',
+      // "Content-Type": "application/json",
+      //
+      // 'Content-type': 'text/plain',
+    }));
+
+    if (response.runtimeType == ErrorRequest) {
+      // requestAlertError(context, response);
+
+      return null;
+    }
+    return response;
+  }
+
   static Future getService(url, context) async {
-    print(ApiPath.baseUrl + url);
     var response = await statusError(http.get(Uri.parse(ApiPath.baseUrl + url), headers: {
       // 'Authorization': 'Bearer ${globals.user.token}',
       // "Content-Type": "application/json",

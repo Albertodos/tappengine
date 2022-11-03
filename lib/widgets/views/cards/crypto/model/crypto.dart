@@ -1,9 +1,11 @@
 import '../../../../../dependencies/http/http.dart';
+import '../../../../../helpers/utils.dart';
 import '../cryptos.dart';
 
 class Crypto {
   String? id;
-
+  String? dayMonth;
+  String? time;
   String? name;
   String? value;
   String? valueChange;
@@ -27,6 +29,10 @@ class Crypto {
     fromsymbol = json['fromsymbol'].toString();
     supplierId = json['supplierId'].toString();
     tosymbol = json['tosymbol'].toString();
+    time = json['time'].toString();
+    dayMonth = Utlis().getDataTime(time ?? "") == DateTime.now()
+        ? "Today"
+        : "${Utlis().getDataTime(time ?? "").day}/${Utlis().getDataTime(time ?? "").month}";
   }
 
   Future<List<CryptoCards>> getListDataItem(url, context) async {

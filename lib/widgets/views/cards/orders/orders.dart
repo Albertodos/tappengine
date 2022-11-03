@@ -91,7 +91,7 @@ class OrdersCards extends StatelessWidget {
     );
   }
 
-  Widget cards02() {
+  Widget ordersList() {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -122,10 +122,10 @@ class OrdersCards extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Row(
-                      children: const [
+                      children: [
                         Expanded(
                           child: UILabels(
-                            text: "Limit Sell BTC",
+                            text: "${orders.typeName} buy ${orders.asset}",
                             textLines: 1,
                             color: AppColors.black,
                             fontSize: 16,
@@ -133,7 +133,7 @@ class OrdersCards extends StatelessWidget {
                           ),
                         ),
                         UILabels(
-                          text: "\$3456",
+                          text: "${orders.price}",
                           textLines: 1,
                           color: AppColors.black,
                           fontSize: 16,
@@ -141,17 +141,10 @@ class OrdersCards extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const UILabels(
-                      text: "BNB • 161,234,261",
+                    UILabels(
+                      text: "${orders.quantity} • ${orders.price}",
                       textLines: 1,
                       color: AppColors.purpura2,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    const UILabels(
-                      text: "Limit price: \$70,000",
-                      textLines: 1,
-                      color: AppColors.black,
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
                     ),
