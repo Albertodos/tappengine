@@ -22,7 +22,8 @@ class PaymentMethodSheet extends SheetView {
         backgroundColor: Theme.of(globals.hometabContext).cardColor,
         context: globals.hometabContext,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
         builder: (BuildContext bc) {
           return Padding(
@@ -44,7 +45,9 @@ class PaymentMethodSheet extends SheetView {
                       },
                       child: Column(
                         children: [
-                          Obx(() => view01((positionMethod.value == index) ? AppColors.purpura : AppColors.white)),
+                          Obx(() => view01((positionMethod.value == index)
+                              ? AppColors.purpura
+                              : AppColors.white)),
                           const SizedBox(
                             height: 16,
                           )
@@ -53,9 +56,31 @@ class PaymentMethodSheet extends SheetView {
                     );
                   },
                 ),
-                const SizedBox(
-                  height: 16,
+                const SizedBox(height: 16),
+                Container(
+                  width: Get.width,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(16)),
+                    color: AppColors.gray3,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(32.0),
+                    child: Row(
+                      children: const[
+                        Icon(Icons.add_circle, color: AppColors.purpura,),
+                         SizedBox(width: 16),
+                        Expanded(child: UILabels(
+                          text: "Add Another Option",
+                          textLines: 1,
+                          color: AppColors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                        ),),
+                      ],
+                    ),
+                  ),
                 ),
+                const SizedBox(height: 16),
                 SizedBox(
                     height: 50,
                     width: Get.width,
@@ -88,7 +113,8 @@ class PaymentMethodSheet extends SheetView {
         backgroundColor: Theme.of(globals.hometabContext).cardColor,
         context: globals.hometabContext,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
         builder: (BuildContext bc) {
           return Padding(
@@ -112,7 +138,11 @@ class PaymentMethodSheet extends SheetView {
                       },
                       child: Column(
                         children: [
-                          Obx(() => view04(moreAdd[index] == selectMoreAdd.value ? AppColors.purpura : AppColors.white, moreAdd[index])),
+                          Obx(() => view04(
+                              moreAdd[index] == selectMoreAdd.value
+                                  ? AppColors.purpura
+                                  : AppColors.white,
+                              moreAdd[index])),
                           const SizedBox(
                             height: 10,
                           )
@@ -136,7 +166,8 @@ class PaymentMethodSheet extends SheetView {
         backgroundColor: Theme.of(globals.hometabContext).cardColor,
         context: globals.hometabContext,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
         builder: (BuildContext bc) {
           return Padding(
@@ -160,7 +191,11 @@ class PaymentMethodSheet extends SheetView {
                       },
                       child: Column(
                         children: [
-                          Obx(() => view03(repeatsDate[index] == seleteRepeatsDate.value ? AppColors.purpura : AppColors.white, repeatsDate[index])),
+                          Obx(() => view03(
+                              repeatsDate[index] == seleteRepeatsDate.value
+                                  ? AppColors.purpura
+                                  : AppColors.white,
+                              repeatsDate[index])),
                           const SizedBox(
                             height: 16,
                           )
@@ -181,7 +216,8 @@ class PaymentMethodSheet extends SheetView {
         backgroundColor: Theme.of(globals.hometabContext).cardColor,
         context: globals.hometabContext,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
         builder: (BuildContext bc) {
           return Padding(
@@ -208,11 +244,13 @@ class PaymentMethodSheet extends SheetView {
         backgroundColor: Theme.of(globals.hometabContext).cardColor,
         context: globals.hometabContext,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
         builder: (BuildContext bc) {
           return SingleChildScrollView(
-              padding: const EdgeInsetsDirectional.only(start: 30, end: 30, bottom: 30, top: 30),
+              padding: const EdgeInsetsDirectional.only(
+                  start: 30, end: 30, bottom: 30, top: 30),
               child: Wrap(children: [
                 Column(children: [
                   header("Money Added", globals.hometabContext),
@@ -224,7 +262,8 @@ class PaymentMethodSheet extends SheetView {
                   ),
                   const SizedBox(height: 10),
                   UILabels(
-                      text: "You've funded your USD invesment account with \$1000 ",
+                      text:
+                          "You've funded your USD invesment account with \$1000 ",
                       textLines: 0,
                       color: AppColors.purpura,
                       textAlign: TextAlign.center,

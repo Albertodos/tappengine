@@ -51,9 +51,9 @@ class _WelcomeVCState extends State<WelcomeVC> {
                 WelcomePages(
                   pagePosition: 0,
                 ),
-                WelcomePages(
-                  pagePosition: 1,
-                ),
+                // WelcomePages(
+                //   pagePosition: 1,
+                // ),
               ],
               onPageChanged: (value) {
                 pagePosition.value = value;
@@ -73,7 +73,7 @@ class _WelcomeVCState extends State<WelcomeVC> {
                       const SizedBox(
                         width: 16,
                       ),
-                      pageIndicator(1)
+                      //pageIndicator(1)
                     ],
                   ),
                   const SizedBox(

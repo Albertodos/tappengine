@@ -132,7 +132,7 @@ class ComfirmOrderVC extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               UILabels(
-                text: "-\$10",
+                text: "-\$100",
                 textLines: 1,
                 color: AppColors.black,
                 fontSize: 24,
@@ -141,7 +141,7 @@ class ComfirmOrderVC extends StatelessWidget {
               UILabels(
                 text: "Buy BTC 0,0000234467",
                 textLines: 1,
-                color: AppColors.black,
+                color: AppColors.purpura,
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
               ),
@@ -226,7 +226,7 @@ class ComfirmOrderVC extends StatelessWidget {
             children: const [
               Expanded(
                 child: UILabels(
-                  text: "Market Cap",
+                  text: "Exchanged",
                   textLines: 1,
                   color: AppColors.gray2,
                   fontSize: 14,
@@ -237,45 +237,11 @@ class ComfirmOrderVC extends StatelessWidget {
                 width: 16,
               ),
               UILabels(
-                text: "12,3444.09 BTC ",
+                text: "0,003444.09 BTC ",
                 textLines: 1,
                 color: AppColors.black,
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children:  [
-              const Expanded(
-                child: UILabels(
-                  text: "Fees",
-                  textLines: 1,
-                  color: AppColors.gray2,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              const SizedBox(
-                width: 16,
-              ),
-              Row(
-                children: const[
-                  Icon(
-                    Icons.info_outline,
-                    color: AppColors.gray2,
-                    size: 14,
-                  ),
-                  SizedBox(width: 5),
-                  UILabels(
-                    text: "after 12,3444.09 BTC ",
-                    textLines: 1,
-                    color: AppColors.gray2,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ],
               ),
             ],
           ),

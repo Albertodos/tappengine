@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tappengine/widgets/views/cards/analytics/custom_graphic.dart';
 
 import '../../../../constants/app_colors.dart';
 
@@ -68,6 +69,7 @@ class AnalyticsCards extends StatelessWidget {
           ),
         ],
       ),
+      child: CustomGraphic(chartDataList: [],),
       alignment: Alignment.center,
     );
   }

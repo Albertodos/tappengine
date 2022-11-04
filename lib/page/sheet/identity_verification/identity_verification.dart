@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tappengine/page/screen/reusebles/payment_method/add_payment_methodVC.dart';
 
 import '../../../constants/app_colors.dart';
 import '../../../widgets/ui_kits/button_ui/button_ui.dart';
@@ -455,9 +456,24 @@ class IdentifyVerication extends SheetView {
                         ),
                         colorList: const [],
                         cb: (v) {
+                          Get.to(AddPaymentMethodVC());
                         }),
                   ),
-                )
+                ),
+                const SizedBox(height: 16),
+                GestureDetector(
+                  child: const UILabels(
+                    text: 'Skip',
+                    textLines: 0,
+                    color: AppColors.purpura2,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    textAlign: TextAlign.center,
+                  ),
+                  onTap: (){
+                    //TODO
+                  },
+                ),
               ],
             ),
           );

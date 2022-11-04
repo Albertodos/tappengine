@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:tappengine/constants/app_colors.dart';
 import 'package:tappengine/model/objects/user/user.dart';
+import 'package:tappengine/page/screen/autentication/register/add_bank_accountVC.dart';
 import 'package:tappengine/page/screen/autentication/register/registerVC.dart';
 import 'package:tappengine/page/tab/homeTab.dart';
 import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
@@ -198,7 +199,7 @@ class _LoginVCState extends State<LoginVC> {
                         textAlign: TextAlign.center,
                       ),
                       onTap: (){
-                        Get.offAll(const RegisterVC(),
+                        Get.offAll(const AddBankAccountVC(),
                             duration: const Duration(seconds: 1), //duration of transitions, default 1 sec
                             transition: Transition.cupertino);
                       },

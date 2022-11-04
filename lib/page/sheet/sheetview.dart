@@ -45,25 +45,25 @@ class SheetView {
     return Container(
       width: Get.width,
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
         color: bg,
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(left: 32.0, right: 32, top: 16, bottom: 16),
         child: Column(
           children: [
             Row(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.center, children: [
-              Container(
-                height: 50,
-                width: 50,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: AppColors.gray,
-                ),
-              ),
-              const SizedBox(
-                width: 16,
-              ),
+              // Container(
+              //   height: 50,
+              //   width: 50,
+              //   decoration: const BoxDecoration(
+              //     borderRadius: BorderRadius.all(Radius.circular(10)),
+              //     color: AppColors.gray,
+              //   ),
+              // ),
+              // const SizedBox(
+              //   width: 16,
+              // ),
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -74,14 +74,14 @@ class SheetView {
                       text: "Affinity Plus (Premier)",
                       textLines: 1,
                       color: bg == AppColors.purpura ? AppColors.gray : AppColors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
                     ),
                     UILabels(
                       text: "xxxx 5642",
                       textLines: 1,
                       color: bg == AppColors.purpura ? AppColors.gray : AppColors.black,
-                      fontSize: 16,
+                      fontSize: 12,
                       fontWeight: FontWeight.w400,
                     ),
                   ],
@@ -93,6 +93,7 @@ class SheetView {
                   color: AppColors.white,
                 )
             ]),
+
           ],
         ),
       ),

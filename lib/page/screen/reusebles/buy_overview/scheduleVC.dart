@@ -151,6 +151,7 @@ class _ScheduleVCState extends State<ScheduleVC> {
             Icon(
               icon,
               size: 30,
+              color: AppColors.purpura,
             )
           ],
         ),
