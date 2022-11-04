@@ -6,8 +6,9 @@ import 'package:tappengine/widgets/views/cards/crypto/model/crypto.dart';
 
 class CustomGraphic extends StatelessWidget {
   final List<DashboardData> chartDataList;
+  final Color color;
 
-  CustomGraphic({Key? key, required this.chartDataList}) : super(key: key);
+  CustomGraphic({Key? key, required this.chartDataList, required this.color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +40,13 @@ class CustomGraphic extends StatelessWidget {
             yValueMapper: (DashboardData sales, _) => double.parse(sales.y.toString()),
 
             gradient: LinearGradient(colors: [
-              AppColors.green1.withAlpha(60),
+              color.withAlpha(60),
               Colors.grey.withAlpha(0),
-            ], stops: [
+            ], stops: const [
               0.0,
               1.0
             ], begin: FractionalOffset.topCenter, end: FractionalOffset.bottomCenter, tileMode: TileMode.repeated),
-            borderColor: AppColors.green1,
+            borderColor: color,
             borderWidth: 2,
             // width: 3,
             markerSettings: MarkerSettings(borderColor: Colors.white, isVisible: false, color: Colors.blue),

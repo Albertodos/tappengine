@@ -36,6 +36,28 @@ class CMS {
   }
 }
 
+class CryptoImage {
+  String? icon;
+  String? symbol;
+
+  CryptoImage({
+    this.icon,
+    this.symbol,
+  });
+
+  CryptoImage.fromJson(Map<String, dynamic> json) {
+    symbol = json['attributes']['symbol'].toString();
+    icon = json['attributes']['icon']['data']['attributes']['url'];
+  }
+
+  Future<List<CryptoImage>> getListDataItem(url, context) async {
+    var response = await HttpService.getCMSService(url, context);
+    var crypto = List<CryptoImage>.from(response['data'].map((e) => CryptoImage.fromJson(e)).toList());
+
+    return crypto;
+  }
+}
+
 class ImageContent {
   String? data;
 

@@ -22,7 +22,7 @@ class LoginVC extends StatefulWidget {
 }
 
 class _LoginVCState extends State<LoginVC> {
-  final Autentication autenticationC = Get.put(Autentication());
+  final Autentication autenticationC = Get.find();
 
   bool selected = true;
   double opacityLevel = 0.0;

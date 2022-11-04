@@ -35,6 +35,22 @@ class ProductsC extends GetxController {
           pullData[position].data = value;
         });
         break;
+      case "CryptoListView2":
+        await Crypto().getListDataItem(data.dataUrl, context).then((value) {
+          var cryptoDashboard = value.map((e) => e.cryptoListView2(context)).toList();
+          pullData[position].position = Axis.horizontal;
+          pullData[position].height = 165.0;
+          pullData[position].data = cryptoDashboard;
+        });
+        break;
+      case "CryptoListView3":
+        await Crypto().getListDataItem(data.dataUrl, context).then((value) {
+          var cryptoDashboard = value.map((e) => e.cryptoListView3()).toList();
+          pullData[position].position = Axis.horizontal;
+          pullData[position].height = 110.0;
+          pullData[position].data = cryptoDashboard;
+        });
+        break;
       case "CryptoDashboard01":
         await Crypto().getListDataItem(data.dataUrl, context).then((value) {
           var cryptoDashboard = value.map((e) => e.cryptoDashboard01(context)).toList();
@@ -48,6 +64,14 @@ class ProductsC extends GetxController {
           var cryptoDashboard = value.map((e) => e.cryptoDashboard03(context)).toList();
           pullData[position].position = Axis.horizontal;
           pullData[position].height = 320.0;
+          pullData[position].data = cryptoDashboard;
+        });
+        break;
+      case "CryptoDashboard04":
+        await Crypto().getListDataItem(data.dataUrl, context).then((value) {
+          var cryptoDashboard = value.map((e) => e.cryptoDashboard04(context)).toList();
+          pullData[position].position = Axis.horizontal;
+          pullData[position].height = 200.0;
           pullData[position].data = cryptoDashboard;
         });
         break;
@@ -65,6 +89,21 @@ class ProductsC extends GetxController {
               // textDirection: TextDirection.rtl,
               //  verticalDirection: VerticalDirection.up,
               children: value.map((e) => e.cryptoGrid_2(context)).toList(),
+            )
+          ];
+        });
+        break;
+
+      case "CryptoGrid/4":
+        await Crypto().getListDataItem(data.dataUrl, context).then((value) {
+          pullData[position].data = [
+            Wrap(
+              alignment: WrapAlignment.spaceAround,
+              spacing: 16.0,
+              runAlignment: WrapAlignment.spaceAround,
+              runSpacing: 32.0,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: value.map((e) => e.cryptoGrid_3()).toList(),
             )
           ];
         });

@@ -1,5 +1,7 @@
+import 'package:tappengine/helpers/utils.dart';
+
 import '../../../../../dependencies/http/http.dart';
-import '../../../../../helpers/utils.dart';
+
 import '../cryptos.dart';
 
 class Crypto {
@@ -22,17 +24,21 @@ class Crypto {
   Crypto.fromJson(Map<String, dynamic> json) {
     id = json['id'].toString();
     name = json['coinName'].toString();
+    tosymbol = json['tosymbol'].toString();
     value = json['price'].toString();
     valueChange = json['lastVolume'].toString();
     percent = json['percentagePriceChange'].toString();
-    img = json['imageUrl'].toString();
-    fromsymbol = json['fromsymbol'].toString();
+
+    fromsymbol = json['fromsymbol'] != null ? json['fromsymbol'].toString() : json['fromSymbol'];
+    ;
+    img = Utlis().getCryptoImage(fromsymbol, json['imageUrl'].toString());
+
     supplierId = json['supplierId'].toString();
-    tosymbol = json['tosymbol'].toString();
     time = json['time'].toString();
-    dayMonth = Utlis().getDataTime(time ?? "") == DateTime.now()
-        ? "Today"
-        : "${Utlis().getDataTime(time ?? "").day}/${Utlis().getDataTime(time ?? "").month}";
+    dayMonth = "Today";
+    // dayMonth = Utlis().getDataTime(time ?? "") == DateTime.now()
+    //     ? "Today"
+    //     : "${Utlis().getDataTime(time ?? "").day}/${Utlis().getDataTime(time ?? "").month}";
   }
 
   Future<List<CryptoCards>> getListDataItem(url, context) async {

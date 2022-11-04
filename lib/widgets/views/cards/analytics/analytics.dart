@@ -58,7 +58,7 @@ class AnalyticsCards extends StatelessWidget {
     );
   }
 
-  Widget graph(BuildContext context) {
+  Widget graph(BuildContext context, color) {
     var period = ["1D", "7D", "1M", "1Y", "Max"];
 
     if (crypto!.dashboardData?.isEmpty ?? true) {
@@ -80,6 +80,7 @@ class AnalyticsCards extends StatelessWidget {
                   height: 180,
                   child: CustomGraphic(
                     chartDataList: dashboardData,
+                    color: color,
                   ),
                 )
               : const Center(
@@ -103,7 +104,7 @@ class AnalyticsCards extends StatelessWidget {
     );
   }
 
-  Widget graph2(BuildContext context) {
+  Widget graph2(BuildContext context, color) {
     if (crypto!.dashboardData?.isEmpty ?? true) {
       crypto!.getDashboardData("1", context).then(
         (value) {
@@ -116,6 +117,7 @@ class AnalyticsCards extends StatelessWidget {
     return Obx(() => dashboardData.isNotEmpty
         ? CustomGraphic(
             chartDataList: dashboardData,
+            color: color,
           )
         : const Center(
             child: CircularProgressIndicator(

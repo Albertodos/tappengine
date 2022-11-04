@@ -1,17 +1,15 @@
+import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import '../../../helpers/cliper.dart';
 import '../../../helpers/globals.dart' as globals;
 import '../../../constants/app_colors.dart';
-import '../../../model/objects/pull_data.dart';
 import '../../../widgets/structural/list_Structural.dart';
-import '../../../widgets/views/cards/analytics/analytics.dart';
-import '../../../widgets/views/cards/products/products.dart';
+import '../../../widgets/ui_kits/labels_ui/label_ui.dart';
+import '../../../widgets/views/cards/crypto/model/tab_menu.dart';
 import '../../../widgets/views/cards/menu/menuCard.dart';
-import '../../../widgets/views/cards/publicity/publicity.dart';
 import '../../../widgets/views/cards/user/userCard.dart';
-import '../../../widgets/views/cards/watchlists.dart/watchlists.dart';
+import '../products/controller/productsC.dart';
 
 class InvestVC extends StatefulWidget {
   const InvestVC({super.key});
@@ -21,27 +19,16 @@ class InvestVC extends StatefulWidget {
 }
 
 class _InvestVCState extends State<InvestVC> {
+  final ProductsC productsC = Get.find();
+
+  @override
+  void initState() {
+    productsC.getproductsView("invest.json", context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var pulldata = PullData(
-        data: [WatchlistsCards().cards04(context), WatchlistsCards().cards04(context), WatchlistsCards().cards04(context)],
-        more: "",
-        title: "Recently viewed",
-        position: Axis.horizontal);
-    var pulldata2 = PullData(data: [
-      MenuCards().tabMenu(["Crypto", "Stocks"], (p) {}),
-      WatchlistsCards().cards01(),
-      WatchlistsCards().cards01(),
-      WatchlistsCards().cards01(),
-      WatchlistsCards().cards01()
-    ], more: "View All", title: "All crypto 83", position: Axis.vertical);
-    var pulldata3 = PullData(
-        data: [AnalyticsCards().card02(), AnalyticsCards().card02(), AnalyticsCards().card02()],
-        more: "View All",
-        title: "Popular crypto",
-        position: Axis.horizontal);
-    var pulldata5 = PullData(data: [WatchlistsCards().cards06()], more: "View All", title: "Most traded this week", position: Axis.vertical);
-
     return Scaffold(
       backgroundColor: Theme.of(context).cardColor,
       body: CustomScrollView(
@@ -76,57 +63,62 @@ class _InvestVCState extends State<InvestVC> {
             ),
           ),
           SliverToBoxAdapter(
-            child: Column(
-              children: [
-                ListStrutural(
-                  data: pulldata,
-                  colorTitle: AppColors.black,
-                  height: 165.0,
-                ),
-                ListStrutural(
-                    data: PullData(data: [
-                      Wrap(
-                        // direction: Axis.vertical,
-                        alignment: WrapAlignment.spaceAround,
-                        spacing: 16.0,
-                        runAlignment: WrapAlignment.spaceAround,
-                        runSpacing: 32.0,
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        // textDirection: TextDirection.rtl,
-                        //  verticalDirection: VerticalDirection.up,
-                        children: <Widget>[
-                          WatchlistsCards().cards05(),
-                          WatchlistsCards().cards05(),
-                          WatchlistsCards().cards05(),
-                          WatchlistsCards().cards05(),
-                          WatchlistsCards().cards05(),
-                          WatchlistsCards().cards05(),
-                          WatchlistsCards().cards05(),
-                          WatchlistsCards().cards05()
-                        ],
-                      ),
-                    ], more: "View All", title: "Today's top movers", position: Axis.vertical),
-                    colorTitle: AppColors.black,
-                    height: null),
-                const SizedBox(
-                  height: 32,
-                ),
-                ListStrutural(
-                  data: pulldata5,
-                  colorTitle: AppColors.black,
-                  height: null,
-                ),
-                ListStrutural(
-                  data: pulldata3,
-                  colorTitle: AppColors.black,
-                  height: 210.0,
-                ),
-                ListStrutural(
-                  data: pulldata2,
-                  colorTitle: AppColors.black,
-                  height: null,
-                ),
-              ],
+            child: Obx(
+              () => Column(
+                  children: productsC.pullData.map((element) {
+                PageController controller = PageController(viewportFraction: 1, keepPage: true);
+
+                return element.type == "MenuTab"
+                    ? element.data is List<TabMenu>
+                        ? Padding(
+                            padding: const EdgeInsets.only(left: 32, right: 32),
+                            child: Column(
+                              children: [
+                                if (element.title != "")
+                                  Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Expanded(
+                                          child: UILabels(
+                                        text: element.title ?? "",
+                                        textLines: 1,
+                                        color: AppColors.black,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600,
+                                      )),
+                                      if (element.more != "")
+                                        const UILabels(
+                                          text: "All More",
+                                          textLines: 1,
+                                          color: AppColors.purpura,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        )
+                                    ],
+                                  ),
+                                MenuCards().tabMenu((element.data as List<TabMenu>).map((e) => e.name.toString()).toList(), (p) {
+                                  controller.animateToPage(p,
+                                      curve: Curves.decelerate,
+                                      duration: const Duration(milliseconds: 300)); // for animated jump. Requires a curve and a duration
+                                }),
+                                ExpandablePageView(
+                                  controller: controller,
+                                  onPageChanged: (value) {},
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  children: (element.data as List<TabMenu>).map((e) => e.widget.value).toList(),
+                                ),
+                              ],
+                            ),
+                          )
+                        : const CircularProgressIndicator(
+                            color: AppColors.black,
+                          )
+                    : ListStrutural(
+                        data: element,
+                        colorTitle: AppColors.black,
+                        height: element.height,
+                      );
+              }).toList()),
             ),
           ),
         ],
