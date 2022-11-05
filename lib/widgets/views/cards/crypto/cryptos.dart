@@ -57,6 +57,29 @@ class CryptoCards extends StatelessWidget {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
+                        UILabels(
+                          text: crypto!.value ?? "",
+                          textLines: 1,
+                          color: AppColors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: UILabels(
+                            text: "${crypto!.name!.toUpperCase()}  •  ${crypto!.valueChange}",
+                            textLines: 1,
+                            color: AppColors.purpura2,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 16,
+                        ),
                         Row(
                           children: [
                             const Icon(Icons.keyboard_arrow_down, color: AppColors.purpura1),
@@ -69,29 +92,7 @@ class CryptoCards extends StatelessWidget {
                             ),
                           ],
                         ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: UILabels(
-                            text: "${crypto!.name} • ${crypto!.valueChange}",
-                            textLines: 1,
-                            color: AppColors.purpura2,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 16,
-                        ),
-                        UILabels(
-                          text: crypto!.value ?? "",
-                          textLines: 1,
-                          color: AppColors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
+
                       ],
                     ),
                     const SizedBox(
@@ -581,8 +582,9 @@ class CryptoCards extends StatelessWidget {
                     width: 50,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(25)),
-                      color: AppColors.white,
+                      color: AppColors.gray3,
                     ),
+                    child:  Image.network((crypto!.img.toString()), height: 10, width: 10),
                   ),
                 ],
               ),
