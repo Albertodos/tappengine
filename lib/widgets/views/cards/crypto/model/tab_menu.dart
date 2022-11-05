@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tappengine/model/objects/pull_data.dart';
 import 'package:tappengine/widgets/views/cards/analytics/analytics.dart';
+import 'package:tappengine/widgets/views/cards/crypto/cryptos.dart';
 
 import '../../../../../constants/app_colors.dart';
 import '../../../../../dependencies/http/http.dart';
@@ -60,7 +61,9 @@ class TabMenu {
                 itemCount: value.length,
                 padding: EdgeInsets.zero,
                 itemBuilder: (BuildContext context, int index) {
-                  return value.map((e) => e.cryptoDashboard02(context)).toList()[index];
+                  return (value is List<CryptoCards>)
+                      ? value.map((e) => (e).cryptoDashboard02(context)).toList()[index]
+                      : value.map((e) => e).toList()[index];
                 },
               ),
             )

@@ -30,7 +30,6 @@ class CMSCards extends StatelessWidget {
         ],
       ),
       width: Get.width - 35,
-      height: 300,
       child: HtmlWidget(
         '<iframe style="border-radius:20px" src="${cms.link ?? ""}" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>',
         factoryBuilder: () => MyWidgetFactory(),

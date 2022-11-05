@@ -5,10 +5,12 @@ import 'package:tappengine/widgets/views/cards/cms/model/cms.dart';
 import 'package:tappengine/widgets/views/cards/crypto/model/crypto.dart';
 import 'package:tappengine/widgets/views/cards/crypto/model/tab_menu.dart';
 import 'package:tappengine/widgets/views/cards/orders/model/orders.dart';
+import 'package:tappengine/widgets/views/cards/orders/orders.dart';
 import 'package:tappengine/widgets/views/cards/publicity/model/publicity.dart';
 
 import '../../../../dependencies/http/http.dart';
 import '../../../../widgets/views/cards/analytics/analytics.dart';
+import '../../../../widgets/views/cards/crypto/cryptos.dart';
 import '../../../../widgets/views/cards/news/model/news.dart';
 import '../../../../widgets/views/cards/products/model/products_view.dart';
 
@@ -37,42 +39,67 @@ class ProductsC extends GetxController {
         break;
       case "CryptoListView2":
         await Crypto().getListDataItem(data.dataUrl, context).then((value) {
-          var cryptoDashboard = value.map((e) => e.cryptoListView2(context)).toList();
-          pullData[position].position = Axis.horizontal;
-          pullData[position].height = 165.0;
-          pullData[position].data = cryptoDashboard;
+          if (value is List<CryptoCards>) {
+            var cryptoDashboard = value.map((e) => (e).cryptoListView2(context)).toList();
+            pullData[position].position = Axis.horizontal;
+            pullData[position].height = 165.0;
+            pullData[position].data = cryptoDashboard;
+          } else {
+            var cryptoDashboard = value.map((e) => e).toList();
+            pullData[position].data = cryptoDashboard;
+          }
         });
         break;
       case "CryptoListView3":
         await Crypto().getListDataItem(data.dataUrl, context).then((value) {
-          var cryptoDashboard = value.map((e) => e.cryptoListView3()).toList();
-          pullData[position].position = Axis.horizontal;
-          pullData[position].height = 110.0;
-          pullData[position].data = cryptoDashboard;
+          if (value is List<CryptoCards>) {
+            var cryptoDashboard = value.map((e) => (e).cryptoListView3()).toList();
+            pullData[position].position = Axis.horizontal;
+            pullData[position].height = 110.0;
+            pullData[position].data = cryptoDashboard;
+          } else {
+            var cryptoDashboard = value.map((e) => e).toList();
+            pullData[position].data = cryptoDashboard;
+          }
         });
         break;
       case "CryptoDashboard01":
         await Crypto().getListDataItem(data.dataUrl, context).then((value) {
-          var cryptoDashboard = value.map((e) => e.cryptoDashboard01(context)).toList();
-          pullData[position].position = Axis.horizontal;
-          pullData[position].height = 420.0;
-          pullData[position].data = cryptoDashboard;
+          if (value is List<CryptoCards>) {
+            var cryptoDashboard = value.map((e) => (e).cryptoDashboard02(context)).toList();
+            pullData[position].position = Axis.horizontal;
+            pullData[position].height = 420.0;
+            pullData[position].data = cryptoDashboard;
+          } else {
+            var cryptoDashboard = value.map((e) => e).toList();
+            pullData[position].data = cryptoDashboard;
+          }
         });
         break;
       case "CryptoDashboard03":
         await Crypto().getListDataItem(data.dataUrl, context).then((value) {
-          var cryptoDashboard = value.map((e) => e.cryptoDashboard03(context)).toList();
-          pullData[position].position = Axis.horizontal;
-          pullData[position].height = 320.0;
-          pullData[position].data = cryptoDashboard;
+          if (value is List<CryptoCards>) {
+            var cryptoDashboard = value.map((e) => (e).cryptoDashboard03(context)).toList();
+            pullData[position].position = Axis.horizontal;
+            pullData[position].height = 320.0;
+            pullData[position].data = cryptoDashboard;
+          } else {
+            var cryptoDashboard = value.map((e) => e).toList();
+            pullData[position].data = cryptoDashboard;
+          }
         });
         break;
       case "CryptoDashboard04":
         await Crypto().getListDataItem(data.dataUrl, context).then((value) {
-          var cryptoDashboard = value.map((e) => e.cryptoDashboard04(context)).toList();
-          pullData[position].position = Axis.horizontal;
-          pullData[position].height = 200.0;
-          pullData[position].data = cryptoDashboard;
+          if (value is List<CryptoCards>) {
+            var cryptoDashboard = value.map((e) => (e).cryptoDashboard04(context)).toList();
+            pullData[position].position = Axis.horizontal;
+            pullData[position].height = 200.0;
+            pullData[position].data = cryptoDashboard;
+          } else {
+            var cryptoDashboard = value.map((e) => e).toList();
+            pullData[position].data = cryptoDashboard;
+          }
         });
         break;
 
@@ -88,7 +115,7 @@ class ProductsC extends GetxController {
               // crossAxisAlignment: WrapCrossAlignment.center,
               // textDirection: TextDirection.rtl,
               //  verticalDirection: VerticalDirection.up,
-              children: value.map((e) => e.cryptoGrid_2(context)).toList(),
+              children: (value is List<CryptoCards>) ? value.map((e) => (e).cryptoGrid_2(context)).toList() : value.map((e) => e).toList(),
             )
           ];
         });
@@ -103,7 +130,7 @@ class ProductsC extends GetxController {
               runAlignment: WrapAlignment.spaceAround,
               runSpacing: 32.0,
               crossAxisAlignment: WrapCrossAlignment.center,
-              children: value.map((e) => e.cryptoGrid_3()).toList(),
+              children: (value is List<CryptoCards>) ? value.map((e) => (e).cryptoGrid_3()).toList() : value.map((e) => e).toList(),
             )
           ];
         });
@@ -150,16 +177,22 @@ class ProductsC extends GetxController {
         await CMS().getListDataItem(data.dataUrl, context).then((value) {
           var cms = value.map((e) => e).toList();
           pullData[position].position = Axis.horizontal;
-          pullData[position].height = 300.0;
+          pullData[position].height = 200.0;
           pullData[position].data = cms;
         });
         break;
       case "OrdersList":
         await Orders().getListDataItem(data.dataUrl, context).then((value) {
-          var cms = value.map((e) => e.ordersList()).toList();
-          pullData[position].position = Axis.horizontal;
-          pullData[position].height = 100.0;
-          pullData[position].data = cms;
+          if (value is List<OrdersCards>) {
+            var cms = value.map((e) => (e).ordersList()).toList();
+            pullData[position].position = Axis.horizontal;
+            pullData[position].height = 100.0;
+            pullData[position].data = cms;
+          } else {
+            var cms = value.map((e) => e).toList();
+
+            pullData[position].data = cms;
+          }
         });
         break;
 

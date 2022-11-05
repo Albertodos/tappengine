@@ -1,5 +1,5 @@
 import 'package:tappengine/helpers/utils.dart';
-
+import 'package:intl/intl.dart';
 import '../../../../../dependencies/http/http.dart';
 import '../../../../../model/objects/pull_data.dart';
 import '../../crypto/model/crypto.dart';
@@ -15,6 +15,8 @@ class Transactions {
   String? time;
   String? date;
   String? dayMonth;
+  final priceFormat = NumberFormat("#,##0.00", "pt_BR");
+  final valueChageFormat = NumberFormat("#,#######0.00", "pt_BR");
 
   Transactions({this.id, this.accountId, this.walletTransactionType, this.symbol, this.amount, this.price, this.date});
 

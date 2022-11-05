@@ -13,8 +13,7 @@ import 'model/crypto.dart';
 
 class CryptoCards extends StatelessWidget {
   final Crypto? crypto;
-  final CryptoBalances? cryptoBalances;
-  CryptoCards({super.key, this.crypto, this.cryptoBalances});
+  CryptoCards({super.key, this.crypto});
   final CryptoC cryptoC = Get.put(CryptoC());
   @override
   Widget build(BuildContext context) {

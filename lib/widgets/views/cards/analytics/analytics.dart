@@ -14,7 +14,7 @@ class AnalyticsCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (crypto!.dashboardData?.isEmpty ?? true) {
-      crypto!.getDashboardData("1", context).then(
+      crypto!.getDashboardData("2", context).then(
         (value) {
           dashboardData.value = value;
         },

@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:tappengine/helpers/utils.dart';
-
+import 'package:intl/intl.dart';
 import '../../../../../dependencies/http/http.dart';
 
+import '../../../alert/alerts.dart';
 import '../cryptos.dart';
 
 class Crypto {
@@ -16,8 +18,10 @@ class Crypto {
   String? fromsymbol;
   String? supplierId;
   String? tosymbol;
-  CryptoBalances? cryptoBalances;
   List<DashboardData>? dashboardData;
+
+  final priceFormat = NumberFormat("#,##0.00", "pt_BR");
+  final valueChageFormat = NumberFormat("#,#######0.00", "pt_BR");
 
   Crypto({this.id, this.name, this.value, this.valueChange, this.percent, this.img});
 
@@ -30,7 +34,7 @@ class Crypto {
     percent = json['percentagePriceChange'].toString();
 
     fromsymbol = json['fromsymbol'] != null ? json['fromsymbol'].toString() : json['fromSymbol'];
-    ;
+
     img = Utlis().getCryptoImage(fromsymbol, json['imageUrl'].toString());
 
     supplierId = json['supplierId'].toString();
@@ -41,10 +45,16 @@ class Crypto {
     //     : "${Utlis().getDataTime(time ?? "").day}/${Utlis().getDataTime(time ?? "").month}";
   }
 
-  Future<List<CryptoCards>> getListDataItem(url, context) async {
+  Future<List<Widget>> getListDataItem(url, context) async {
     var response = await HttpService.getMicroService(url, context);
-    var crypto = List<CryptoCards>.from(response.map((e) => CryptoCards(crypto: Crypto.fromJson(e))).toList());
-    getDashboardData(2, context);
+    var crypto = <Widget>[];
+    if (response.isNotEmpty) {
+      crypto = List<CryptoCards>.from(response.map((e) => CryptoCards(crypto: Crypto.fromJson(e))).toList());
+      getDashboardData(2, context);
+    } else {
+      crypto = [AlertsCards().tryAgain((p0) => getListDataItem(url, context))];
+    }
+
     return crypto;
   }
 
@@ -53,33 +63,6 @@ class Crypto {
     dashboardData = List<DashboardData>.from(response.map((e) => DashboardData.fromJson(e)).toList());
 
     return dashboardData ?? [];
-  }
-}
-
-class CryptoBalances {
-  int? id;
-  String? name;
-  String? value;
-  String? valueChange;
-  String? percent;
-  String? img;
-  String? fromsymbol;
-
-  CryptoBalances({this.id, this.name, this.value, this.valueChange, this.percent, this.img});
-
-  CryptoBalances.fromJson(Map<String, dynamic> json) {
-    id = json['walletId'];
-    name = json['description'].toString();
-    value = json['currentTotalPrice'].toString();
-    valueChange = json['unrealisedReturnValue'].toString();
-    percent = json['unrealisedReturnPercentage'].toString();
-    img = json['img'].toString();
-  }
-
-  Future<CryptoCards> getListDataItem(url, context) async {
-    var response = await HttpService.getMicroService(url, context);
-    var cryptoBalances = CryptoCards(cryptoBalances: CryptoBalances.fromJson(response));
-    return cryptoBalances;
   }
 }
 

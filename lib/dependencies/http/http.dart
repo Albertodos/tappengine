@@ -76,13 +76,12 @@ class HttpService {
     if (response.runtimeType == ErrorRequest) {
       // requestAlertError(context, response);
 
-      return null;
+      return [];
     }
     return response;
   }
 
   static Future getMicroService(url, context) async {
-    print(ApiPath.baseUrlMicro + url);
     var response = await statusError(http.get(Uri.parse(ApiPath.baseUrlMicro + url), headers: {
       'Authorization': 'Bearer ${ApiPath.token}',
       // "Content-Type": "application/json",
@@ -93,7 +92,7 @@ class HttpService {
     if (response.runtimeType == ErrorRequest) {
       // requestAlertError(context, response);
 
-      return null;
+      return [];
     }
     return response;
   }

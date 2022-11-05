@@ -1,5 +1,5 @@
 import 'package:tappengine/widgets/views/cards/products/Products.dart';
-
+import 'package:intl/intl.dart';
 import '../../../../../dependencies/http/http.dart';
 
 class ProductsView {
@@ -10,6 +10,8 @@ class ProductsView {
   String? currentTotalAmount;
   String? percent;
   String? img;
+  final priceFormat = NumberFormat("#,##0.00", "pt_BR");
+  final valueChageFormat = NumberFormat("#,#######0.00", "pt_BR");
 
   ProductsView({this.id, this.name, this.value, this.valueChange, this.percent, this.img});
 

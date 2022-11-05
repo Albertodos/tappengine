@@ -24,7 +24,7 @@ class _OrdersVCState extends State<OrdersVC> {
     super.initState();
 
     Orders().getListDataItem("Orders/GetWalletOrders/1/${widget.crypto.fromsymbol}/1/10", context).then((value) {
-      orders.value = value;
+      orders.value = value as List<OrdersCards>;
     });
   }
 
