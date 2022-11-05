@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+import 'package:tappengine/page/sheet/payment_method/payment_method.dart';
 import 'package:tappengine/widgets/ui_kits/button_ui/button_ui.dart';
 
 import '../../constants/app_colors.dart';
@@ -71,14 +72,14 @@ class SheetView {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     UILabels(
-                      text: "Affinity Plus (Premier)",
+                      text: "Debit Card",
                       textLines: 1,
                       color: bg == AppColors.purpura ? AppColors.gray : AppColors.black,
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
                     ),
                     UILabels(
-                      text: "xxxx 5642",
+                      text: "xxx xxxx 5642",
                       textLines: 1,
                       color: bg == AppColors.purpura ? AppColors.gray : AppColors.black,
                       fontSize: 12,
@@ -256,6 +257,108 @@ class SheetView {
               ),
 
             ]),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget view06(Color bg, title) {
+    return Container(
+      width: Get.width,
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
+        color: bg,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 32.0, right: 32, top: 16, bottom: 16),
+        child: Column(
+          children: [
+            Row(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.center, children: [
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    UILabels(
+                      text: title,
+                      textLines: 1,
+                      color: bg == AppColors.purpura ? AppColors.gray : AppColors.black,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    UILabels(
+                      text: "xxx xxxx 5642",
+                      textLines: 1,
+                      color: bg == AppColors.purpura ? AppColors.gray : AppColors.black,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ],
+                ),
+              ),
+                Row(
+                  children:  [
+                    GestureDetector(
+                      child: CircleAvatar(
+                          backgroundColor: bg == AppColors.purpura ? AppColors.purpura8 : AppColors.gray3,
+                          radius: 14,
+                          child: Icon(Icons.edit, color: bg == AppColors.purpura ? AppColors.white : AppColors.purpura, size: 17)
+                      ),
+                      onTap: (){
+                        //TODO
+                      },
+                    ),
+                    SizedBox(width: 10),
+                    GestureDetector(
+                      child: CircleAvatar(
+                          backgroundColor: bg == AppColors.purpura ? AppColors.purpura8 : AppColors.gray3,
+                          radius: 14,
+                          child: Icon(Icons.delete_outlined, color: bg == AppColors.purpura ? AppColors.white : AppColors.purpura, size: 17,)
+                      ),
+                      onTap: (){
+                        PaymentMethodSheet().deletePaymentMethod();
+                      },
+                    ),
+                  ],
+                )
+            ]),
+
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget view07(Color bg, title) {
+    return Container(
+      width: Get.width,
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
+        color: bg,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 32.0, right: 32, top: 16, bottom: 16),
+        child: Column(
+          children: [
+            Row(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.center, children: [
+              Expanded(
+                child: UILabels(
+                  text: title,
+                  textLines: 1,
+                  color: bg == AppColors.purpura ? AppColors.gray : AppColors.black,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              if (bg == AppColors.purpura)
+                const Icon(
+                  Icons.check_circle,
+                  color: AppColors.white,
+                )
+            ]),
+
           ],
         ),
       ),

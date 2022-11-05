@@ -16,6 +16,11 @@ class FirstTimeDashboard extends StatefulWidget {
 }
 
 class _FirstTimeDashboardState extends State<FirstTimeDashboard> {
+
+  var list = ['Ask an advisor', 'Invest in Stocks and ETFs', 'Buy/Sell/Hold over 100 Tokens', 'Auto Investing in Portfolio Models'];
+  var selectMoreAdd = "Add money".obs;
+  final positionMethod = 0.obs;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,40 +61,44 @@ class _FirstTimeDashboardState extends State<FirstTimeDashboard> {
               padding: const EdgeInsets.only(left: 32, right: 32, bottom: 32),
               child: Column(
                 children: [
-                  const UILabels(
-                    text: "How would you like to proceed?",
-                    textLines: 1,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.purpura,
+                  const SizedBox(
+                    height: 64,
                   ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: list.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return InkWell(
+                        onTap: () {
+                          selectMoreAdd.value = list[index];
+                        },
+                        child: Column(
+                          children: [
+                            Obx(() => MenuCards().card01("",list[index],
+                                list[index] == selectMoreAdd.value
+                                    ? AppColors.purpura
+                                    : AppColors.white),),
+                            const SizedBox(
+                              height: 10,
+                            )
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                  //MenuCards().card01('assets/icons/ic_coin.svg', "Ask an advisor"),
                   const SizedBox(
                     height: 20,
                   ),
-                  const UILabels(
-                    text: "Please let us know if you would like assistance form our robo advisor, or you prefer to craft your own investments.",
-                    textLines: 0,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.black,
-                    textAlign: TextAlign.center,
-                  ),
+              //MenuCards().card01('assets/icons/ic_coin.svg', "Invest in Stocks and ETFs"),
                   const SizedBox(
                     height: 20,
                   ),
-                  MenuCards(),
+                  //MenuCards().card01('assets/icons/ic_coin.svg', "Buy/Sell/Hold over 100 Tokens"),
                   const SizedBox(
                     height: 20,
                   ),
-                  MenuCards(),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  MenuCards(),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  MenuCards()
+                  //MenuCards().card01('assets/icons/ic_coin.svg', "Auto Investing in Portfolio Models"),
                 ],
               ),
             ),

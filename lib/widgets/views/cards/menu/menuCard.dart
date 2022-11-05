@@ -62,6 +62,57 @@ class MenuCards extends StatelessWidget {
     );
   }
 
+  Widget card01(icon, title, Color bg) {
+    return Container(
+      decoration: BoxDecoration(
+        color: bg,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.purpura.withAlpha(25),
+            spreadRadius: 0,
+            blurRadius: 8,
+            offset: Offset(0, 4), // changes position of shadow
+          ),
+        ],
+      ),
+      alignment: Alignment.center,
+      child: Padding(
+        padding: const EdgeInsets.all(32.0),
+        child: Row(children: [
+          CircleAvatar(
+            backgroundColor: AppColors.gray3,
+            radius: 30,
+            child: SizedBox(
+              width: 32,
+              child: SvgPicture.asset(
+                'assets/icons/ic_coin.svg',
+              ),
+            ),
+          ),
+             const SizedBox(width: 16),
+          Expanded(
+            child: UILabels(
+              text: title,
+              textLines: 0,
+              color: bg == AppColors.purpura ? AppColors.white : AppColors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          const SizedBox(
+            width: 16,
+          ),
+          const CircleAvatar(
+              backgroundColor: AppColors.gray3,
+              radius: 20,
+              child: Icon(Icons.arrow_forward, color: AppColors.black)
+          ),
+        ]),
+      ),
+    );
+  }
+
   Widget tabMenu(List<String> menuTab, Function(int) position) {
     return Obx(
       () => Column(

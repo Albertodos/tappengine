@@ -30,6 +30,7 @@ class _CryptoVCState extends State<CryptoVC> {
         more: "",
         title: "My investments",
         position: Axis.vertical);
+
     var pulldata3 = PullData(
         data: [AnalyticsCards().card02(), AnalyticsCards().card02(), AnalyticsCards().card02()],
         more: "",

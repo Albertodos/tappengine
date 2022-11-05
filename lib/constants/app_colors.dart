@@ -20,6 +20,7 @@ class AppColors {
   static const purpura5 = Color.fromRGBO(254, 239, 250, 1);
   static const purpura6 = Color.fromRGBO(192, 175, 203, 1);
   static const purpura7 = Color.fromRGBO(188, 177, 194, 1);
+  static const purpura8 = Color.fromRGBO(66, 31, 89, 1);
 
   static const black = Color.fromRGBO(0, 0, 0, 1);
   static const white = Color.fromRGBO(255, 255, 255, 1);

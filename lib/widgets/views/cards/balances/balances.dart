@@ -208,7 +208,7 @@ class BalancesCards extends StatelessWidget {
                       cb: (v) {
                         // Get.to(AddMoneyVC());
                         PaymentMethodSheet()
-                            .morePaymentMethod(context, (p0) => null);
+                            .paymentMethod(context);
                       }).out(Colors.transparent)),
             ],
           ),
