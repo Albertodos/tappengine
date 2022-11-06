@@ -25,8 +25,8 @@ class Transactions {
     accountId = json['accountId'].toString();
     walletTransactionType = json['walletTransactionType'].toString();
     symbol = json['symbol'].toString();
-    amount = json['amount'].toString();
-    price = json['price'].toString();
+    amount = Utlis().getNumberFormat(json['amount'].toString(), "#,########.##");
+    price = Utlis().getNumberFormat(json['price'].toString(), "#,###.##");
     date = json['date'].toString();
     dayMonth = Utlis().getDataTime(date ?? "") == DateTime.now()
         ? "Today"

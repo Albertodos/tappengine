@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:tappengine/helpers/utils.dart';
 
 import '../../../../../dependencies/http/http.dart';
+import '../../../alert/alerts.dart';
 import '../publicity.dart';
 
 class Publicity {
@@ -15,18 +17,25 @@ class Publicity {
   Publicity.fromJson(Map<String, dynamic> json) {
     id = json['id'].toString();
     name = json['name'].toString();
-    description = json['description'].toString();
-    icon = json['icon'].toString();
+    description = json['subtitle'].toString();
+    icon = json['image']?['data']?['attributes']?['url'].toString();
     dataUrl = json['dataUrl'].toString();
   }
 
-  Future<PublicityCards> getListDataItem(url, context) async {
-    var response = await HttpService.getService(url, context);
+  Future<List<Widget>> getListDataItem(url, context) async {
+    var response = await HttpService.getCMSService(url, context);
 
-    var crypto = PublicityCards(
-      publicity: Publicity.fromJson(response),
-    );
+    var pub = <Widget>[];
+    if (response.isNotEmpty) {
+      pub = [
+        PublicityCards(
+          publicity: Publicity.fromJson(response['data']['attributes']),
+        )
+      ];
+    } else {
+      pub = [AlertsCards().tryAgain((p0) => getListDataItem(url, context))];
+    }
 
-    return crypto;
+    return pub;
   }
 }

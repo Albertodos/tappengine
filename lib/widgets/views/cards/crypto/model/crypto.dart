@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tappengine/constants/app_colors.dart';
 import 'package:tappengine/helpers/utils.dart';
-import 'package:intl/intl.dart';
 import '../../../../../dependencies/http/http.dart';
 
 import '../../../alert/alerts.dart';
@@ -18,10 +18,9 @@ class Crypto {
   String? fromsymbol;
   String? supplierId;
   String? tosymbol;
+  Color color = AppColors.green;
+  Widget? arrow;
   List<DashboardData>? dashboardData;
-
-  final priceFormat = NumberFormat("#,##0.00", "pt_BR");
-  final valueChageFormat = NumberFormat("#,#######0.00", "pt_BR");
 
   Crypto({this.id, this.name, this.value, this.valueChange, this.percent, this.img});
 
@@ -29,17 +28,22 @@ class Crypto {
     id = json['id'].toString();
     name = json['coinName'].toString();
     tosymbol = json['tosymbol'].toString();
-    value = json['price'].toString();
-    valueChange = json['lastVolume'].toString();
-    percent = json['percentagePriceChange'].toString();
+    value = Utlis().getNumberFormat(json['price'] ?? json['currentTotalPrice'].toString(), "#,###.##");
+    valueChange = Utlis().getNumberFormat(json['lastVolume'] ?? json['unrealisedReturnValue'].toString(), "#,########.##");
+    percent = "${json['percentagePriceChange'] ?? json['unrealisedReturnPercentage'].toString()} %";
 
-    fromsymbol = json['fromsymbol'] != null ? json['fromsymbol'].toString() : json['fromSymbol'];
+    fromsymbol = json['fromsymbol'] != null ? json['fromsymbol'].toString() : json['fromSymbol'] ?? json['symbol'].toString();
 
     img = Utlis().getCryptoImage(fromsymbol, json['imageUrl'].toString());
 
     supplierId = json['supplierId'].toString();
     time = json['time'].toString();
     dayMonth = "Today";
+    // if (json['percentagePriceChange'] != null) {
+    color = Utlis().getPercent(json['percentagePriceChange'] ?? json['unrealisedReturnPercentage'].toString())[0];
+    arrow = Utlis().getPercent(json['percentagePriceChange'] ?? json['unrealisedReturnPercentage'].toString())[1];
+    // }
+
     // dayMonth = Utlis().getDataTime(time ?? "") == DateTime.now()
     //     ? "Today"
     //     : "${Utlis().getDataTime(time ?? "").day}/${Utlis().getDataTime(time ?? "").month}";
@@ -56,6 +60,11 @@ class Crypto {
     }
 
     return crypto;
+  }
+
+  Future postFavourite(url, body, context) async {
+    var response = await HttpService.postBodyMicroService(url, body, context);
+    return response;
   }
 
   Future<List<DashboardData>> getDashboardData(filter, context) async {

@@ -23,8 +23,8 @@ class PublicityCards extends StatelessWidget {
           SizedBox(
             width: 100,
             height: 75,
-            child: SvgPicture.network(
-              ApiPath.imgBaseUrl + (publicity.icon.toString()),
+            child: Image.network(
+              ApiPath.baseUrlImgCMS + (publicity.icon.toString()),
               fit: BoxFit.fitHeight,
             ),
           ),
@@ -33,7 +33,7 @@ class PublicityCards extends StatelessWidget {
           ),
           Expanded(
             child: UILabels(
-              text: publicity.name ?? "",
+              text: publicity.description ?? "",
               textLines: 0,
               color: AppColors.white,
               fontSize: 18,

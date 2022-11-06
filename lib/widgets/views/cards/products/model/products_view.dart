@@ -1,6 +1,6 @@
 import 'package:tappengine/widgets/views/cards/products/Products.dart';
-import 'package:intl/intl.dart';
 import '../../../../../dependencies/http/http.dart';
+import '../../../../../helpers/utils.dart';
 
 class ProductsView {
   String? id;
@@ -10,16 +10,14 @@ class ProductsView {
   String? currentTotalAmount;
   String? percent;
   String? img;
-  final priceFormat = NumberFormat("#,##0.00", "pt_BR");
-  final valueChageFormat = NumberFormat("#,#######0.00", "pt_BR");
 
   ProductsView({this.id, this.name, this.value, this.valueChange, this.percent, this.img});
 
   ProductsView.fromJson(Map<String, dynamic> json) {
     id = json['walletId'].toString();
     name = json['description'].toString();
-    value = json['currentTotalPrice'].toString();
-    valueChange = json['unrealisedReturnValue'].toString();
+    value = Utlis().getNumberFormat(json['currentTotalPrice'].toString(), "#,###.##");
+    valueChange = Utlis().getNumberFormat(json['unrealisedReturnValue'].toString(), "#,########.##");
     percent = json['unrealisedReturnPercentage'].toString();
     img = json['img'].toString();
     currentTotalAmount = json['currentTotalAmount'].toString();

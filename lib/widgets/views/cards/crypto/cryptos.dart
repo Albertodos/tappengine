@@ -59,11 +59,11 @@ class CryptoCards extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            const Icon(Icons.keyboard_arrow_down, color: AppColors.purpura1),
+                            crypto!.arrow ?? const Icon(Icons.keyboard_arrow_up, color: AppColors.green),
                             UILabels(
                               text: crypto!.percent ?? "",
                               textLines: 1,
-                              color: AppColors.purpura1,
+                              color: crypto!.color,
                               fontSize: 12,
                               fontWeight: FontWeight.w400,
                             ),
@@ -409,15 +409,15 @@ class CryptoCards extends StatelessWidget {
                 width: 70,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(4)),
-                  color: AppColors.red.withAlpha(15),
+                  color: crypto!.color.withAlpha(25),
                 ),
                 child: Row(
                   children: [
-                    const Icon(Icons.keyboard_arrow_down, color: AppColors.red),
+                    crypto!.arrow ?? const Icon(Icons.keyboard_arrow_up, color: AppColors.green),
                     UILabels(
                       text: crypto!.percent.toString(),
                       textLines: 1,
-                      color: AppColors.red,
+                      color: crypto!.color,
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
                     ),
@@ -505,22 +505,23 @@ class CryptoCards extends StatelessWidget {
                   ),
                   Container(
                     padding: const EdgeInsets.only(left: 10, right: 10),
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(4)),
-                      color: AppColors.purpura5,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(4)),
+                      color: crypto!.color.withAlpha(25),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(
-                          Icons.expand_more,
-                          color: AppColors.purpura1,
-                          size: 20,
-                        ),
+                        crypto!.arrow ??
+                            const Icon(
+                              Icons.expand_more,
+                              color: AppColors.purpura1,
+                              size: 20,
+                            ),
                         UILabels(
                           text: crypto!.percent ?? "",
                           textLines: 1,
-                          color: AppColors.purpura1,
+                          color: crypto!.color,
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
                         ),
@@ -609,22 +610,23 @@ class CryptoCards extends StatelessWidget {
                   ),
                   Container(
                     padding: const EdgeInsets.only(left: 10, right: 10),
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(4)),
-                      color: AppColors.purpura5,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(4)),
+                      color: crypto!.color.withAlpha(25),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(
-                          Icons.expand_more,
-                          color: AppColors.purpura1,
-                          size: 20,
-                        ),
+                        crypto!.arrow ??
+                            const Icon(
+                              Icons.expand_more,
+                              color: AppColors.purpura1,
+                              size: 20,
+                            ),
                         UILabels(
-                          text: "${crypto!.percent}%",
+                          text: crypto!.percent ?? "",
                           textLines: 1,
-                          color: AppColors.purpura1,
+                          color: crypto!.color,
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
                         ),
@@ -684,14 +686,14 @@ class CryptoCards extends StatelessWidget {
                         Container(
                           //height: 30,
                           padding: const EdgeInsets.only(left: 10, right: 10, bottom: 2, top: 2),
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(4)),
-                            color: AppColors.purpura5,
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.all(Radius.circular(4)),
+                            color: crypto!.color.withAlpha(25),
                           ),
                           child: UILabels(
-                            text: "${crypto!.percent}%  Buys",
+                            text: "${crypto!.percent}  Buys",
                             textLines: 1,
-                            color: AppColors.purpura1,
+                            color: crypto!.color,
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
                           ),
@@ -764,22 +766,23 @@ class CryptoCards extends StatelessWidget {
           ),
           Container(
             padding: const EdgeInsets.only(left: 10, right: 10),
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(4)),
-              color: AppColors.purpura5,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(4)),
+              color: crypto!.color.withAlpha(25),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(
-                  Icons.expand_more,
-                  color: AppColors.purpura1,
-                  size: 20,
-                ),
+                crypto!.arrow ??
+                    const Icon(
+                      Icons.expand_more,
+                      color: AppColors.purpura1,
+                      size: 20,
+                    ),
                 UILabels(
-                  text: "${crypto!.percent}%",
+                  text: crypto!.percent ?? "",
                   textLines: 1,
-                  color: AppColors.purpura1,
+                  color: crypto!.color,
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
                 ),
@@ -836,11 +839,11 @@ class CryptoCards extends StatelessWidget {
             ),
             Row(
               children: [
-                const Icon(Icons.keyboard_arrow_down, color: AppColors.green),
+                crypto!.arrow ?? const Icon(Icons.keyboard_arrow_down, color: AppColors.green),
                 UILabels(
                   text: crypto!.percent ?? "",
                   textLines: 1,
-                  color: AppColors.green,
+                  color: crypto!.color,
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
                 ),
@@ -1082,14 +1085,14 @@ class CryptoCards extends StatelessWidget {
                             Container(
                               //height: 30,
                               padding: const EdgeInsets.only(left: 10, right: 10, bottom: 2, top: 2),
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(4)),
-                                color: AppColors.purpura5,
+                              decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.all(Radius.circular(4)),
+                                color: crypto!.color.withAlpha(25),
                               ),
                               child: UILabels(
-                                text: "${crypto!.percent}%  Buys",
+                                text: "${crypto!.percent} Buys",
                                 textLines: 1,
-                                color: AppColors.purpura1,
+                                color: crypto!.color,
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400,
                               ),
