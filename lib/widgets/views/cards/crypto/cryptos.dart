@@ -57,6 +57,30 @@ class CryptoCards extends StatelessWidget {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
+
+                        UILabels(
+                          text: crypto!.value ?? "",
+                          textLines: 1,
+                          color: AppColors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: UILabels(
+                            text: "${crypto!.name!.toUpperCase()}  •  ${crypto!.valueChange}",
+                            textLines: 1,
+                            color: AppColors.purpura2,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 16,
+                        ),
                         Row(
                           children: [
                             crypto!.arrow ?? const Icon(Icons.keyboard_arrow_up, color: AppColors.green),
@@ -68,29 +92,6 @@ class CryptoCards extends StatelessWidget {
                               fontWeight: FontWeight.w400,
                             ),
                           ],
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: UILabels(
-                            text: "${crypto!.name} • ${crypto!.valueChange}",
-                            textLines: 1,
-                            color: AppColors.purpura2,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 16,
-                        ),
-                        UILabels(
-                          text: crypto!.value ?? "",
-                          textLines: 1,
-                          color: AppColors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
                         ),
                       ],
                     ),
