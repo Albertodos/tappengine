@@ -31,6 +31,18 @@ class _BuyOverviewVCState extends State<BuyOverviewVC> {
   final pagePosition = 0.obs;
   PageController controller = PageController(viewportFraction: 1, keepPage: true);
   final CryptoC cryptoC = Get.find();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print("symbol");
+    print("symbol");
+    print("symbol");
+    var body = {"symbol": cryptoC.selectCrypto.value.fromsymbol, "viewBy": "37", "viewOn": "2022-11-01T12:27:23.567"};
+    cryptoC.selectCrypto.value.postFavourite("Watchlist/favourite/RecentlyViewed/Add", body, controller);
+  }
+
   @override
   Widget build(BuildContext context) {
     var pulldata = PullData(data: [

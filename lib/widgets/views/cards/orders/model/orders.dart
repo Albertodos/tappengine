@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../../../../dependencies/http/http.dart';
+import '../../../../../helpers/utils.dart';
 import '../../../alert/alerts.dart';
 import '../orders.dart';
 
@@ -17,7 +18,7 @@ class Orders {
   String? clientName;
   String? type;
   String? typeName;
-  final priceFormat = NumberFormat("#,##0.00", "pt_BR");
+  final priceFormat = NumberFormat("#,###.00", "pt_BR");
   final valueChageFormat = NumberFormat("#,#######0.00", "pt_BR");
 
   Orders(
@@ -39,7 +40,7 @@ class Orders {
     accountId = json['accountId'].toString();
     asset = json['asset'].toString();
     counterAsset = json['counterAsset'].toString();
-    price = json['price'].toString();
+    price = Utlis().getNumberFormat(json['price'].toString(), "#,###.##");
     quantity = json['quantity'].toString();
     side = json['side'].toString();
     time = json['time'].toString();
@@ -52,7 +53,6 @@ class Orders {
   Future<List<Widget>> getListDataItem(url, context) async {
     var response = await HttpService.postMicroService(url, context);
     var crypto = <Widget>[];
-    print(response);
 
     if (response.isNotEmpty) {
       crypto = List<OrdersCards>.from(response['data'].map((e) => OrdersCards(orders: Orders.fromJson(e))).toList());

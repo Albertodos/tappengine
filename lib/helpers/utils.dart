@@ -1,6 +1,10 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tappengine/constants/api_path.dart';
+import 'package:intl/intl.dart';
+import 'package:tappengine/constants/app_colors.dart';
 import 'globals.dart' as globals;
 
 class Utlis {
@@ -33,5 +37,20 @@ class Utlis {
 
   String getBaseUrl(url) {
     return url.substring(0, 4) == 'http' ? url : (ApiPath.baseUrl + url);
+  }
+
+  String getNumberFormat(value, valueFormat) {
+    final format = NumberFormat(valueFormat.toString(), "en");
+    print(value);
+    var isNumber = num.tryParse(value.toString()) != null ? num.parse(value.toString()) : 000;
+    return format.format(isNumber).toString();
+  }
+
+  dynamic getPercent(value) {
+    var color = num.parse(value).isNegative ? AppColors.purpura1 : AppColors.green;
+    var arrow = num.parse(value).isNegative
+        ? const Icon(Icons.keyboard_arrow_down, color: AppColors.purpura1)
+        : const Icon(Icons.keyboard_arrow_up, color: AppColors.green);
+    return [color, arrow];
   }
 }

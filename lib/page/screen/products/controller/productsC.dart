@@ -7,6 +7,7 @@ import 'package:tappengine/widgets/views/cards/crypto/model/tab_menu.dart';
 import 'package:tappengine/widgets/views/cards/orders/model/orders.dart';
 import 'package:tappengine/widgets/views/cards/orders/orders.dart';
 import 'package:tappengine/widgets/views/cards/publicity/model/publicity.dart';
+import 'package:tappengine/widgets/views/cards/publicity/publicity.dart';
 
 import '../../../../dependencies/http/http.dart';
 import '../../../../widgets/views/cards/analytics/analytics.dart';
@@ -158,7 +159,7 @@ class ProductsC extends GetxController {
 
       case "PubAdvice":
         await Publicity().getListDataItem(data.dataUrl, context).then((value) {
-          pullData[position].data = [value];
+          pullData[position].data = value;
         });
         break;
       case "CryptoAnalyticsGridView":
@@ -170,7 +171,7 @@ class ProductsC extends GetxController {
         break;
       case "PubCrypto":
         await Publicity().getListDataItem(data.dataUrl, context).then((value) {
-          pullData[position].data = [value.pubCrypto(context)];
+          pullData[position].data = (value.first is PublicityCards) ? [(value.first as PublicityCards).pubCrypto(context)] : value;
         });
         break;
       case "CMS01":
