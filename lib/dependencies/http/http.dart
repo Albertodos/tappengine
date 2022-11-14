@@ -48,7 +48,7 @@ class HttpService {
   }
 
   static Future getService(url, context) async {
-    var response = await statusError(http.get(Uri.parse(ApiPath.baseUrl + url), headers: {
+    var response = await statusError(http.get(Uri.parse(ApiPath.baseUrlMicro + url), headers: {
       // 'Authorization': 'Bearer ${globals.user.token}',
       // "Content-Type": "application/json",
       //
@@ -82,14 +82,13 @@ class HttpService {
   }
 
   static Future postBodyMicroService(url, body, context) async {
-    print(ApiPath.baseUrlMicro + url);
-    print(body);
     final response = await statusError(http.post(
       Uri.parse(ApiPath.baseUrlMicro + url),
       body: jsonEncode(body),
       headers: {
         "Content-Type": "application/json",
-        'Authorization': 'Bearer ${ApiPath.token}',
+        "X-Tenant-Id": "master"
+        // 'Authorization': 'Bearer ${ApiPath.token}',
       },
     ));
     if (response.runtimeType == ErrorRequest) {
@@ -126,19 +125,15 @@ class HttpService {
     }
   }
 
-  static Future postService(Map<String, dynamic> body, baseUrl, url, context) async {
+  static Future postService(Map<String, dynamic> body, url, context) async {
     final response = await statusError(http.post(
-      Uri.parse(baseUrl + url),
+      Uri.parse(ApiPath.baseUrl + url),
       body: jsonEncode(body),
       headers: {
         "Content-Type": "application/json",
       },
     ));
-    // Get.back();
-    if (response.runtimeType == ErrorRequest) {
-      requestAlertError(context, response);
-      return Get.snackbar("Tapp Engine", "server error");
-    }
+
     return response;
   }
 

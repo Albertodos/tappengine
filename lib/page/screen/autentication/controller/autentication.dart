@@ -1,35 +1,44 @@
+import 'package:get/get.dart';
 import 'package:tappengine/widgets/views/cards/cms/model/cms.dart';
+import '../../../../dependencies/shared_preference/interface_shared_preference.dart';
+import '../../../../dependencies/shared_preference/shared_preference_service.dart';
 import '../../../../helpers/globals.dart' as globals;
 import '../../../../dependencies/http/http.dart';
 import '../../../../model/objects/user/user.dart';
 
 class Autentication extends User {
-  Future login(context, String name) async {
-    var response = await HttpService.getService("1hSxe1Xy9ioZU3usI_b7lCxk31MG_x7Hc", context);
+  ILocalStorage localStorage = PrefsLocalStorageService();
+  final _user = User().obs;
+
+  Future login(context, body) async {
+    var response = await HttpService.postBodyMicroService("v2/auth/authenticate", body, context);
 
     if (response is Map<String, dynamic>) {
-      for (var item in response['user']) {
-        if (item['email'] == name) {
-          getUser(item);
-          return item;
-        }
-      }
-      return "User Is not existe";
+      _user.value = User.fromJson(response);
+
+      await setUser(_user.value).then((value) {
+        return "User Is not existe";
+      });
     }
     return "error tto login";
   }
 
-  getUser(user) {
-    username = user['name'];
-    email = user['email'];
-    phone = user['phone'];
-    andress = user['andress'];
-    image = user['image'];
+  Future setUser(User user) async {
+    await localStorage.put("token", user.token);
+    await localStorage.put("refresh", user.refreshToken);
+
+    return "dataSave";
   }
 
   getCryptoImage(context) {
     CryptoImage().getListDataItem("crypto-icons?populate%5B0%5D=icon", context).then((value) {
       globals.cryptoImage = value;
+    });
+  }
+
+  getBalanceImage(context) {
+    CryptoImage().getListDataItem("balance-icons?populate[0]=icon", context).then((value) {
+      globals.balanceImage = value;
     });
   }
 }
