@@ -70,7 +70,7 @@ class CryptoCards extends StatelessWidget {
                       children: [
                         Expanded(
                           child: UILabels(
-                            text: "${crypto!.valueChange} • ${crypto!.fromsymbol}",
+                            text: "${crypto!.name!.toUpperCase()}  •  ${crypto!.valueChange}",
                             textLines: 1,
                             color: AppColors.purpura2,
                             fontSize: 12,

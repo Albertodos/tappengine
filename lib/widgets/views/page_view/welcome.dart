@@ -19,12 +19,12 @@ class _WelcomePagesState extends State<WelcomePages> {
   bool selected = false;
   double opacityLevel = 0.0;
   var infoPage = [
-    ['assets/images/ic_own_crypto.svg', 'Own Crypto', 'Trade 50+ cryptocurrencies from your mobile, desktop or tablet devices.'],
-    [
-      'assets/images/buy_crypto.svg',
-      'Earn rewards when you own buy crypto',
-      'Affinity Plus members are automatically enrolled in our rewards program. Earn rewards on your stocks and cryptocurrencies. Our platform automatically reinvests the rewards on members’ behalf.'
-    ]
+    ['assets/images/ic_own_crypto.svg', 'Simplified investing', 'Sign up in minutes and choose from a range of Stocks, ETFs, Cryptos or specially curated model portfolios.'],
+    // [
+    //   'assets/images/buy_crypto.svg',
+    //   'Earn rewards when you own buy crypto',
+    //   'Affinity Plus members are automatically enrolled in our rewards program. Earn rewards on your stocks and cryptocurrencies. Our platform automatically reinvests the rewards on members’ behalf.'
+    // ]
   ];
 
   @override
@@ -75,7 +75,7 @@ class _WelcomePagesState extends State<WelcomePages> {
                     ),
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 32,
                   ),
                   Container(
                     padding: const EdgeInsets.all(32),
@@ -94,7 +94,7 @@ class _WelcomePagesState extends State<WelcomePages> {
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(
-                          height: 11,
+                          height: 32,
                         ),
                         UILabels(
                           text: infoPage[widget.pagePosition][2],
