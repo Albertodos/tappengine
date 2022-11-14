@@ -1,22 +1,11 @@
-import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/news.dart';
-import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/orders.dart';
-import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/overview.dart';
-import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/transactions.dart';
 import 'package:tappengine/page/sheet/payment_method/payment_method.dart';
-import 'package:tappengine/widgets/ui_kits/listMoney.dart';
-import 'package:tappengine/widgets/views/cards/menu/menuCard.dart';
 import '../../../../helpers/cliper.dart';
 import '../../../../constants/app_colors.dart';
-import '../../../../model/objects/pull_data.dart';
-import '../../../../model/objects/user/user.dart';
-import '../../../../widgets/structural/list_Structural.dart';
 import '../../../../widgets/ui_kits/button_ui/button_ui.dart';
 import '../../../../widgets/ui_kits/labels_ui/label_ui.dart';
-import '../../../../widgets/views/cards/products/products.dart';
-import '../../../../widgets/views/form/form.dart';
+import 'controller/buy.dart';
 
 class AddMoneyVC extends StatefulWidget {
   const AddMoneyVC({super.key});
@@ -26,10 +15,7 @@ class AddMoneyVC extends StatefulWidget {
 }
 
 class _AddMoneyVCState extends State<AddMoneyVC> {
-  final pagePosition = 0.obs;
-  PageController controller = PageController(viewportFraction: 1, keepPage: true);
-  var userLogin = User();
-  var list = ["\$10", "\$50", "\$100", "\$500", "\$1000"];
+  final BuyC buyC = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +55,7 @@ class _AddMoneyVCState extends State<AddMoneyVC> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        cardsAmount(),
+                        Hero(tag: 'cardsAmount', child: cardsAmount()),
                       ],
                     ),
                   ),
@@ -77,8 +63,8 @@ class _AddMoneyVCState extends State<AddMoneyVC> {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 40.0, right: 40),
+          const Padding(
+            padding: EdgeInsets.only(left: 40.0, right: 40),
             child: UILabels(
                 text: "All trading transactions are excuted in USD. You may incur FX charges when funding your trading account.",
                 textLines: 2,
@@ -123,14 +109,15 @@ class _AddMoneyVCState extends State<AddMoneyVC> {
             ),
           ),
           const SizedBox(height: 32),
-          ListMoney(),
-          const Padding(
-            padding: EdgeInsets.only(left: 32.0, right: 32),
-            child: NumberGridCard(),
+          listMoney(),
+          Padding(
+            padding: const EdgeInsets.only(left: 32.0, right: 32, bottom: 16),
+            child: NumberGridCard(cb: (v) {
+              v == "-1"
+                  ? buyC.amoutSelect.value = buyC.amoutSelect.value.substring(0, buyC.amoutSelect.value.length - 1)
+                  : buyC.amoutSelect.value = buyC.amoutSelect.value + v;
+            }),
           ),
-          const SizedBox(
-            height: 32,
-          )
         ],
       ),
     );
@@ -161,8 +148,8 @@ class _AddMoneyVCState extends State<AddMoneyVC> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Row(
-                  children: const [
-                    Expanded(
+                  children: [
+                    const Expanded(
                       child: UILabels(
                         text: "USD",
                         textLines: 1,
@@ -171,13 +158,13 @@ class _AddMoneyVCState extends State<AddMoneyVC> {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    UILabels(
-                      text: "+0,00024890",
-                      textLines: 1,
-                      color: AppColors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                    ),
+                    Obx(() => UILabels(
+                          text: "\$${buyC.amoutSelect.value}",
+                          textLines: 1,
+                          color: AppColors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                        )),
                   ],
                 ),
                 const UILabels(
@@ -194,10 +181,45 @@ class _AddMoneyVCState extends State<AddMoneyVC> {
       ),
     );
   }
+
+  Widget listMoney() {
+    var list = ["\$10", "\$50", "\$100", "\$500", "\$1000"];
+    return SizedBox(
+      height: 50,
+      child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: list.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (BuildContext context, int index) {
+            return GestureDetector(
+              child: Container(
+                padding: const EdgeInsets.only(left: 7, right: 7),
+                margin: const EdgeInsets.only(left: 17, right: 17),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(7),
+                  // color: UserPersonalC().selectedIndex == index ? AppColors.purpura : AppColors.white,
+                ),
+                child: UILabels(
+                  text: list[index],
+                  textLines: 1,
+                  color: AppColors.black,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              onTap: () {
+                buyC.amoutSelect.value = list[index].replaceFirst("\$", "");
+                buyC.currentValue();
+              },
+            );
+          }),
+    );
+  }
 }
 
 class NumberGridCard extends StatelessWidget {
-  const NumberGridCard({Key? key}) : super(key: key);
+  final Function(String) cb;
+  const NumberGridCard({Key? key, required this.cb}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -207,32 +229,42 @@ class NumberGridCard extends StatelessWidget {
       runSpacing: 10,
       children: num.map(
         (e) => e == -1
-            ? Container(
-                alignment: Alignment.center,
-                height: 60,
-                width: (Get.width / 3) - 42,
-                decoration: BoxDecoration(
-                  color: AppColors.purpura3,
-                  borderRadius: BorderRadius.circular(7),
-                ),
-                child: Icon(
-                  Icons.backspace_outlined,
-                  color: AppColors.purpura,
-                ))
-            : Container(
-                alignment: Alignment.center,
-                height: 60,
-                width: (Get.width / 3) - 42,
-                decoration: BoxDecoration(
-                  color: AppColors.purpura3,
-                  borderRadius: BorderRadius.circular(7),
-                ),
-                child: UILabels(
-                  text: e.toString(),
-                  textLines: 0,
-                  color: AppColors.purpura,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
+            ? InkWell(
+                onTap: () {
+                  cb(e.toString());
+                },
+                child: Container(
+                    alignment: Alignment.center,
+                    height: 60,
+                    width: (Get.width / 3) - 42,
+                    decoration: BoxDecoration(
+                      color: AppColors.purpura3,
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                    child: const Icon(
+                      Icons.backspace_outlined,
+                      color: AppColors.purpura,
+                    )),
+              )
+            : InkWell(
+                onTap: () {
+                  cb(e.toString());
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  height: 60,
+                  width: (Get.width / 3) - 42,
+                  decoration: BoxDecoration(
+                    color: AppColors.purpura3,
+                    borderRadius: BorderRadius.circular(7),
+                  ),
+                  child: UILabels(
+                    text: e.toString(),
+                    textLines: 0,
+                    color: AppColors.purpura,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
       ).toList(),

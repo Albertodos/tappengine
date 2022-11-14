@@ -99,9 +99,6 @@ class _LoginVCState extends State<LoginVC> {
                                                 //         ? login()
                                                 //         : loginError()
                                                 //     : null;
-                                                autenticationC.login(context, userLogin.email.toString()).then((value) {
-                                                  print(value);
-                                                });
                                               },
                                             ))
                                         .toList(),
@@ -144,7 +141,10 @@ class _LoginVCState extends State<LoginVC> {
                                             //   selected = !selected;
                                             // });
 
-                                            autenticationC.login(context, userLogin.email.toString()).then((value) {
+                                            print("object");
+                                            Map<String, dynamic> body = {"email": "satwani@tappengine.com", "password": "5rdr7TGJ"};
+
+                                            autenticationC.login(context, body).then((value) {
                                               Get.offAll(const HomeTab(),
                                                   duration: const Duration(seconds: 1), //duration of transitions, default 1 sec
                                                   transition: Transition.cupertino);
@@ -194,9 +194,13 @@ class _LoginVCState extends State<LoginVC> {
                 style: const TextStyle(fontSize: 12, color: AppColors.blue, fontWeight: FontWeight.w400),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
-                    Get.offAll(const RegisterVC(),
-                        duration: const Duration(seconds: 1), //duration of transitions, default 1 sec
-                        transition: Transition.cupertino);
+                    // Get.offAll(const RegisterVC(),
+                    //     duration: const Duration(seconds: 1), //duration of transitions, default 1 sec
+                    //     transition: Transition.cupertino);
+                    Map<String, dynamic> body = {"email": "satwani@tappengine.com", "password": "5rdr7TGJ"};
+                    autenticationC.login(context, body).then((value) {
+                      print(value);
+                    });
                     // code to open / launch privacy policy link here
                   }),
           ]),

@@ -7,6 +7,7 @@ import '../widgets/views/cards/cms/model/cms.dart';
 
 final UserPersonalC userPersonal = Get.put(UserPersonalC());
 List<CryptoImage> cryptoImage = <CryptoImage>[];
+List<CryptoImage> balanceImage = <CryptoImage>[];
 
 String rootName = "";
 dynamic hometabContext;

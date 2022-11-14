@@ -17,6 +17,7 @@ class Orders {
   String? status;
   String? clientName;
   String? type;
+  String? img;
   String? typeName;
   final priceFormat = NumberFormat("#,###.00", "pt_BR");
   final valueChageFormat = NumberFormat("#,#######0.00", "pt_BR");
@@ -47,7 +48,8 @@ class Orders {
     status = json['status'].toString();
     clientName = json['clientName'].toString();
     type = json['type'].toString();
-    typeName = json['typeName'].toString();
+    typeName = json['typeName'] ?? "Sell";
+    img = Utlis().getCryptoImage(asset, json['imageUrl'].toString());
   }
 
   Future<List<Widget>> getListDataItem(url, context) async {

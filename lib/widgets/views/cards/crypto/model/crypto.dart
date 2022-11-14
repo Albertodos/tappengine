@@ -26,7 +26,7 @@ class Crypto {
 
   Crypto.fromJson(Map<String, dynamic> json) {
     id = json['id'].toString();
-    name = json['coinName'].toString();
+    name = json['coinName'] ?? json['symbol'].toString();
     tosymbol = json['tosymbol'].toString();
     value = Utlis().getNumberFormat(json['price'] ?? json['currentTotalPrice'].toString(), "#,###.##");
     valueChange = Utlis().getNumberFormat(json['lastVolume'] ?? json['unrealisedReturnValue'].toString(), "#,########.##");

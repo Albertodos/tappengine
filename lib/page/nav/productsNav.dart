@@ -31,6 +31,7 @@ class _ProductsNavState extends State<ProductsNav> {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: widget.data.name ?? "...",
+
         // Start the app with the "/" named route. In this case, the app starts
         // on the FirstScreen widget.
         initialRoute: '/${widget.data.name}/',

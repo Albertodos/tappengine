@@ -106,6 +106,7 @@ class ProductsC extends GetxController {
 
       case "CryptoGrid/2":
         await Crypto().getListDataItem(data.dataUrl, context).then((value) {
+          print(value.length);
           pullData[position].data = [
             Wrap(
               // direction: Axis.vertical,

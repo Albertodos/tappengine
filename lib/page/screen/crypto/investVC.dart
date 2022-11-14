@@ -19,7 +19,7 @@ class InvestVC extends StatefulWidget {
 }
 
 class _InvestVCState extends State<InvestVC> {
-  final ProductsC productsC = Get.find();
+  final ProductsC productsC = Get.put(ProductsC());
 
   @override
   void initState() {
@@ -40,14 +40,14 @@ class _InvestVCState extends State<InvestVC> {
             backgroundColor: AppColors.purpura.withAlpha(0),
             elevation: 0,
             flexibleSpace: FlexibleSpaceBar(
-              title: Obx(
-                () => Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
-                  child: UserCards(
-                    user: globals.userPersonal.userPersonal.value.toJsonInfo(),
-                  ).userWelcome(context),
-                ),
-              ),
+              // title: Obx(
+              //   () => Padding(
+              //     padding: const EdgeInsets.only(bottom: 20),
+              //     child: UserCards(
+              //       user: globals.userPersonal.userPersonal.value.toJsonInfo(),
+              //     ).userWelcome(context),
+              //   ),
+              // ),
               background: ClipPath(
                 clipper: InBorderBotton(),
                 child: ClipPath(

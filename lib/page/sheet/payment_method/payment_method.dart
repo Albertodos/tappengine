@@ -16,7 +16,9 @@ class PaymentMethodSheet extends SheetView {
   var selectMoreAdd = "Add money".obs;
   var seleteRepeatsDate = 'Weekly'.obs;
 
-  void choosePaymentMethod(context) {
+  void choosePaymentMethod(
+    context,
+  ) {
     showModalBottomSheet(
         isScrollControlled: true,
         backgroundColor: Theme.of(globals.hometabContext).cardColor,
@@ -77,7 +79,7 @@ class PaymentMethodSheet extends SheetView {
         }).whenComplete(() {
       Navigator.pushNamed(
         context,
-        "/comfirmOrder",
+        "/${globals.rootName}/comfirmOrder",
       );
     });
   }
@@ -125,7 +127,7 @@ class PaymentMethodSheet extends SheetView {
             ),
           );
         }).whenComplete(() {
-      Navigator.pushNamed(context, '/addMoney');
+      Navigator.pushNamed(context, '/${globals.rootName}/addMoney');
     });
     ;
   }

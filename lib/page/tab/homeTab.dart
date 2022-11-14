@@ -18,7 +18,7 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   final TabC tabC = Get.put(TabC());
-  final ProductsC productsC = Get.put(ProductsC());
+  // final ProductsC productsC = Get.put(ProductsC());
 
   var widgetOptions = <Widget>[].obs;
 

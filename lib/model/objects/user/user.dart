@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jwt_decode/jwt_decode.dart';
 import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
 
 import '../../../constants/app_colors.dart';
@@ -14,8 +15,10 @@ class User {
   String? phone;
   String? andress;
   String? image;
-  String? tipo;
+  String? emailVerified;
   String? token;
+  String? refreshToken;
+  String? tokenType;
   String? password;
   bool? notification;
   bool? identityStatus;
@@ -24,18 +27,23 @@ class User {
 
   var _passwordVisible = false;
 
-  User({
-    this.id,
-    this.username,
-    this.email,
-    this.code,
-    this.image,
-    this.tipo,
-    this.token,
-  });
+  User({this.id, this.username, this.email, this.code, this.image, this.emailVerified, this.token, this.refreshToken, this.tokenType});
 
   User.fromJson(Map<String, dynamic> json) {
     token = json['token'].toString();
+    refreshToken = json['refreshToken'].toString();
+    tokenType = json['tokenType'].toString();
+    decodeToken(token ?? "");
+  }
+  decodeToken(String token) {
+    Map<String, dynamic> payload = Jwt.parseJwt(token);
+
+    id = payload['sub'].toString();
+    username = payload["name"].toString();
+    email = payload["email"].toString();
+    // code = payload["data"]['business_id'].toString();
+    // image = payload["data"]['foto'].toString();
+    emailVerified = payload["email_verified"].toString();
   }
 
   Map<String, dynamic> toJsonStatements() {

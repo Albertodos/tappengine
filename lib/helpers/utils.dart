@@ -41,14 +41,14 @@ class Utlis {
 
   String getNumberFormat(value, valueFormat) {
     final format = NumberFormat(valueFormat.toString(), "en");
-    print(value);
+
     var isNumber = num.tryParse(value.toString()) != null ? num.parse(value.toString()) : 000;
     return format.format(isNumber).toString();
   }
 
   dynamic getPercent(value) {
-    var color = num.parse(value).isNegative ? AppColors.purpura1 : AppColors.green;
-    var arrow = num.parse(value).isNegative
+    var color = num.parse(value.toString()).isNegative ? AppColors.purpura1 : AppColors.green;
+    var arrow = num.parse(value.toString()).isNegative
         ? const Icon(Icons.keyboard_arrow_down, color: AppColors.purpura1)
         : const Icon(Icons.keyboard_arrow_up, color: AppColors.green);
     return [color, arrow];

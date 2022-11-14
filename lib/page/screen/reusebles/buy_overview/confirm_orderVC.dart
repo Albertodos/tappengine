@@ -5,11 +5,27 @@ import '../../../../constants/app_colors.dart';
 import '../../../../helpers/cliper.dart';
 import '../../../../widgets/ui_kits/button_ui/button_ui.dart';
 import '../../../../widgets/ui_kits/labels_ui/label_ui.dart';
+import '../../../../widgets/views/cards/crypto/controller/controller.dart';
 import '../../../sheet/payment_method/payment_method.dart';
 import '../../../../helpers/globals.dart' as globals;
+import '../more/controller/buy.dart';
 
-class ComfirmOrderVC extends StatelessWidget {
+class ComfirmOrderVC extends StatefulWidget {
   const ComfirmOrderVC({super.key});
+
+  @override
+  State<ComfirmOrderVC> createState() => _ComfirmOrderVCState();
+}
+
+class _ComfirmOrderVCState extends State<ComfirmOrderVC> {
+  final CryptoC cryptoC = Get.find();
+  final BuyC buyC = Get.find();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    buyC.postQuote("Trade/quote", cryptoC.selectCrypto.value.fromsymbol, "BUY", context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -130,16 +146,16 @@ class ComfirmOrderVC extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               UILabels(
-                text: "-\$10",
+                text: "\$${buyC.amoutSelect.value}",
                 textLines: 1,
                 color: AppColors.black,
                 fontSize: 24,
                 fontWeight: FontWeight.w700,
               ),
               UILabels(
-                text: "Buy BTC 0,0000234467",
+                text: "Buy ${cryptoC.selectCrypto.value.fromsymbol} ${buyC.offerPriceQuantity.value}",
                 textLines: 1,
                 color: AppColors.black,
                 fontSize: 16,
@@ -158,152 +174,121 @@ class ComfirmOrderVC extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(10)),
             color: AppColors.purpura.withAlpha(25),
           ),
+          child: Image.network((cryptoC.selectCrypto.value.img.toString()), height: 19, width: 19),
         ),
       ]),
     );
   }
 
   Widget list() {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        children: [
-          Row(
-            children: const [
-              Expanded(
-                child: UILabels(
-                  text: "Amount",
-                  textLines: 1,
-                  color: AppColors.gray2,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              SizedBox(
-                width: 16,
-              ),
-              UILabels(
-                text: "\$12",
-                textLines: 1,
-                color: AppColors.black,
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children:  [
-              const Expanded(
-                child: UILabels(
-                  text: "Price",
-                  textLines: 1,
-                  color: AppColors.gray2,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              const SizedBox(
-                width: 16,
-              ),
-              Row(
-                children: const [
-                  Icon(Icons.insights, color: AppColors.green1),
-                   SizedBox(width: 5),
-                   UILabels(
-                    text: "1BTC = \$12,3444.09",
-                    textLines: 1,
-                    color: AppColors.green1,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children: const [
-              Expanded(
-                child: UILabels(
-                  text: "Market Cap",
-                  textLines: 1,
-                  color: AppColors.gray2,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              SizedBox(
-                width: 16,
-              ),
-              UILabels(
-                text: "12,3444.09 BTC ",
-                textLines: 1,
-                color: AppColors.black,
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children:  [
-              const Expanded(
-                child: UILabels(
-                  text: "Fees",
-                  textLines: 1,
-                  color: AppColors.gray2,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              const SizedBox(
-                width: 16,
-              ),
-              Row(
-                children: const[
-                  Icon(
-                    Icons.info_outline,
-                    color: AppColors.gray2,
-                    size: 14,
-                  ),
-                  SizedBox(width: 5),
-                  UILabels(
-                    text: "after 12,3444.09 BTC ",
+    return Obx(
+      () => Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                const Expanded(
+                  child: UILabels(
+                    text: "Amount",
                     textLines: 1,
                     color: AppColors.gray2,
-                    fontSize: 12,
+                    fontSize: 14,
                     fontWeight: FontWeight.w400,
                   ),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children: const [
-              Expanded(
-                child: UILabels(
-                  text: "Estimated total credit",
+                ),
+                const SizedBox(
+                  width: 16,
+                ),
+                UILabels(
+                  text: "\$ ${buyC.amoutSelect.value}",
                   textLines: 1,
-                  color: AppColors.gray2,
-                  fontSize: 14,
+                  color: AppColors.black,
+                  fontSize: 16,
                   fontWeight: FontWeight.w400,
                 ),
-              ),
-              SizedBox(
-                width: 16,
-              ),
-              UILabels(
-                text: "12,3444.09 BTC ",
-                textLines: 1,
-                color: AppColors.black,
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                const Expanded(
+                  child: UILabels(
+                    text: "Price",
+                    textLines: 1,
+                    color: AppColors.gray2,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                const SizedBox(
+                  width: 16,
+                ),
+                Row(
+                  children: [
+                    const Icon(Icons.insights, color: AppColors.green1),
+                    const SizedBox(width: 5),
+                    UILabels(
+                      text: "1 ${cryptoC.selectCrypto.value.fromsymbol} = \$${cryptoC.selectCrypto.value.value}",
+                      textLines: 1,
+                      color: AppColors.green1,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: const [
+                Expanded(
+                  child: UILabels(
+                    text: "Exchanged",
+                    textLines: 1,
+                    color: AppColors.gray2,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                SizedBox(
+                  width: 16,
+                ),
+                UILabels(
+                  text: "12,3444.09 BTC ",
+                  textLines: 1,
+                  color: AppColors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: const [
+                Expanded(
+                  child: UILabels(
+                    text: "Estimated total credit",
+                    textLines: 1,
+                    color: AppColors.gray2,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                SizedBox(
+                  width: 16,
+                ),
+                UILabels(
+                  text: "12,3444.09 BTC ",
+                  textLines: 1,
+                  color: AppColors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

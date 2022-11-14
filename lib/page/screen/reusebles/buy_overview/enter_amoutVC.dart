@@ -1,18 +1,14 @@
-import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/news.dart';
-import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/orders.dart';
-import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/overview.dart';
-import 'package:tappengine/page/screen/reusebles/buy_overview/page_view/transactions.dart';
+import 'package:tappengine/helpers/utils.dart';
 import 'package:tappengine/page/sheet/payment_method/payment_method.dart';
 import '../../../../helpers/cliper.dart';
 import '../../../../constants/app_colors.dart';
-import '../../../../model/objects/pull_data.dart';
-import '../../../../widgets/structural/list_Structural.dart';
 import '../../../../widgets/ui_kits/button_ui/button_ui.dart';
 import '../../../../widgets/ui_kits/labels_ui/label_ui.dart';
-import '../../../../widgets/views/cards/products/products.dart';
+import '../../../../helpers/globals.dart' as globals;
+import '../../../../widgets/views/cards/crypto/controller/controller.dart';
+import '../more/controller/buy.dart';
 
 class EnterAmountVC extends StatefulWidget {
   const EnterAmountVC({super.key});
@@ -22,8 +18,8 @@ class EnterAmountVC extends StatefulWidget {
 }
 
 class _EnterAmountVCState extends State<EnterAmountVC> {
-  final pagePosition = 0.obs;
-  PageController controller = PageController(viewportFraction: 1, keepPage: true);
+  final CryptoC cryptoC = Get.find();
+  final BuyC buyC = Get.put(BuyC());
 
   @override
   Widget build(BuildContext context) {
@@ -63,21 +59,21 @@ class _EnterAmountVCState extends State<EnterAmountVC> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const UILabels(
-                          text: "Buy BTC",
+                        UILabels(
+                          text: "Buy ${cryptoC.selectCrypto.value.fromsymbol}",
                           textLines: 1,
                           color: AppColors.black,
                           fontSize: 24,
                           fontWeight: FontWeight.w600,
                         ),
                         Row(
-                          children: const [
-                            Icon(
+                          children: [
+                            const Icon(
                               Icons.graphic_eq_outlined,
                               color: AppColors.green,
                             ),
                             UILabels(
-                              text: " 1 BTC = \$39 293, 6881",
+                              text: " 1 ${cryptoC.selectCrypto.value.fromsymbol} = \$${cryptoC.selectCrypto.value.value}",
                               textLines: 1,
                               color: AppColors.green1,
                               fontSize: 16,
@@ -97,7 +93,14 @@ class _EnterAmountVCState extends State<EnterAmountVC> {
                                 const SizedBox(
                                   height: 16,
                                 ),
-                                cardsAmount2()
+                                InkWell(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                        context,
+                                        "/${globals.rootName}/addMoney",
+                                      );
+                                    },
+                                    child: Hero(tag: 'cardsAmount', child: cardsAmount2()))
                               ],
                             ),
                             Container(
@@ -161,18 +164,20 @@ class _EnterAmountVCState extends State<EnterAmountVC> {
             child: SizedBox(
                 height: 50,
                 width: Get.width,
-                child: UIBottons(
-                    labels: const UILabels(
-                      text: 'Buy BTC with USD',
-                      textLines: 0,
-                      color: AppColors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                    ),
-                    colorList: const [],
-                    cb: (v) {
-                      PaymentMethodSheet().choosePaymentMethod(context);
-                    })),
+                child: Obx(
+                  () => UIBottons(
+                      labels: UILabels(
+                        text: 'Buy \$${buyC.amoutSelect.value} ${cryptoC.selectCrypto.value.fromsymbol} ',
+                        textLines: 0,
+                        color: AppColors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      colorList: const [],
+                      cb: (v) {
+                        PaymentMethodSheet().choosePaymentMethod(context);
+                      }),
+                )),
           ),
         ],
       ),
@@ -208,25 +213,27 @@ class _EnterAmountVCState extends State<EnterAmountVC> {
                   children: [
                     Expanded(
                       child: Row(
-                        children: const [
+                        children: [
                           UILabels(
-                            text: "BTC",
+                            text: cryptoC.selectCrypto.value.fromsymbol ?? "",
                             textLines: 1,
                             color: AppColors.black,
                             fontSize: 24,
                             fontWeight: FontWeight.w600,
                           ),
-                          SizedBox(width: 5),
-                          Icon(Icons.arrow_drop_down_circle_outlined, size: 18, color: AppColors.purpura6),
+                          const SizedBox(width: 5),
+                          const Icon(Icons.arrow_drop_down_circle_outlined, size: 18, color: AppColors.purpura6),
                         ],
                       ),
                     ),
-                    UILabels(
-                      text: "+0,00024890",
-                      textLines: 1,
-                      color: AppColors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
+                    Obx(
+                      () => UILabels(
+                        text: currentValue(),
+                        textLines: 1,
+                        color: AppColors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ],
                 ),
@@ -241,18 +248,18 @@ class _EnterAmountVCState extends State<EnterAmountVC> {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    Icon(
-                      Icons.info_outline,
-                      color: AppColors.gray2,
-                      size: 14,
-                    ),
-                    UILabels(
-                      text: " after 0,0000636 BTC fee",
-                      textLines: 1,
-                      color: AppColors.gray2,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                    ),
+                    // Icon(
+                    //   Icons.info_outline,
+                    //   color: AppColors.gray2,
+                    //   size: 14,
+                    // ),
+                    // UILabels(
+                    //   text: " after 0,0000636 BTC fee",
+                    //   textLines: 1,
+                    //   color: AppColors.gray2,
+                    //   fontSize: 12,
+                    //   fontWeight: FontWeight.w400,
+                    // ),
                   ],
                 ),
               ],
@@ -288,8 +295,8 @@ class _EnterAmountVCState extends State<EnterAmountVC> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Row(
-                  children: const [
-                    Expanded(
+                  children: [
+                    const Expanded(
                       child: UILabels(
                         text: "USD",
                         textLines: 1,
@@ -298,12 +305,14 @@ class _EnterAmountVCState extends State<EnterAmountVC> {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    UILabels(
-                      text: "+0,00024890",
-                      textLines: 1,
-                      color: AppColors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
+                    Obx(
+                      () => UILabels(
+                        text: "\$${buyC.amoutSelect.value}",
+                        textLines: 1,
+                        color: AppColors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ],
                 ),
@@ -320,5 +329,11 @@ class _EnterAmountVCState extends State<EnterAmountVC> {
         ],
       ),
     );
+  }
+
+  String currentValue() {
+    var price = double.parse(cryptoC.selectCrypto.value.value?.replaceAll(',', '') ?? "0");
+    var many = double.parse(buyC.amoutSelect.value);
+    return Utlis().getNumberFormat((price * many).toString(), "#,###.##");
   }
 }

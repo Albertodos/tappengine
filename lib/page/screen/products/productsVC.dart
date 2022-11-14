@@ -22,7 +22,7 @@ class ProductsVC extends StatefulWidget {
 }
 
 class _ProductsVCState extends State<ProductsVC> {
-  final ProductsC productsC = Get.find();
+  final ProductsC productsC = Get.put(ProductsC());
 
   @override
   void initState() {
@@ -33,7 +33,7 @@ class _ProductsVCState extends State<ProductsVC> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).cardColor,
+      backgroundColor: AppColors.white,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(

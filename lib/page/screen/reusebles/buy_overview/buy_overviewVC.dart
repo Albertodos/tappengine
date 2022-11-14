@@ -36,10 +36,7 @@ class _BuyOverviewVCState extends State<BuyOverviewVC> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print("symbol");
-    print("symbol");
-    print("symbol");
-    var body = {"symbol": cryptoC.selectCrypto.value.fromsymbol, "viewBy": "37", "viewOn": "2022-11-01T12:27:23.567"};
+    Map<String, dynamic> body = {"symbol": cryptoC.selectCrypto.value.fromsymbol, "viewBy": "37", "viewOn": "2022-11-01T12:27:23.567"};
     cryptoC.selectCrypto.value.postFavourite("Watchlist/favourite/RecentlyViewed/Add", body, controller);
   }
 

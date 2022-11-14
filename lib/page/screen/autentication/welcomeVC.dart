@@ -30,6 +30,7 @@ class _WelcomeVCState extends State<WelcomeVC> {
     // TODO: implement initState
     super.initState();
     autenticationC.getCryptoImage(context);
+    autenticationC.getBalanceImage(context);
     Future.delayed(const Duration(milliseconds: 50), () {
       setState(() {
         selected = true;

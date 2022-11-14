@@ -26,6 +26,7 @@ class ProductsCards extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(16)),
             color: AppColors.purpura.withAlpha(25),
           ),
+          child: Image.network((productsView.img.toString()), height: 19, width: 19),
         ),
         const SizedBox(
           width: 16,
@@ -146,6 +147,7 @@ class ProductsCards extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(10)),
                 color: AppColors.purpura.withAlpha(25),
               ),
+              child: Image.network((productsView.img.toString()), height: 19, width: 19),
             ),
           ]),
           const SizedBox(

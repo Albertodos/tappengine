@@ -46,6 +46,7 @@ dependencies:
   url_launcher:
   flutter_widget_from_html_core:
   fwfh_webview:
+  jwt_decode: 
   
 
 

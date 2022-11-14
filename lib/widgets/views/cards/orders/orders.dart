@@ -39,6 +39,7 @@ class OrdersCards extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(25)),
                       color: AppColors.gray3,
                     ),
+                    child: Image.network((orders.img.toString()), height: 19, width: 19),
                   ),
                   const SizedBox(
                     width: 16,
@@ -53,7 +54,7 @@ class OrdersCards extends StatelessWidget {
                           children: [
                             Expanded(
                               child: UILabels(
-                                text: "${orders.typeName} buy ${orders.asset}",
+                                text: "${orders.typeName} buy ${orders.asset.toString().toLowerCase()}",
                                 textLines: 1,
                                 color: AppColors.black,
                                 fontSize: 18,
