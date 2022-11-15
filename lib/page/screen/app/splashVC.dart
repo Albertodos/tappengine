@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 import 'package:tappengine/constants/app_colors.dart';
 import 'package:tappengine/page/screen/autentication/welcomeVC.dart';
 
+import '../autentication/controller/autentication.dart';
+
 class SplashVC extends StatefulWidget {
   const SplashVC({Key? key}) : super(key: key);
 
@@ -14,6 +16,7 @@ class SplashVC extends StatefulWidget {
 }
 
 class _SplashVCState extends State<SplashVC> {
+  final Autentication autenticationC = Get.put(Autentication());
   Future<void> onDoneLoading() async {
     // await localStorage.get("token").then((value) => value == null ? Get.offAll(const LoginVC()) : getUser());
     Get.offAll(const WelcomeVC());
@@ -27,7 +30,11 @@ class _SplashVCState extends State<SplashVC> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    loadData();
+    autenticationC.getCryptoImage(context);
+    autenticationC.getBalanceImage(context);
+    autenticationC.getMobileScreens(context).then((value) {
+      loadData();
+    });
   }
 
   @override

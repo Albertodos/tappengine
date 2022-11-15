@@ -3,7 +3,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-
+import 'package:tappengine/constants/api_path.dart';
+import '../../../helpers/globals.dart' as globals;
 import '../../../constants/app_colors.dart';
 import '../../ui_kits/labels_ui/label_ui.dart';
 
@@ -19,7 +20,11 @@ class _WelcomePagesState extends State<WelcomePages> {
   bool selected = false;
   double opacityLevel = 0.0;
   var infoPage = [
-    ['assets/images/ic_own_crypto.svg', 'Simplified investing', 'Sign up in minutes and choose from a range of Stocks, ETFs, Cryptos or specially curated model portfolios.'],
+    [
+      globals.autenticationCMS.last.attributes?.mobileContent?.first.imageContent?.first ?? "",
+      globals.autenticationCMS.last.attributes?.mobileContent?.first.title ?? "",
+      globals.autenticationCMS.last.attributes?.mobileContent?.first.content ?? ""
+    ],
     // [
     //   'assets/images/buy_crypto.svg',
     //   'Earn rewards when you own buy crypto',
@@ -69,8 +74,8 @@ class _WelcomePagesState extends State<WelcomePages> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: SvgPicture.asset(
-                      infoPage[widget.pagePosition][0],
+                    child: SvgPicture.network(
+                      ApiPath.baseUrlImgCMS + infoPage[widget.pagePosition][0],
                       fit: BoxFit.cover,
                     ),
                   ),

@@ -5,6 +5,7 @@ import '../../../../dependencies/shared_preference/shared_preference_service.dar
 import '../../../../helpers/globals.dart' as globals;
 import '../../../../dependencies/http/http.dart';
 import '../../../../model/objects/user/user.dart';
+import '../model/auto_cms.dart';
 
 class Autentication extends User {
   ILocalStorage localStorage = PrefsLocalStorageService();
@@ -39,6 +40,16 @@ class Autentication extends User {
   getBalanceImage(context) {
     CryptoImage().getListDataItem("balance-icons?populate[0]=icon", context).then((value) {
       globals.balanceImage = value;
+    });
+  }
+
+  Future getMobileScreens(context) async {
+    await AutenticationCMS()
+        .getListDataItem(
+            "mobile-screens?populate[0]=mobileContent&populate[1]=mobileContent.imageContent&populate[2]=mobileContent.imageContent.media", context)
+        .then((value) {
+      globals.autenticationCMS = value;
+      return value;
     });
   }
 }

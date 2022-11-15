@@ -9,7 +9,6 @@ import 'package:tappengine/widgets/views/page_view/welcome.dart';
 
 import '../../../widgets/animation/animation.dart';
 import '../../../widgets/ui_kits/button_ui/button_ui.dart';
-import 'controller/autentication.dart';
 
 class WelcomeVC extends StatefulWidget {
   const WelcomeVC({Key? key}) : super(key: key);
@@ -23,14 +22,12 @@ class _WelcomeVCState extends State<WelcomeVC> {
   double opacityLevel = 0.0;
   RxInt pagePosition = 0.obs;
   final PageController pagecontroller = PageController();
-  final Autentication autenticationC = Get.put(Autentication());
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    autenticationC.getCryptoImage(context);
-    autenticationC.getBalanceImage(context);
+
     Future.delayed(const Duration(milliseconds: 50), () {
       setState(() {
         selected = true;

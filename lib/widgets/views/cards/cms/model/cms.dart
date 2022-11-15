@@ -46,7 +46,7 @@ class CryptoImage {
   });
 
   CryptoImage.fromJson(Map<String, dynamic> json) {
-    symbol = json['attributes']['symbol'].toString();
+    symbol = json['attributes']?['symbol'] ?? json['attributes']?['name'] ?? "";
     icon = json['attributes']['icon']['data']['attributes']['url'];
   }
 

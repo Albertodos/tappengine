@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:tappengine/constants/app_colors.dart';
-import 'package:tappengine/page/screen/reusebles/more/add_money.dart';
 import 'package:tappengine/widgets/ui_kits/labels_ui/label_ui.dart';
 import '../../../../helpers/globals.dart' as globals;
 import '../../../../dependencies/shimmer/shimmer.dart';
@@ -22,11 +21,12 @@ class ProductsCards extends StatelessWidget {
         Container(
           height: 60,
           width: 60,
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(16)),
             color: AppColors.purpura.withAlpha(25),
           ),
-          child: Image.network((productsView.img.toString()), height: 19, width: 19),
+          child: SvgPicture.network((productsView.img.toString()), height: 19, width: 19),
         ),
         const SizedBox(
           width: 16,
@@ -143,11 +143,12 @@ class ProductsCards extends StatelessWidget {
             Container(
               height: 60,
               width: 60,
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(10)),
                 color: AppColors.purpura.withAlpha(25),
               ),
-              child: Image.network((productsView.img.toString()), height: 19, width: 19),
+              child: SvgPicture.network((productsView.img.toString()), height: 19, width: 19),
             ),
           ]),
           const SizedBox(

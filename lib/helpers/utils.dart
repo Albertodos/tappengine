@@ -35,6 +35,18 @@ class Utlis {
     return url;
   }
 
+  String getBalanceImage(name, url) {
+    for (var item in globals.balanceImage) {
+      print(item.symbol);
+      print(name);
+      print(item.icon);
+      if (item.symbol == name) {
+        return ApiPath.baseUrlImgCMS + item.icon.toString();
+      }
+    }
+    return url;
+  }
+
   String getBaseUrl(url) {
     return url.substring(0, 4) == 'http' ? url : (ApiPath.baseUrl + url);
   }

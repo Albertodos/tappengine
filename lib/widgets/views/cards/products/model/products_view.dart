@@ -19,7 +19,10 @@ class ProductsView {
     value = Utlis().getNumberFormat(json['currentTotalPrice'].toString(), "#,###.##");
     valueChange = Utlis().getNumberFormat(json['unrealisedReturnValue'].toString(), "#,########.##");
     percent = json['unrealisedReturnPercentage'].toString();
-    img = Utlis().getCryptoImage(name?.toLowerCase().toString(), json['image'].toString());
+    img = Utlis().getBalanceImage(name?.toLowerCase().toString(), json['image'].toString());
+    print("img");
+    print(img);
+    print("img");
     currentTotalAmount = json['currentTotalAmount'].toString();
   }
 
